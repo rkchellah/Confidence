@@ -1,0 +1,25 @@
+# Confidence — Python dependencies
+# Pin major versions. Verify latest patch at https://pypi.org before updating.
+
+# Web framework
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+
+# HTTP client — Perfect Corp API calls (async-compatible with FastAPI)
+httpx==0.28.1
+
+# Supabase
+supabase==2.15.1
+
+# Groq — LLM API
+groq
+
+# Sentence Transformers — Transformers.js fallback (install only if Voyage AI unavailable)
+# Uncomment if switching to fallback — also update vector column to vector(384)
+# sentence-transformers==3.4.1
+
+# Environment variable loading
+python-dotenv==1.1.0
+
+# Pydantic — request/response validation (comes with FastAPI, pinned for clarity)
+pydantic==2.11.4
