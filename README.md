@@ -140,10 +140,3 @@ See `.env.example` for the full list with descriptions.
 | `VERTICAL.md` | Structural rules for where code lives |
 
 ---
-
-## Hackathon submission
-
-- Challenge: Perfect Corp — Building the Next Generation of AI-Driven Consumer Experiences
-- Prize: $2,500
-- Contact: valerie_torres@perfectcorp.com
-- Deadline: May 27–28 2026
