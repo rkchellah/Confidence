@@ -23,3 +23,5 @@ python-dotenv==1.1.0
 
 # Pydantic — request/response validation (comes with FastAPI, pinned for clarity)
 pydantic==2.11.4
+
+python-multipart

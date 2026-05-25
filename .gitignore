@@ -37,3 +37,6 @@ tmp/
 
 # ─── Render ───────────────────────────────────────────────────────────────────
 .render-buildpacks.json
+
+.agents/
+skills-lock.json

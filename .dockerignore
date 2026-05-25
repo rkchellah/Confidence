@@ -1,0 +1,13 @@
+.env.local
+.env
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.git/
+*.md
+frontend/
+scripts/
+.agents/
+.claude/
