@@ -42,7 +42,7 @@ async def lifespan(app: FastAPI):
     required = [
         "PERFECTCORP_API_KEY",
         "VOYAGE_API_KEY",
-        "GROQ_API_KEY",
+        "DEEPSEEK_API_KEY",
         "SUPABASE_URL",
         "SUPABASE_KEY",
     ]
@@ -95,7 +95,7 @@ async def analyse_skin(
       1. Read image bytes
       2. Perfect Corp skin analysis (upload → task → poll → parse)
       3. RAG product retrieval (embed query → cosine search → top matches)
-      4. Routine generation (triage → Groq prompt → structured JSON)
+      4. Routine generation (triage → DeepSeek prompt → structured JSON)
     """
     # Parse optional ingredients list
     avoid_list: list[str] = (
@@ -144,7 +144,7 @@ async def analyse_skin(
     # Step 3 — product retrieval (graceful degradation — empty list if Supabase fails)
     products = retrieve_for_skin(skin_result, k=6, ingredients_to_avoid=avoid_list)
 
-    # Step 4 — routine generation (triage + Groq)
+    # Step 4 — routine generation (triage + DeepSeek)
     try:
         output = generate_routine(skin_result, products, avoid_list or None)
     except Exception as e:

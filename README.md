@@ -9,7 +9,7 @@ Built for the DevNetwork AI+ML Hackathon 2026 — Perfect Corp Challenge ($2,500
 ## What it does
 
 Upload a selfie. Confidence analyses your skin using Perfect Corp's AI skin analysis API,
-retrieves the most relevant products from a vetted knowledge base, and asks llama-3.3-70b-versatile to write
+retrieves the most relevant products from a vetted knowledge base, and asks deepseek-chat to write
 a personalised morning and evening routine — with specific products, key ingredients, and
 plain-language reasons why each one matches your skin.
 
@@ -23,7 +23,7 @@ If you have persistent or unusual skin concerns, see a qualified dermatologist.
 ```
 Selfie → Perfect Corp skin analysis → 14 concern scores + skin type
        → RAG query → Supabase pgvector → top matched products
-       → llama-3.3-70b-versatile → personalised morning + evening routine
+       → deepseek-chat → personalised morning + evening routine
 ```
 
 Three phases, one result.
@@ -38,7 +38,7 @@ Three phases, one result.
 | Skin analysis | Perfect Corp skin-analysis API |
 | Embeddings | Voyage AI `voyage-3-lite` (1024-dim) |
 | Vector DB | Supabase pgvector |
-| LLM | llama-3.3-70b-versatile |
+| LLM | deepseek-chat |
 | Frontend | Single HTML file |
 | Deploy | Render |
 
@@ -125,7 +125,7 @@ See `.env.example` for the full list with descriptions.
 |---|---|
 | `PERFECTCORP_API_KEY` | https://yce.makeupar.com/api-console/en/api-keys/ |
 | `VOYAGE_API_KEY` | https://dash.voyageai.com |
-| `GROQ_API_KEY` | https://console.groq.com |
+| `DEEPSEEK_API_KEY` | https://platform.deepseek.com |
 | `SUPABASE_URL` | Your Supabase project settings |
 | `SUPABASE_KEY` | Your Supabase project settings (service role) |
 

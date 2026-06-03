@@ -22,7 +22,7 @@ import json
 import os
 from dataclasses import dataclass, field
 
-from groq import Groq
+from openai import OpenAI
 from dotenv import load_dotenv
 
 import sys
@@ -317,7 +317,10 @@ def generate_routine(
         return referral_response(skin_result, severe, moderate)
 
     # Step 2 — build prompt
-    client = Groq(api_key=os.environ["GROQ_API_KEY"])
+    client = OpenAI(
+        api_key=os.environ.get("DEEPSEEK_API_KEY"),
+        base_url="https://api.deepseek.com",
+    )
     user_message = _build_user_message(skin_result, products, ingredients_to_avoid, moderate)
 
     # Step 3 — call Groq (retry once on parse failure)
@@ -333,7 +336,7 @@ def generate_routine(
             })
 
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="deepseek-chat",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 *messages,

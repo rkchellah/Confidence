@@ -11,8 +11,8 @@ httpx==0.28.1
 # Supabase
 supabase==2.15.1
 
-# Groq — LLM API
-groq
+# OpenAI SDK — DeepSeek LLM API (OpenAI-compatible)
+openai
 
 # Sentence Transformers — Transformers.js fallback (install only if Voyage AI unavailable)
 # Uncomment if switching to fallback — also update vector column to vector(384)
