@@ -21,7 +21,7 @@ Every deviation is documented below with a reason.
 | Skin analysis | Perfect Corp skin-analysis API | Required by challenge brief |
 | Embeddings | Voyage AI `voyage-3-lite` (1024-dim) | Free for new users, Anthropic-recommended for RAG. Fallback: Transformers.js |
 | Vector DB | Supabase pgvector | Free tier, same infra pattern already established |
-| LLM | Groq (`llama-3.3-70b-versatile`) | Fast inference, structured JSON output |
+| LLM | DeepSeek (`deepseek-chat`) | Strong structured JSON output, OpenAI-compatible API |
 | Deployment | Render free tier | Simple, Git-connected, zero config for FastAPI |
 
 ---
@@ -52,7 +52,7 @@ All type safety enforced through Python type hints and dataclasses.
 | Python | https://docs.python.org/3 |
 | Supabase Python SDK | https://supabase.com/docs/reference/python |
 | Voyage AI | https://docs.voyageai.com |
-| Groq Python SDK | https://console.groq.com/docs/openai |
+| OpenAI Python SDK (DeepSeek) | https://api-docs.deepseek.com |
 | Perfect Corp API | https://yce.perfectcorp.com/document/index.html |
 | httpx | https://www.python-httpx.org |
 | Render | https://render.com/docs |
@@ -90,7 +90,7 @@ httpx            — async HTTP client (Perfect Corp API calls)
 supabase         — Supabase Python SDK
 python-dotenv    — load .env.local
 pydantic         — request/response validation (comes with FastAPI)
-groq             — Groq API
+openai           — OpenAI SDK (DeepSeek API, OpenAI-compatible)
 voyageai         — Voyage AI embeddings (verify package name at https://docs.voyageai.com)
 ```
 
@@ -110,7 +110,7 @@ All secrets live in `.env.local`. Never in code. Never committed.
 |----------|-------------|
 | `PERFECTCORP_API_KEY` | Perfect Corp API key — get from https://yce.makeupar.com/api-console/en/api-keys/ |
 | `VOYAGE_API_KEY` | Voyage AI — get from https://dash.voyageai.com |
-| `GROQ_API_KEY` | Groq API key |
+| `DEEPSEEK_API_KEY` | DeepSeek API key |
 | `SUPABASE_URL` | Supabase project URL |
 | `SUPABASE_KEY` | Supabase service role key — never exposed to frontend |
 | `POLL_TIMEOUT_SECONDS` | Perfect Corp poll timeout — default 30 |

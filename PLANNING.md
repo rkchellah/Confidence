@@ -51,7 +51,7 @@ Those scores are converted into a natural-language RAG query
 The query hits a vector database of 100+ indexed skincare products.
 The top 3 most relevant products per concern are retrieved.
 
-The Groq LLM receives the skin analysis + retrieved products and generates:
+The DeepSeek LLM receives the skin analysis + retrieved products and generates:
 - A skin profile card (skin type, top 3 concerns, skin score)
 - A morning routine (3–4 steps with specific products and why they match)
 - An evening routine (3–4 steps with specific products and why they match)
@@ -93,7 +93,7 @@ See STACK.md for full details and deviation rationale.
 | Embeddings | Voyage AI `voyage-3-lite` (1024-dim) — fallback: Transformers.js |
 | Embed abstraction | Single `embed()` function in `rag_products.py` — swap provider in one place |
 | Vector DB | Supabase pgvector |
-| LLM | Groq (`llama-3.3-70b-versatile`) |
+| LLM | DeepSeek (`deepseek-chat`) |
 | Backend | FastAPI on Render |
 | Frontend | Single HTML file |
 
@@ -137,10 +137,10 @@ Skin results: not written to database — stays in the browser response only
 - [ ] Optional "ingredients to avoid" field — filtered from RAG + injected into system prompt
 - [ ] Loading state — animated steps (Analysing skin → Searching products → Generating routine)
 - [ ] Skin profile card — skin type, top 3 concerns with scores, skin score /100
-- [ ] Three-tier triage system — enforced in Python before Groq is called (see Safety Design)
+- [ ] Three-tier triage system — enforced in Python before DeepSeek is called (see Safety Design)
         Mild (0–0.4): full recommendation
         Moderate (0.4–0.85): recommendation + soft nudge to see derm if it persists
-        Severe (0.85+): referral card only — Groq not called for this concern
+        Severe (0.85+): referral card only — DeepSeek not called for this concern
 - [ ] Morning routine — 3–4 steps: product name, key ingredients, why it matches
 - [ ] Evening routine — 3–4 steps: product name, key ingredients, why it matches
 - [ ] Ingredient to avoid — one callout with plain-language reason
@@ -296,7 +296,7 @@ Severe response (one or more concerns at 0.85+):
 | Poll exceeds 30s | 408 | "We couldn't complete the analysis in time. Try again with a well-lit, front-facing photo. For persistent skin concerns, a dermatologist is always the most reliable option." |
 | No face detected | 400 | "We couldn't read your skin clearly. Try a well-lit photo with your face centred. If you have skin concerns you'd like properly assessed, consider booking with a skin specialist." |
 | Supabase unreachable | 200 | Silent degradation — triage check still runs, Claude generates routine without specific product matches |
-| Groq error (after 1 retry) | 500 | "Something went wrong generating your routine. Try again. For anything persistent or urgent, a dermatologist is always the right call." |
+| DeepSeek error (after 1 retry) | 500 | "Something went wrong generating your routine. Try again. For anything persistent or urgent, a dermatologist is always the right call." |
 
 ---
 
@@ -333,7 +333,7 @@ Severe response (one or more concerns at 0.85+):
         Verify: dry skin + dark spots → returns vitamin C serums + ceramide moisturisers
 
 [ ] 5. backend/routine_generator.py
-        Severity check in Python BEFORE Groq is called — not inside the prompt
+        Severity check in Python BEFORE DeepSeek is called — not inside the prompt
           HIGH_SEVERITY_THRESHOLD = 0.85
           REFERRAL_CONCERNS = {"acne", "redness", "spots", "texture"}
           If any concern hits threshold → return referral card, skip Claude for that concern
@@ -413,9 +413,9 @@ and whether Claude is called at all for that concern.
 
 | Tier | Score range | What happens |
 |---|---|---|
-| Mild | 0 – 0.4 | Full product recommendation. Groq generates steps normally. |
+| Mild | 0 – 0.4 | Full product recommendation. DeepSeek generates steps normally. |
 | Moderate | 0.4 – 0.85 | Recommendation + soft nudge: "If this persists after 8 weeks, see a dermatologist." |
-| Severe | 0.85+ | Referral card only. Groq is not called for this concern. No OTC recommendation. |
+| Severe | 0.85+ | Referral card only. DeepSeek is not called for this concern. No OTC recommendation. |
 
 ---
 
@@ -438,7 +438,7 @@ real treatment.
 
 ### The severity check in code
 
-This runs in `routine_generator.py` before any Groq call:
+This runs in `routine_generator.py` before any DeepSeek call:
 
 ```python
 def check_severity(concerns: list[dict]) -> list[str]:
@@ -450,16 +450,16 @@ def check_severity(concerns: list[dict]) -> list[str]:
 
 severe = check_severity(skin_profile["concerns"])
 if severe:
-    return referral_response(severe)   # Groq never called
+    return referral_response(severe)   # DeepSeek never called
 
-return call_groq(skin_profile, retrieved_products)
+return call_deepseek(skin_profile, retrieved_products)
 ```
 
 ---
 
 ### System prompt hard limits
 
-The Groq LLM receives these constraints on every call. They are not softened
+The DeepSeek LLM receives these constraints on every call. They are not softened
 or overrideable by user input:
 
 ```
@@ -512,8 +512,8 @@ PERFECTCORP_API_KEY=     # https://yce.makeupar.com/api-console/en/api-keys/
 # Voyage AI (embeddings — primary)
 VOYAGE_API_KEY=          # https://dash.voyageai.com
 
-# Groq
-GROQ_API_KEY=
+# DeepSeek
+DEEPSEEK_API_KEY=
 
 # Supabase
 SUPABASE_URL=

@@ -26,7 +26,7 @@ The vertical principles still apply inside the backend:
 backend/
   perfect_corp.py      → everything to do with Perfect Corp API
   rag_products.py      → everything to do with retrieval and embeddings
-  routine_generator.py → everything to do with Groq and routine output
+  routine_generator.py → everything to do with DeepSeek and routine output
   main.py              → FastAPI wiring only — thin, no business logic here
 ```
 
@@ -105,7 +105,7 @@ A good file structure communicates what the app does before you open a single fi
 If someone reads the backend/ folder and understands it's about:
 - talking to Perfect Corp for skin analysis
 - retrieving products from a vector database
-- generating routines with Groq
+- generating routines with DeepSeek
 
 You've done it right.
 
@@ -121,7 +121,7 @@ confidence/
   backend/
     perfect_corp.py      — Perfect Corp API: upload, task, poll, parse
     rag_products.py      — Voyage AI embed + Supabase pgvector retrieve
-    routine_generator.py — Groq prompt, few-shot, structured JSON output
+    routine_generator.py — DeepSeek prompt, few-shot, structured JSON output
     main.py              — FastAPI routes only, delegates to above
   frontend/
     index.html           — entire frontend: upload, loading, results

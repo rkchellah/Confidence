@@ -56,7 +56,7 @@ Every request through `POST /analyse` runs four steps in sequence:
 image bytes
   → perfect_corp.py     upload → task → poll → parse → SkinAnalysisResult
   → rag_products.py     embed query → cosine search → RetrievedProduct[]
-  → routine_generator.py triage → (maybe) Groq prompt → RoutineOutput
+  → routine_generator.py triage → (maybe) DeepSeek prompt → RoutineOutput
   → main.py             serialise → JSON response
 ```
 
@@ -68,7 +68,7 @@ image bytes
 |---|---|
 | `backend/perfect_corp.py` | Perfect Corp API: upload → task → poll → parse. Defines `SkinAnalysisResult`, all custom exceptions (`AnalysisTimeoutError`, `NoFaceDetectedError`, `PerfectCorpError`). |
 | `backend/rag_products.py` | Voyage AI embedding (`embed()`), query building (`build_query()`), Supabase pgvector retrieval (`retrieve_for_skin()`). Defines `RetrievedProduct`. |
-| `backend/routine_generator.py` | Three-tier triage check in Python (before Groq is called), Groq prompt assembly, structured JSON output. Defines `RoutineOutput`. |
+| `backend/routine_generator.py` | Three-tier triage check in Python (before DeepSeek is called), DeepSeek prompt assembly, structured JSON output. Defines `RoutineOutput`. |
 | `backend/main.py` | FastAPI routes, CORS, startup env-var validation, `_serialise()`. |
 
 ### Perfect Corp API — Async Pattern
@@ -86,13 +86,13 @@ Do not deviate from this. Polling too fast risks rate limiting; 2s is the correc
 
 ### Three-Tier Triage — The Most Important Architectural Decision
 
-Safety enforcement is in Python code, not in the LLM prompt. This runs in `routine_generator.py` before any Groq call:
+Safety enforcement is in Python code, not in the LLM prompt. This runs in `routine_generator.py` before any DeepSeek call:
 
 | Tier | Score | What happens |
 |---|---|---|
 | Mild | 0–0.4 | Full product recommendation |
 | Moderate | 0.4–0.85 | Recommendation + soft nudge to see a derm if it persists |
-| Severe | 0.85+ | Referral card only — Groq is **not called** for this concern |
+| Severe | 0.85+ | Referral card only — DeepSeek is **not called** for this concern |
 
 Severe triage only fires for `REFERRAL_CONCERNS = {"acne", "redness", "spots", "texture"}`. Cosmetic concerns like pores and dark circles at high severity still get OTC recommendations.
 
@@ -118,7 +118,7 @@ RPC: match_skincare_products(query_embedding vector(1024), match_count int)
 
 ### Graceful Degradation
 
-If Supabase is unreachable, `retrieve()` returns `[]` and logs the error. The pipeline continues — Groq generates a routine without specific product matches. This is intentional and documented.
+If Supabase is unreachable, `retrieve()` returns `[]` and logs the error. The pipeline continues — DeepSeek generates a routine without specific product matches. This is intentional and documented.
 
 ### Error Handling Contract
 
@@ -134,7 +134,7 @@ All secrets in `.env.local` (never committed). Copy from `.env.example`.
 |---|---|
 | `PERFECTCORP_API_KEY` | Perfect Corp skin analysis |
 | `VOYAGE_API_KEY` | Voyage AI embeddings |
-| `GROQ_API_KEY` | Groq LLM (`llama-3.3-70b-versatile`) |
+| `DEEPSEEK_API_KEY` | DeepSeek LLM (`deepseek-chat`) |
 | `SUPABASE_URL` | Supabase project URL |
 | `SUPABASE_KEY` | Supabase service role key (never in frontend) |
 | `POLL_TIMEOUT_SECONDS` | Perfect Corp poll timeout — default 30 |
@@ -174,7 +174,7 @@ refactor(perfect-corp): …
 | Python | https://docs.python.org/3 |
 | Supabase Python SDK | https://supabase.com/docs/reference/python |
 | Voyage AI | https://docs.voyageai.com |
-| Groq Python SDK | https://console.groq.com/docs/openai |
+| OpenAI Python SDK (DeepSeek) | https://api-docs.deepseek.com |
 | Perfect Corp API | https://yce.perfectcorp.com/document/index.html |
 | httpx | https://www.python-httpx.org |
 | Render | https://render.com/docs |

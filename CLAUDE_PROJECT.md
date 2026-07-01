@@ -10,7 +10,7 @@ This file adds the project-specific context on top of those global rules.
 Confidence is a single-page web app that turns a selfie into a personalised
 skincare routine. It calls Perfect Corp's skin analysis API to detect 14 skin
 concerns, runs RAG over a vector database of 100+ skincare products, and uses
-a Groq LLM to generate a structured morning and evening routine. Built for the
+a DeepSeek LLM to generate a structured morning and evening routine. Built for the
 DevNetwork AI+ML Hackathon 2026 — Perfect Corp challenge ($2,500).
 
 ---
@@ -25,7 +25,7 @@ DevNetwork AI+ML Hackathon 2026 — Perfect Corp challenge ($2,500).
 | Skin analysis | Perfect Corp skin-analysis API (async: upload → task → poll) |
 | Embeddings | Voyage AI `voyage-3-lite` (1024-dim) — fallback: sentence-transformers |
 | Vector DB | Supabase pgvector |
-| LLM | Groq — Llama 3.3 70B (`llama-3.3-70b-versatile`) |
+| LLM | DeepSeek (`deepseek-chat`) |
 | Deployment | Render free tier |
 
 ---
@@ -37,7 +37,7 @@ confidence/
   backend/
     perfect_corp.py      ← Perfect Corp API domain (upload, task, poll, parse)
     rag_products.py      ← retrieval domain (embed, build_query, retrieve)
-    routine_generator.py ← routine domain (triage, Groq prompt, JSON output)
+    routine_generator.py ← routine domain (triage, DeepSeek prompt, JSON output)
     main.py              ← FastAPI wiring only — no business logic here
   frontend/
     index.html           ← entire frontend: upload, loading, results
@@ -95,12 +95,12 @@ Images are sent to Perfect Corp and not stored by Confidence.
 
 ## Safety Design (read before touching routine_generator.py)
 
-Three-tier triage enforced in Python BEFORE Groq is called:
+Three-tier triage enforced in Python BEFORE DeepSeek is called:
 
 ```
 Mild    (0 – 0.4):    full product recommendation
 Moderate (0.4 – 0.85): recommendation + soft nudge to see a dermatologist
-Severe  (0.85+):      referral card only — Groq LLM never called for this concern
+Severe  (0.85+):      referral card only — DeepSeek LLM never called for this concern
 ```
 
 ```python
@@ -123,7 +123,7 @@ Do not weaken these constraints. They are intentional product decisions.
 ```
 PERFECTCORP_API_KEY=     # https://yce.makeupar.com/api-console/en/api-keys/
 VOYAGE_API_KEY=          # https://dash.voyageai.com
-GROQ_API_KEY=            # https://console.groq.com
+DEEPSEEK_API_KEY=        # https://platform.deepseek.com
 SUPABASE_URL=
 SUPABASE_KEY=            # service role key — never in frontend
 POLL_TIMEOUT_SECONDS=30
