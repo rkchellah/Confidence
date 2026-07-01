@@ -1,144 +1,53 @@
-﻿<!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Confidence AI | Precision Skincare Intelligence</title>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Confidence AI | Precision Skincare Intelligence</title>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "secondary-fixed": "#e2e2e9",
-                        "on-secondary": "#ffffff",
-                        "primary-fixed-dim": "#d4bdf1",
-                        "on-secondary-fixed-variant": "#45464d",
-                        "secondary-container": "#dfdfe7",
-                        "surface-container-lowest": "#ffffff",
-                        "inverse-primary": "#d4bdf1",
-                        "surface-container-highest": "#e2e2e2",
-                        "on-error": "#ffffff",
-                        "on-error-container": "#93000a",
-                        "background": "#f9f9f9",
-                        "on-tertiary": "#ffffff",
-                        "tertiary-fixed-dim": "#c8c6c6",
-                        "surface-variant": "#e2e2e2",
-                        "inverse-surface": "#2f3131",
-                        "on-tertiary-fixed-variant": "#474747",
-                        "secondary-fixed-dim": "#c6c6cd",
-                        "on-primary-fixed-variant": "#503e6a",
-                        "surface": "#f9f9f9",
-                        "outline-variant": "#cbc4cf",
-                        "error-container": "#ffdad6",
-                        "on-secondary-container": "#616269",
-                        "surface-container": "#eeeeee",
-                        "on-primary-container": "#33214b",
-                        "on-tertiary-container": "#2a2a2a",
-                        "tertiary-fixed": "#e4e2e1",
-                        "surface-container-low": "#f3f3f4",
-                        "surface-tint": "#695683",
-                        "primary-fixed": "#eddcff",
-                        "secondary": "#5d5e65",
-                        "surface-bright": "#f9f9f9",
-                        "on-tertiary-fixed": "#1b1c1c",
-                        "surface-dim": "#dadada",
-                        "on-background": "#1a1c1c",
-                        "tertiary": "#5f5e5e",
-                        "error": "#ba1a1a",
-                        "on-secondary-fixed": "#1a1b21",
-                        "on-surface": "#1a1c1c",
-                        "on-surface-variant": "#4a454e",
-                        "on-primary-fixed": "#24123c",
-                        "inverse-on-surface": "#f0f1f1",
-                        "tertiary-container": "#929191",
-                        "surface-container-high": "#e8e8e8",
-                        "primary-container": "#9d88b9",
-                        "on-primary": "#ffffff",
-                        "primary": "#695683",
-                        "outline": "#7b757e"
+                    colors: {
+                        brand: {
+                            gold: "#F7CE26",
+                            goldHover: "#DFB81E",
+                            mint: "#A2D9CE",
+                            charcoal: "#031E11",
+                            darkCard: "#0C2919",
+                            slate: "#5D6D7E",
+                            bgLight: "#F4F4F6",
+                            borderLight: "#E5E7EB",
+                            borderDark: "rgba(255,255,255,0.08)"
+                        }
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"]
                     },
-                    "spacing": {
-                        "stack-lg": "32px",
-                        "gutter": "24px",
-                        "stack-md": "16px",
-                        "section-gap": "120px",
-                        "margin-tablet": "40px",
-                        "margin-mobile": "20px",
-                        "margin-desktop": "80px",
-                        "stack-sm": "8px",
-                        "container-max": "1280px"
-                    },
-                    "fontFamily": {
-                        "headline-lg-mobile": ["Playfair Display"],
-                        "label-sm": ["Manrope"],
-                        "headline-lg": ["Playfair Display"],
-                        "body-lg": ["Manrope"],
-                        "label-md": ["Manrope"],
-                        "body-md": ["Manrope"],
-                        "headline-md": ["Playfair Display"],
-                        "headline-xl": ["Playfair Display"]
-                    },
-                    "fontSize": {
-                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
-                        "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
-                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
-                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "500"}],
-                        "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    borderRadius: {
+                        '3xl': '24px',
+                        '4xl': '32px'
                     }
                 }
             }
         }
     </script>
-<style>
-        .glass {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+    <style>
+        body {
+            background-color: #F4F4F6;
+            font-family: 'Inter', sans-serif;
+            color: #031E11;
+            -webkit-font-smoothing: antialiased;
         }
-        .ai-pulse {
-            animation: pulse-glow 3s infinite ease-in-out;
+        .dashed-border {
+            border: 1px dashed rgba(3, 30, 17, 0.15);
         }
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 0px rgba(157, 136, 185, 0); }
-            50% { box-shadow: 0 0 20px 10px rgba(157, 136, 185, 0.3); }
-        }
-        .scroll-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
-        }
-        .scroll-reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .analysis-scan-line {
-            animation: analysis-scan 2.2s linear forwards;
-        }
-        @keyframes analysis-scan {
-            from { top: 12%; }
-            to { top: 88%; }
-        }
-        .analysis-dot {
-            animation: analysis-dot-pulse 1.6s ease-in-out infinite;
-        }
-        @keyframes analysis-dot-pulse {
-            0%, 100% { opacity: 0.35; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.35); }
+        .dark .dashed-border {
+            border: 1px dashed rgba(255, 255, 255, 0.1);
         }
         .analysis-spinner {
             animation: spin 0.8s linear infinite;
@@ -146,887 +55,805 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        .analysis-step.step-active {
-            opacity: 1;
-            background: rgba(105, 86, 131, 0.05);
-        }
-        .analysis-step.step-done {
-            opacity: 0.65;
-        }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
+            height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #f3f3f4;
+            background: #F4F4F6;
         }
         ::-webkit-scrollbar-thumb {
-            background: #695683;
-            border-radius: 4px;
+            background: #D1D5DB;
+            border-radius: 99px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #503e6a;
+            background: #9CA3AF;
         }
     </style>
 </head>
-<body class="bg-surface font-body-md text-on-surface overflow-x-hidden">
-<!-- TopNavBar -->
-<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant/40 shadow-sm transition-all duration-300">
-  <div class="max-w-container-max mx-auto px-5 md:px-10 py-3 flex items-center justify-between gap-6">
-    <!-- Logo -->
-    <a class="flex items-center gap-2.5 shrink-0" href="#">
-      <svg width="34" height="34" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Confidence logo">
-        <rect width="36" height="36" rx="9" fill="#695683"/>
-        <path d="M25 11A10 10 0 1 0 25 25" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <circle cx="18" cy="18" r="2" fill="white"/>
-      </svg>
-      <span class="font-headline-md text-[20px] font-bold text-on-surface tracking-tight">Confidence</span>
-    </a>
-    <!-- Nav links — centred -->
-    <nav class="hidden md:flex items-center gap-6">
-      <a class="font-label-md text-[13px] text-primary font-semibold border-b-2 border-primary pb-0.5" href="#upload-anchor">Analyse</a>
-      <a class="font-label-md text-[13px] text-on-surface-variant hover:text-primary transition-colors" href="#skin-basics">Skin Basics</a>
-      <a class="font-label-md text-[13px] text-on-surface-variant hover:text-primary transition-colors" href="#safety">Safety</a>
-      <a class="font-label-md text-[13px] text-on-surface-variant hover:text-primary transition-colors" href="#privacy">Privacy</a>
-      <a class="font-label-md text-[13px] text-on-surface-variant hover:text-primary transition-colors" href="#support">Support</a>
-    </nav>
-    <!-- Actions -->
-    <div class="flex items-center gap-2.5 shrink-0">
-      <button class="hidden lg:inline-flex items-center gap-1.5 font-label-md text-[13px] text-on-surface-variant hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-primary/5" onclick="document.getElementById('support').scrollIntoView({behavior:'smooth'})" type="button">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-        </svg>
-        Contact Us
-      </button>
-      <button class="bg-[#695683] text-white hover:bg-[#58476f] active:scale-[0.98] transition-all px-4 py-2 rounded-lg font-label-md text-[13px] inline-flex items-center gap-1.5 focus:ring-2 focus:ring-[#695683] focus:ring-offset-2" data-upload-cta type="button">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9V5.25A2.25 2.25 0 016 3h2.25M3.75 15v3.75A2.25 2.25 0 006 21h2.25M20.25 9V5.25A2.25 2.25 0 0018 3h-2.25M20.25 15v3.75A2.25 2.25 0 0118 21h-2.25M12 9a3 3 0 100 6 3 3 0 000-6z" />
-        </svg>
-        Analyse my skin
-      </button>
-    </div>
-  </div>
-</header>
-<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-32 pb-section-gap">
-<!-- Hero Section -->
-<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center min-h-[819px]">
-<!-- Hero Content -->
-<div class="lg:col-span-5 order-2 lg:order-1 flex flex-col gap-stack-lg">
-<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary/5 border border-primary/10 rounded-full w-fit">
-<div class="flex -space-x-2">
-<img alt="User" class="w-6 h-6 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9WivCFz1nIoCflg9TzJrwEEduQZp8ybciWnI6eADP_tEbBsNG-xE-GPxMbY_gq79uC1NwmhM8u2WLUjdXNbgj2yI_gwEGemVWrXsYkzKXbR4JRxcNZGGwy_ADq1a2hFVmSzzs34ftFFxi4PuyhBRYTLnc3G7Wm58gl_n2cvOSjYzQYyQOYUQDpijHhNn6rW-5es5STvCADoxKIFjXbaiqSUWiV8LA_93CV7u-qMCqVhQPHN9TDoQJsk1xPWgVHI1_pPR7iFnlSrzl"/>
-<img alt="User" class="w-6 h-6 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALSJfN3Ijle6F43o-cN9GZiyO9CoKbWZBBC9GgAHRshurZlcV3t5LACWPytCKbJsHp5gNHYvMuagGDOkhaJhox5UDdyjsiJ6v0F8YjtGP1ozpHWhLfbOa8pSDNXmwWIsKNjAi23Cq1zZxm1ZlmUasP0hBcIZNWx_dil_m9kWVTJmH62bGHjQdWGo-ZR5DW1Uo-tCMlHesgIys8PACjKkovOZq7tEdYj8HV5aVFPPXwUnq3Z3bOwlN3GuVDcc--rDiHffeyatHKlBik"/>
-<img alt="User" class="w-6 h-6 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvtRFSzS2mW6LUFZ1ZMeVVNEnGk3gWmebkt8toR38PJ06XsIw3ARGUbW5NVOyB3E1NcbK1MAnizByFBL00_30XjnRwGxQDC-n26n0BglT_0x-VX0ZMqt0i7WicgLyQuN_M3NZbWw20s88cPo0z7UEyj5_8eX1o_ffcM6xwC6l2vXVZTaQtnJ9urQJImA9jm6VKdzR2sDvRhlpnet9i4fMfI9tQz13-SK_Lo0aaRS9RalqRARlG8DZamSe1FQnCozRuKQSIY-VPE0qB"/>
-</div>
-<span class="font-label-sm text-label-sm text-primary">Trusted by 10,000+ users</span>
-</div>
-<h1 class="font-headline-xl text-headline-xl text-on-surface leading-tight">
+<body class="overflow-x-hidden selection:bg-brand-gold/30">
+
+    <!-- TopNavBar -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#F4F4F6]/80 backdrop-blur-md border-b border-brand-borderLight transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+            <!-- Logo -->
+            <a class="flex items-center gap-3 shrink-0" href="#">
+                <div class="w-9 h-9 rounded-full bg-brand-charcoal flex items-center justify-center">
+                    <!-- Premium Geometric Leaf & Star Logo -->
+                    <svg class="w-5 h-5 text-brand-gold" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 4C16 10.6274 10.6274 16 4 16C10.6274 16 16 21.3726 16 28C16 21.3726 21.3726 16 28 16C21.3726 16 16 10.6274 16 4Z" fill="currentColor"/>
+                        <circle cx="16" cy="16" r="3" fill="#031E11"/>
+                    </svg>
+                </div>
+                <span class="font-bold text-xl text-brand-charcoal tracking-tight">Confidence<span class="text-brand-gold">.</span></span>
+            </a>
+            
+            <!-- Nav links -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a class="text-[13px] font-semibold text-brand-charcoal border-b-2 border-brand-gold pb-0.5" href="#upload-anchor">Analyse</a>
+                <a class="text-[13px] font-medium text-brand-slate hover:text-brand-charcoal transition-colors" href="#skin-basics">Skin Basics</a>
+                <a class="text-[13px] font-medium text-brand-slate hover:text-brand-charcoal transition-colors" href="#safety">Safety</a>
+                <a class="text-[13px] font-medium text-brand-slate hover:text-brand-charcoal transition-colors" href="#privacy">Privacy</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <button class="bg-brand-charcoal hover:bg-brand-charcoal/90 text-white active:scale-95 transition-all px-5 py-2.5 rounded-full text-[13px] font-semibold" data-upload-cta type="button">
+                    Analyse my skin
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
+        <!-- Hero Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[700px] mb-24">
+            <!-- Hero Content -->
+            <div class="lg:col-span-6 flex flex-col gap-8">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 border border-brand-gold/20 rounded-full w-fit">
+                    <span class="text-[11px] font-semibold text-brand-gold uppercase tracking-wider">Skiny AI Precision</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-extrabold text-brand-charcoal leading-[1.1] tracking-tight">
                     Your skin, <br/>
-<span class="font-headline-xl italic font-medium text-primary">finally</span> <br/>
+                    <span class="text-brand-slate font-light italic">finally</span> <br/>
                     understood.
                 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">
-                    Upload a selfie. Get a personalised morning and evening routine, specific products, real ingredient science, no guesswork.
+                
+                <p class="text-lg text-brand-slate leading-relaxed max-w-xl">
+                    Upload a selfie. Get a personalized morning and evening routine, specific products, real ingredient science, no guesswork.
                 </p>
-<div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
-<button class="w-full sm:w-auto bg-[#695683] text-white hover:bg-[#58476f] active:scale-[0.98] transition-all px-8 py-4 rounded-full font-label-md text-[16px] flex items-center justify-center gap-2 focus:ring-2 focus:ring-[#695683] focus:ring-offset-2" data-upload-cta type="button">
+                
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                    <button class="bg-brand-gold hover:bg-brand-goldHover text-brand-charcoal font-bold px-8 py-4 rounded-full text-base flex items-center justify-center gap-3 transition-all duration-200 shadow-lg shadow-brand-gold/20" data-upload-cta type="button">
                         Analyse my skin
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                         </svg>
-</button>
-<div class="flex items-center gap-2">
-<span class="font-label-sm text-label-sm text-on-surface-variant">100+ products indexed</span>
-</div>
-</div>
-</div>
-<!-- Hero Visual & Overlays -->
-<div class="lg:col-span-7 order-1 lg:order-2 relative h-[500px] lg:h-[700px] w-full rounded-[40px] overflow-hidden">
-<!-- Main Hero Image -->
-<img alt="Confidence AI Face Analysis" class="w-full h-full object-cover object-top" data-alt="A high-end, editorial portrait of a woman with radiant, natural skin and subtle freckles, looking directly at the camera. The background is a clean, bright studio white, reinforcing a clinical yet luxurious atmosphere. Soft lavender and cool white light illuminate her face, highlighting the texture and clarity of the skin. The overall aesthetic is minimalist, modern, and technologically sophisticated, reflecting the intersection of beauty and AI science." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwzy-bni4qvsXHUqnrfOVzaq_33jf4O_01hWQuIneWc1Ck6pa1U5G9R8ZPN3e8yNGu-BC_F101RfGGVrG5rLIAhyUInZZp_WC7JyHAz05CvpzQn3i7tgkbLOP27Nh7b9egiF8Dqkg7sfd7s9hyVk-YrySYAT7u8RsUEG2sTa_7Z48HpSmpEp71-URX_1-4tP0Ce3sEnvkkOqIOgZniFs8ZGFx2rM3Bsrja9VkHJp91mo2xtcvC2vyKLri1YEX7C6ph0d4A0YWfavSN"/>
-<!-- Scanning Overlays -->
-<div class="absolute inset-0">
-<!-- Scan Area 1: Forehead -->
-<div class="absolute top-[20%] left-[55%] group">
-<div class="w-24 h-24 border border-white/60 ai-pulse relative">
-<div class="absolute -top-6 left-0 glass px-2 py-1 rounded text-[10px] font-label-md text-white tracking-widest uppercase">
-                                Oiliness / Shine
-                            </div>
-<div class="absolute -right-2 -bottom-2 w-4 h-4 border-r-2 border-b-2 border-white"></div>
-<div class="absolute -left-2 -top-2 w-4 h-4 border-l-2 border-t-2 border-white"></div>
-</div>
-</div>
-<!-- Scan Area 2: Eyes -->
-<div class="absolute top-[45%] left-[62%] group">
-<div class="w-16 h-16 border border-white/60 ai-pulse relative">
-<div class="absolute -right-16 top-1/2 -translate-y-1/2 glass px-2 py-1 rounded text-[10px] font-label-md text-white tracking-widest uppercase">
-                                Fine Lines
-                            </div>
-</div>
-</div>
-<!-- Scan Area 3: Cheek/Jaw -->
-<div class="absolute top-[60%] left-[40%] group">
-<div class="w-20 h-20 border border-white/60 ai-pulse relative">
-<div class="absolute -bottom-6 left-0 glass px-2 py-1 rounded text-[10px] font-label-md text-white tracking-widest uppercase whitespace-nowrap">
-                                Pore Distribution
-                            </div>
-</div>
-</div>
-<!-- Gradient Fade Bottom -->
-<div class="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-surface to-transparent"></div>
-</div>
-<!-- Floating Stats Card -->
-<div class="absolute right-margin-mobile bottom-margin-mobile glass p-6 rounded-3xl flex flex-col gap-4 max-w-[200px] shadow-2xl">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-<svg class="text-primary w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-.813-5.096L3 15l5.096-.813L9 9l.813 5.096L15 15l-5.187.904zM19.071 4.929l-.244 1.53L17.297 7l1.53.244.244 1.53.244-1.53L21 7l-1.683-.827-.246-1.244z" />
-</svg>
-</div>
-<div>
-<p class="font-headline-md text-[20px] font-bold">95%</p>
-<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-tight">accurate analysis</p>
-</div>
-</div>
-<div class="h-[1px] w-full bg-white/10"></div>
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-<svg class="text-primary w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.128 16.556 18 12 18s-8.25-1.872-8.25-4.125v-3.75" />
-</svg>
-</div>
-<div>
-<p class="font-headline-md text-[20px] font-bold">30+</p>
-<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-tight">concerns tracked</p>
-</div>
-</div>
-<div class="h-[1px] w-full bg-white/10"></div>
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-<svg class="text-primary w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
-</svg>
-</div>
-<div>
-<p class="font-headline-md text-[20px] font-bold">7-day</p>
-<p class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-tight">custom routine</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Bento Features Section -->
-<section class="mt-section-gap">
-<div class="flex flex-col items-center text-center gap-4 mb-stack-lg">
-<span class="font-label-md text-label-md text-primary tracking-[0.2em] uppercase">Science First</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface">Digital Dermatology</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
-<!-- Large Feature -->
-<div class="md:col-span-8 h-[400px] rounded-lg bg-secondary-container relative overflow-hidden group scroll-reveal">
-<img alt="Scientific formulation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close-up artistic photography of laboratory glassware and botanical skincare ingredients like rose petals and transparent serums. The lighting is soft and airy, creating a high-key, clean clinical aesthetic. Gentle shadows and translucent textures represent the purity and precision of high-end skincare research. The color palette is dominated by soft whites and very faint lavender hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9q4DMwjBGC9JFgnLFM5EsbVPhh21JtEH6qCCP4sP8O58_DlJVQHrJXAnoj99Dpze0d3onQjS62ddGgFCQhZg6-9SScXgbAm49t33qRE52nchpit3G1kgLC_YZ88GIV5C5ANs_rcRaqgU3BxphtXorYJT7th7LGsCIYz4DXMCQ0x2Ao7rIA-_lZ5gvjUkVZiB2wnGyk-bU94N4Oo5YISoOeYRSPNxxRiWTInuo-bwAm5G32SyNE7VzK93ed0xIq0Ld9J0xFtEF0IFm"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent p-10 flex flex-col justify-end">
-<h3 class="font-headline-md text-white mb-2">Molecular Precision</h3>
-<p class="text-white/80 font-body-md max-w-sm">Every recommendation is cross-referenced with 5,000+ clinical studies on active ingredients.</p>
-</div>
-</div>
-<!-- Small Feature 1 -->
-<div class="md:col-span-4 h-[400px] rounded-lg bg-primary/5 p-8 flex flex-col gap-stack-md border border-primary/10 scroll-reveal">
-<div class="w-14 h-14 rounded-lg bg-[#695683] text-white flex items-center justify-center mb-4">
-  <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9V5.25A2.25 2.25 0 016 3h2.25M3.75 15v3.75A2.25 2.25 0 006 21h2.25M20.25 9V5.25A2.25 2.25 0 0018 3h-2.25M20.25 15v3.75A2.25 2.25 0 0118 21h-2.25M12 9a3 3 0 100 6 3 3 0 000-6z" />
-    <circle cx="12" cy="12" r="1" fill="white" stroke="none"/>
-  </svg>
-</div>
-<h3 class="font-headline-md text-on-surface">AI Scan</h3>
-<p class="text-on-surface-variant font-body-md">Hyper-spectral analysis tracks micro-inflammation and hydration levels invisible to the human eye.</p>
-<div class="mt-auto pt-6 border-t border-outline-variant">
-<a class="font-label-md text-primary flex items-center gap-2 group" href="#">
+                    </button>
+                    <div class="flex items-center justify-center sm:justify-start gap-2 text-sm text-brand-slate font-medium px-4">
+                        <svg class="w-4 h-4 text-brand-gold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>100+ clinical products indexed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual -->
+            <div class="lg:col-span-6 relative h-[450px] md:h-[600px] w-full rounded-4xl overflow-hidden dashed-border p-3">
+                <div class="w-full h-full rounded-3xl overflow-hidden relative">
+                    <!-- Main Hero Image -->
+                    <img alt="Confidence AI Face Analysis" class="w-full h-full object-cover object-top filter grayscale-[20%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwzy-bni4qvsXHUqnrfOVzaq_33jf4O_01hWQuIneWc1Ck6pa1U5G9R8ZPN3e8yNGu-BC_F101RfGGVrG5rLIAhyUInZZp_WC7JyHAz05CvpzQn3i7tgkbLOP27Nh7b9egiF8Dqkg7sfd7s9hyVk-YrySYAT7u8RsUEG2sTa_7Z48HpSmpEp71-URX_1-4tP0Ce3sEnvkkOqIOgZniFs8ZGFx2rM3Bsrja9VkHJp91mo2xtcvC2vyKLri1YEX7C6ph0d4A0YWfavSN"/>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Features Section -->
+        <section class="mb-24">
+            <div class="flex flex-col gap-2 mb-12">
+                <span class="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Scientific First</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-charcoal tracking-tight">Digital Dermatology</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <!-- Large Feature -->
+                <div class="md:col-span-8 h-[380px] rounded-4xl bg-white relative overflow-hidden group p-3 dashed-border">
+                    <div class="w-full h-full rounded-3xl overflow-hidden relative">
+                        <img alt="Scientific formulation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter saturate-[80%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9q4DMwjBGC9JFgnLFM5EsbVPhh21JtEH6qCCP4sP8O58_DlJVQHrJXAnoj99Dpze0d3onQjS62ddGgFCQhZg6-9SScXgbAm49t33qRE52nchpit3G1kgLC_YZ88GIV5C5ANs_rcRaqgU3BxphtXorYJT7th7LGsCIYz4DXMCQ0x2Ao7rIA-_lZ5gvjUkVZiB2wnGyk-bU94N4Oo5YISoOeYRSPNxxRiWTInuo-bwAm5G32SyNE7VzK93ed0xIq0Ld9J0xFtEF0IFm"/>
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-brand-charcoal/20 to-transparent p-8 flex flex-col justify-end">
+                            <h3 class="text-2xl font-bold text-white mb-2">Molecular Precision</h3>
+                            <p class="text-white/80 text-sm max-w-md">Every recommendation is cross-referenced with 5,000+ clinical studies on active ingredients.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Small Feature 1 -->
+                <div class="md:col-span-4 h-[380px] rounded-4xl bg-white p-8 flex flex-col justify-between border border-brand-borderLight shadow-sm">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-.813-5.096L3 15l5.096-.813L9 9l.813 5.096L15 15l-5.187.904z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-brand-charcoal mb-2">Photo analysis</h3>
+                        <p class="text-brand-slate text-sm leading-relaxed">Identify visible hydration, redness, and texture levels instantly to align your product ingredients.</p>
+                    </div>
+                    <div class="pt-6 border-t border-brand-borderLight">
+                        <a class="text-[13px] font-semibold text-brand-charcoal flex items-center gap-2 group hover:text-brand-gold transition-colors" href="#">
                             Explore the tech
-                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-</svg>
-</a>
-</div>
-</div>
-<!-- Small Feature 2 -->
-<div class="md:col-span-4 h-[400px] rounded-lg glass p-8 flex flex-col justify-center gap-4 scroll-reveal">
-<span class="font-label-sm text-primary font-bold">ACTIVE PROGRESS</span>
-<div class="w-32 h-32 mx-auto relative">
-<svg class="w-full h-full -rotate-90">
-<circle class="text-secondary-fixed" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
-<circle class="text-primary transition-all duration-1000" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="100" stroke-width="8"></circle>
-</svg>
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="font-headline-md text-on-surface">82</span>
-</div>
-</div>
-<p class="text-center font-body-md text-on-surface-variant px-4">Average skin health improvement within the first 14 days.</p>
-</div>
-<!-- Medium Feature -->
-<div class="md:col-span-8 h-[400px] rounded-lg relative overflow-hidden scroll-reveal">
-<img alt="Mobile experience" class="w-full h-full object-cover" data-alt="A minimalist and sleek smartphone mockup displaying the Confidence AI app interface. The screen shows a beautiful, clean skincare routine dashboard with pastel-colored product cards and circular progress charts. The phone is held by a hand against a soft, out-of-focus bathroom background with warm, natural morning light. The overall mood is peaceful, organized, and highly modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBc98_kKk-4Q3O-_z6f4MfK3BduO2HjzbKuO30tLU5MInPUAereBOJHM3jnukE2Avu1k38y3NPY_aF6mhv_VbOvBFARewvlVNifKH89enTnjmUSz2-c_5DsFotVKHadG8mIvuuiC4GDlSFr1tzDGyJeaeF3OZVkyo1wDdKwlrxtKoM-ZAjBnkynbB89X2H0ZK0YdTUZD1F-lH5v0T8ZcE9wpEE-vtqHbdf_QK09IR81L9pMziPafMs5SDVq62RrgwzujavVWyE1B_V"/>
-<div class="absolute top-10 left-10 glass p-6 rounded-lg max-w-xs">
-<h3 class="font-headline-md text-on-surface mb-2">Live Tracking</h3>
-<p class="text-on-surface-variant font-label-md">Adjust your routine based on local weather, pollution, and UV levels in real-time.</p>
-</div>
-</div>
-</div>
-</section>
-</main>
-<div id="upload-anchor"></div>
+                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
 
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-section-gap" id="analysis-flow">
-  <div class="max-w-[760px] mx-auto" id="screen-upload">
-    <div class="text-center mb-12">
-      <span class="inline-block font-label-md text-label-md text-primary tracking-[0.2em] uppercase bg-primary/5 border border-primary/15 rounded-full px-4 py-2 mb-4">Start your analysis</span>
-      <h2 class="font-headline-lg text-headline-lg text-on-surface mt-2 mb-4">Upload a <span class="italic font-medium text-primary">selfie</span></h2>
-      <p class="font-body-md text-body-md text-on-surface-variant max-w-[500px] mx-auto leading-relaxed">Use a clear, front-facing photo in natural light. Confidence AI will analyse visible skin markers to build your personalised routine.</p>
-    </div>
-    <div class="hidden items-start gap-3 bg-error-container text-on-error-container border border-error/20 rounded-lg p-5 mb-stack-lg font-body-md text-body-md shadow-[0_4px_20px_rgba(186,26,26,0.12)]" id="error-toast">
-      <svg class="w-5 h-5 text-red-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-      </svg>
-      <span id="error-msg"></span>
-    </div>
-    <label class="group block cursor-pointer relative rounded-[40px] overflow-hidden transition-all duration-300" id="upload-zone">
-      <input accept="image/*" capture="user" class="sr-only" id="file-input" type="file"/>
-      <!-- Background gradient -->
-      <div class="absolute inset-0 bg-gradient-to-br from-primary/3 via-white to-primary/2 group-hover:from-primary/5 group-hover:via-white group-hover:to-primary/4 transition-all duration-300"></div>
-      <!-- Border -->
-      <div class="absolute inset-0 border-2 border-primary/20 group-hover:border-primary/40 transition-all duration-300 rounded-[40px]"></div>
-      <!-- Shadow -->
-      <div class="absolute inset-0 rounded-[40px] shadow-[0_8px_32px_rgba(105,86,131,0.08)] group-hover:shadow-[0_12px_48px_rgba(105,86,131,0.15)] transition-all duration-300"></div>
-      <!-- Content -->
-      <div class="relative p-12 flex flex-col items-center gap-6">
-        <div class="w-20 h-20 rounded-lg bg-gradient-to-br from-primary to-primary/80 text-white inline-flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-          <svg class="w-10 h-10" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z" />
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
-          </svg>
+                <!-- Small Feature 2 -->
+                <div class="md:col-span-4 h-[380px] rounded-4xl bg-white p-8 flex flex-col justify-center items-center gap-6 border border-brand-borderLight shadow-sm text-center">
+                    <span class="text-[11px] font-bold text-brand-gold uppercase tracking-wider">ACTIVE PROGRESS</span>
+                    <div class="w-28 h-28 relative">
+                        <svg class="w-full h-full -rotate-90">
+                            <circle class="text-brand-bgLight" cx="56" cy="56" fill="transparent" r="50" stroke="currentColor" stroke-width="8"></circle>
+                            <circle class="text-brand-mint transition-all duration-1000" cx="56" cy="56" fill="transparent" r="50" stroke="currentColor" stroke-dasharray="314.16" stroke-dashoffset="80" stroke-width="8" stroke-linecap="round"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="text-2xl font-black text-brand-charcoal">82%</span>
+                        </div>
+                    </div>
+                    <p class="text-xs font-semibold text-brand-slate px-4">Average skin health improvement within the first 14 days.</p>
+                </div>
+
+                <!-- Medium Feature -->
+                <div class="md:col-span-8 h-[380px] rounded-4xl bg-white relative overflow-hidden p-3 dashed-border">
+                    <div class="w-full h-full rounded-3xl overflow-hidden relative">
+                        <img alt="Mobile experience" class="w-full h-full object-cover filter saturate-[80%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBc98_kKk-4Q3O-_z6f4MfK3BduO2HjzbKuO30tLU5MInPUAereBOJHM3jnukE2Avu1k38y3NPY_aF6mhv_VbOvBFARewvlVNifKH89enTnjmUSz2-c_5DsFotVKHadG8mIvuuiC4GDlSFr1tzDGyJeaeF3OZVkyo1wDdKwlrxtKoM-ZAjBnkynbB89X2H0ZK0YdTUZD1F-lH5v0T8ZcE9wpEE-vtqHbdf_QK09IR81L9pMziPafMs5SDVq62RrgwzujavVWyE1B_V"/>
+                        <div class="absolute top-6 left-6 bg-brand-charcoal/90 backdrop-blur-md p-6 rounded-2xl max-w-[280px] text-white">
+                            <h3 class="text-lg font-bold mb-2">Live Weather Sync</h3>
+                            <p class="text-white/70 text-xs leading-relaxed">Adjust your routine based on local weather, pollution, and UV levels in real-time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div id="upload-anchor"></div>
+
+        <!-- Interactive Flow Container -->
+        <section class="max-w-4xl mx-auto bg-white border border-brand-borderLight text-brand-charcoal rounded-4xl p-8 md:p-16 mb-24 shadow-sm relative overflow-hidden" id="analysis-flow">
+            <!-- Leaf decorative outline -->
+            <div class="absolute top-0 right-0 w-64 h-64 border border-brand-charcoal/5 rounded-full -mr-20 -mt-20 pointer-events-none"></div>
+            
+            <!-- SCREEN UPLOAD -->
+            <div class="block" id="screen-upload">
+                <div class="text-center mb-10">
+                    <span class="inline-block text-[10px] font-bold text-brand-gold uppercase tracking-[0.25em] bg-brand-gold/10 border border-brand-gold/20 rounded-full px-4 py-1.5 mb-4">Start your analysis</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-charcoal tracking-tight">Upload a <span class="text-brand-gold font-light italic">selfie</span></h2>
+                    <p class="text-sm text-brand-slate mt-3 max-w-[500px] mx-auto leading-relaxed">Use a clear, front-facing photo in natural light. Confidence will analyze visible skin markers to build your personalized routine.</p>
+                </div>
+
+                <!-- Error Box -->
+                <div class="hidden items-start gap-3 bg-red-50 text-red-800 border border-red-200 rounded-2xl p-5 mb-8 text-sm" id="error-toast">
+                    <svg class="w-5 h-5 text-red-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                    </svg>
+                    <span id="error-msg"></span>
+                </div>
+
+                <!-- Drag Drop / Input Area -->
+                <label class="group block cursor-pointer relative rounded-3xl overflow-hidden border-2 border-dashed border-brand-borderLight hover:border-brand-gold/40 transition-all duration-300 bg-brand-bgLight hover:bg-brand-bgLight/80 p-12" id="upload-zone">
+                    <input accept="image/*" capture="user" class="sr-only" id="file-input" type="file"/>
+                    <div class="flex flex-col items-center gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-brand-gold text-brand-charcoal flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                            <!-- Camera SVG -->
+                            <svg class="w-8 h-8 text-brand-charcoal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"/>
+                            </svg>
+                        </div>
+                        <div class="text-center">
+                            <span class="block text-lg font-bold text-brand-charcoal">Choose your photo</span>
+                            <span class="block text-xs text-brand-slate mt-2">Drag & drop or click to select • JPG, PNG, or WebP</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+                            <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-charcoal/5 px-4 py-1.5 text-[11px] font-semibold text-brand-charcoal border border-brand-borderLight">
+                                Instant analysis
+                            </span>
+                            <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-charcoal/5 px-4 py-1.5 text-[11px] font-semibold text-brand-charcoal border border-brand-borderLight">
+                                Secure & private
+                            </span>
+                        </div>
+                    </div>
+                </label>
+
+                <!-- Preview Box -->
+                <div class="hidden rounded-3xl overflow-hidden bg-brand-bgLight border border-brand-borderLight relative mb-8 shadow-sm" id="preview-wrap">
+                    <img alt="Selected skin analysis preview" class="w-full max-h-[400px] object-cover block filter grayscale-[20%]" id="preview-img" src=""/>
+                    <button class="absolute top-4 right-4 bg-brand-charcoal hover:bg-brand-charcoal/90 text-white active:scale-95 transition-all rounded-full px-5 py-2.5 text-xs font-semibold backdrop-blur-sm shadow-md" id="change-photo" type="button">
+                        Change Photo
+                    </button>
+                </div>
+
+                <!-- Scan Status Badge -->
+                <div class="hidden items-center gap-3 bg-brand-mint/20 border border-brand-mint/40 rounded-2xl p-4 mb-8 text-brand-charcoal text-xs font-semibold" id="scan-status">
+                    <svg class="w-4 h-4 text-brand-charcoal shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Photo uploaded. Ready to analyse.</span>
+                </div>
+
+                <!-- Avoid Input -->
+                <div class="mb-8">
+                    <label class="block text-xs font-bold text-brand-charcoal uppercase tracking-widest mb-3" for="avoid-input">Ingredients to avoid <span class="normal-case tracking-normal font-normal text-brand-slate">(optional)</span></label>
+                    <input class="w-full rounded-2xl border-brand-borderLight bg-brand-bgLight text-brand-charcoal placeholder-brand-slate/60 text-sm px-5 py-4 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 transition-all duration-200" id="avoid-input" placeholder="e.g. retinol, fragrance, alcohol denat." type="text"/>
+                </div>
+
+                <button class="w-full bg-brand-gold hover:bg-brand-goldHover text-brand-charcoal font-bold py-4 rounded-full text-base disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-3" disabled id="analyse-btn" type="button">
+                    Analyse my skin
+                </button>
+            </div>
+
+            <!-- SCREEN LOADING -->
+            <div class="hidden max-w-[500px] mx-auto text-center" id="screen-loading">
+                <h2 class="text-3xl font-extrabold text-brand-charcoal tracking-tight">Structuring routine</h2>
+                <p class="text-sm text-brand-slate mt-2 mb-8">Please wait while Confidence reviews your selections.</p>
+                <div class="flex justify-center mb-10">
+                    <svg class="animate-spin h-10 w-10 text-brand-gold" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </div>
+                <div class="hidden" id="dot-matrix"></div>
+                
+                <div class="bg-brand-bgLight border border-brand-borderLight rounded-3xl overflow-hidden text-left shadow-sm">
+                    <div class="flex items-center gap-4 p-5 border-b border-brand-borderLight opacity-40 transition-all" id="step-1">
+                        <div class="w-9 h-9 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center shrink-0">
+                            <span class="step-symbol font-bold text-sm">1</span>
+                            <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-brand-gold/20 border-t-brand-gold"></span>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Uploading photo</p>
+                            <p class="text-[11px] text-brand-slate mt-0.5">Sending image securely</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-5 border-b border-brand-borderLight opacity-40 transition-all" id="step-2">
+                        <div class="w-9 h-9 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center shrink-0">
+                            <span class="step-symbol font-bold text-sm">2</span>
+                            <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-brand-gold/20 border-t-brand-gold"></span>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Analysing skin</p>
+                            <p class="text-[11px] text-brand-slate mt-0.5">Reading visible skin markers</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-5 border-b border-brand-borderLight opacity-40 transition-all" id="step-3">
+                        <div class="w-9 h-9 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center shrink-0">
+                            <span class="step-symbol font-bold text-sm">3</span>
+                            <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-brand-gold/20 border-t-brand-gold"></span>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Matching products</p>
+                            <p class="text-[11px] text-brand-slate mt-0.5">Checking ingredient fit</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 p-5 opacity-40 transition-all" id="step-4">
+                        <div class="w-9 h-9 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center shrink-0">
+                            <span class="step-symbol font-bold text-sm">4</span>
+                            <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-brand-gold/20 border-t-brand-gold"></span>
+                        </div>
+                        <div>
+                            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Generating routine</p>
+                            <p class="text-[11px] text-brand-slate mt-0.5">Creating morning & night steps</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SCREEN RESULTS -->
+            <div class="hidden" id="screen-results">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+                    <h2 class="text-3xl font-extrabold text-brand-charcoal tracking-tight">Your Skin <span class="text-brand-gold font-light italic">Routine</span></h2>
+                    <button class="border border-brand-borderLight text-brand-charcoal hover:bg-brand-gold hover:border-brand-gold rounded-full px-5 py-2.5 text-xs font-bold transition-all duration-200" id="restart-btn" type="button">
+                        Analyse Again
+                    </button>
+                </div>
+                
+                <div id="referrals-wrap"></div>
+                
+                <!-- Profile details -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+                    <div id="profile-card" class="lg:col-span-7 bg-brand-bgLight border border-brand-borderLight rounded-3xl p-8 shadow-sm">
+                        <p class="text-[10px] font-bold text-brand-slate uppercase tracking-widest mb-6">SKIN PROFILE</p>
+                        <div class="grid grid-cols-2 gap-6 pb-6 border-b border-brand-borderLight mb-6">
+                            <div>
+                                <p class="text-[10px] font-semibold text-brand-slate uppercase tracking-wider mb-2">Skin Type</p>
+                                <p id="r-skin-type" class="text-3xl font-extrabold text-brand-charcoal capitalize">-</p>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-semibold text-brand-slate uppercase tracking-wider mb-2">Skin Score</p>
+                                <p id="r-skin-score" class="text-3xl font-extrabold text-brand-charcoal">-</p>
+                                <div class="h-1.5 bg-brand-borderLight rounded-full overflow-hidden mt-3">
+                                    <div id="score-fill" class="h-full bg-brand-mint rounded-full w-0 transition-all duration-1000"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="r-concerns" class="flex flex-wrap gap-2"></div>
+                    </div>
+                    
+                    <div class="lg:col-span-5 bg-brand-bgLight border border-brand-borderLight rounded-3xl p-8 flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-4 flex items-center gap-2">
+                                <svg class="w-4 h-4 text-brand-gold shrink-0" fill="none" stroke="currentColor" stroke-width="2.25" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                                </svg>
+                                Disclaimer
+                            </p>
+                            <p class="text-xs text-brand-slate leading-relaxed">
+                                Use these results as a structured starting point for a gentle routine. They are not a medical diagnosis. If a concern is painful, changing quickly, bleeding, or persistent, speak with a qualified clinician.
+                            </p>
+                        </div>
+                        <a class="mt-6 inline-flex items-center gap-2 rounded-full border border-brand-borderLight px-5 py-2.5 text-xs text-brand-charcoal hover:bg-brand-gold hover:text-brand-charcoal transition-all font-semibold w-fit" href="#safety">
+                            Read safety notes
+                        </a>
+                    </div>
+                </div>
+
+                <div id="nudge-wrap"></div>
+                
+                <!-- Morning / Evening Cards -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Morning Card -->
+                    <div class="hidden bg-brand-bgLight border border-brand-borderLight rounded-3xl p-8 shadow-sm" id="morning-card">
+                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-brand-borderLight">
+                            <span class="rounded-full bg-brand-gold/10 text-brand-charcoal px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                                ☀️ Morning
+                            </span>
+                            <span class="text-xs text-brand-slate font-medium" id="morning-count"></span>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4" id="morning-steps"></div>
+                    </div>
+                    
+                    <!-- Evening Card -->
+                    <div class="hidden bg-brand-bgLight border border-brand-borderLight rounded-3xl p-8 shadow-sm" id="evening-card">
+                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-brand-borderLight">
+                            <span class="rounded-full bg-brand-mint/10 text-brand-charcoal px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+                                🌙 Evening
+                            </span>
+                            <span class="text-xs text-brand-slate font-medium" id="evening-count"></span>
+                        </div>
+                        <div class="grid grid-cols-1 gap-4" id="evening-steps"></div>
+                    </div>
+                </div>
+                
+                <div id="avoid-wrap"></div>
+                
+                <p class="text-center text-[10px] text-brand-slate mt-12 border-t border-brand-borderLight pt-6 leading-relaxed">
+                    Confidence provides general skincare suggestions based on computer vision analysis.<br>This is not medical advice. Consult a dermatologist for persistent or unusual concerns.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skin Basics Section -->
+        <section class="mb-24" id="skin-basics">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div class="lg:col-span-4 flex flex-col gap-4">
+                    <span class="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Skin basics</span>
+                    <h2 class="text-3xl font-extrabold text-brand-charcoal tracking-tight">A calmer way to understand your face.</h2>
+                    <p class="text-sm text-brand-slate leading-relaxed">Most daily skincare decisions come back to a few basics: gentle cleansing, moisturising, sun protection, and knowing when a skin concern needs a clinician.</p>
+                </div>
+                <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-6">
+                            <svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-1.5l1.359-3.057a1.935 1.935 0 013.3 0L16.5 15.75m-6 0a3 3 0 106 0v-3.75m-6 3.75H7.5m3-3.75H6.75m3-3h1.5" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-charcoal mb-3">Keep the barrier boring</h3>
+                        <p class="text-xs text-brand-slate leading-relaxed mb-6">A gentle cleanser and moisturiser can reduce friction, dryness, and irritation. Mayo Clinic skin-care guidance outlines this baseline.</p>
+                        <a class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-charcoal hover:text-brand-gold transition-colors" href="https://www.mayoclinic.org/health/skin-care/SN00003" rel="noopener" target="_blank">
+                            Mayo Clinic guidance →
+                        </a>
+                    </article>
+                    <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-brand-mint/10 text-brand-mint flex items-center justify-center mb-6">
+                            <svg class="w-5 h-5 text-brand-mint" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-charcoal mb-3">Protect against UV</h3>
+                        <p class="text-xs text-brand-slate leading-relaxed mb-6">FDA and CDC guidance both point to broad-spectrum sunscreen with SPF 15 or higher to reduce sunburn and aging.</p>
+                        <a class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-charcoal hover:text-brand-gold transition-colors" href="https://www.fda.gov/consumers/consumer-updates/tips-stay-safe-sun-sunscreen-sunglasses" rel="noopener" target="_blank">
+                            FDA safety tips →
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety Section -->
+        <section class="mb-24" id="safety">
+            <div class="bg-white border border-brand-borderLight rounded-4xl p-8 md:p-12 shadow-sm dashed-border">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-5 flex flex-col gap-3">
+                        <span class="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Safety first</span>
+                        <h2 class="text-3xl font-extrabold text-brand-charcoal tracking-tight">Useful guidance has limits.</h2>
+                    </div>
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-brand-slate">
+                        <div class="flex gap-3">
+                            <span class="text-brand-gold">●</span>
+                            <p>Confidence can organise visible skin signals and routine ideas, but it does not diagnose conditions.</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-brand-gold">●</span>
+                            <p>Seek medical advice for sudden, painful, infected, bleeding, changing, or persistent concerns.</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-brand-gold">●</span>
+                            <p>Patch test new products and introduce active ingredients slowly, especially if your skin is reactive.</p>
+                        </div>
+                        <div class="flex gap-3">
+                            <span class="text-brand-gold">●</span>
+                            <p>Sun protection, gentle cleansing, and moisturising remain the baseline for most routines.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Privacy Section -->
+        <section class="mb-24" id="privacy">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
+                    <h2 class="text-lg font-bold text-brand-charcoal mb-3">Privacy Policy</h2>
+                    <p class="text-xs text-brand-slate leading-relaxed">Your selfie is used to generate a skincare analysis for this session. Avoid uploading photos you do not have permission to use.</p>
+                </article>
+                <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
+                    <h2 class="text-lg font-bold text-brand-charcoal mb-3">Terms of Service</h2>
+                    <p class="text-xs text-brand-slate leading-relaxed">Confidence provides educational skincare suggestions only. You are responsible for product choices and patch testing.</p>
+                </article>
+                <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
+                    <h2 class="text-lg font-bold text-brand-charcoal mb-3">Support</h2>
+                    <p class="text-xs text-brand-slate leading-relaxed">For support, try a clear front-facing photo in good light, check that the backend is running, and avoid heavy makeup.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-12 bg-white border-t border-brand-borderLight">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-brand-charcoal flex items-center justify-center">
+                    <svg class="w-4.5 h-4.5 text-brand-gold" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 4C16 10.6274 10.6274 16 4 16C10.6274 16 16 21.3726 16 28C16 21.3726 21.3726 16 28 16C21.3726 16 16 10.6274 16 4Z" fill="currentColor"/>
+                        <circle cx="16" cy="16" r="3" fill="#031E11"/>
+                    </svg>
+                </div>
+                <p class="text-xs font-semibold text-brand-charcoal"> &copy; 2026 Confidence AI. Precision Skincare Intelligence.</p>
+            </div>
+            <div class="flex gap-6 text-xs text-brand-slate font-medium">
+                <a class="hover:text-brand-charcoal" href="#privacy">Privacy</a>
+                <a class="hover:text-brand-charcoal" href="#safety">Safety</a>
+            </div>
         </div>
-        <div class="text-center">
-          <span class="block font-headline-md text-[32px] text-on-surface font-semibold">Choose your photo</span>
-          <span class="block font-body-md text-body-md text-on-surface-variant mt-2">Drag & drop or click to select • JPG, PNG, or WebP</span>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
-          <span class="inline-flex items-center gap-2 rounded-full bg-primary/8 text-primary px-4 py-2 font-label-sm text-label-sm border border-primary/15">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Instant analysis
-          </span>
-          <span class="inline-flex items-center gap-2 rounded-full bg-primary/8 text-primary px-4 py-2 font-label-sm text-label-sm border border-primary/15">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-            Secure & private
-          </span>
-        </div>
-      </div>
-    </label>
-    <div class="hidden rounded-lg overflow-hidden bg-surface-container-lowest border border-outline-variant relative mt-8 mb-8 shadow-[0_16px_48px_rgba(157,136,185,0.12)]" id="preview-wrap">
-      <img alt="Selected skin analysis preview" class="w-full max-h-[420px] object-cover block" id="preview-img" src=""/>
-      <div class="absolute inset-0 opacity-0 pointer-events-none transition-opacity bg-on-surface/30" id="scan-overlay">
-        <div class="analysis-scan-line absolute left-[8%] right-[8%] h-[2px] bg-primary shadow-[0_0_20px_rgba(157,136,185,0.3)]"></div>
-        <div class="absolute inset-4 border border-primary/70 rounded-xl"></div>
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-surface-container-lowest text-primary px-4 py-2 font-label-md text-label-md opacity-0 transition-opacity flex items-center gap-2" id="scan-ready-badge">
-        <svg class="w-5 h-5 text-[#695683]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        Photo ready
-        </div>
-      </div>
-      <button class="absolute top-4 right-4 bg-black/70 hover:bg-black/85 text-white active:scale-[0.95] transition-all rounded-full px-5 py-2.5 font-label-md text-label-md inline-flex items-center gap-2 backdrop-blur-sm" id="change-photo" type="button">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0113.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-        </svg>
-        Change
-      </button>
-    </div>
-    <div class="hidden items-center gap-4 bg-gradient-to-r from-primary/8 to-primary/4 border border-primary/25 rounded-lg p-5 mb-8 text-primary font-label-md text-label-md" id="scan-status">
-      <div class="flex-shrink-0">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </div>
-      <span>Face detected. Ready to analyse your skin.</span>
-    </div>
-    <div class="mb-8">
-      <label class="block font-label-md text-label-md text-on-surface uppercase tracking-[0.12em] mb-3" for="avoid-input">Ingredients to avoid <span class="normal-case tracking-normal font-normal text-on-surface-variant">(optional)</span></label>
-      <div class="relative group">
-        <svg class="absolute left-4 top-1/2 -translate-y-1/2 text-primary/60 group-focus-within:text-primary w-5 h-5 transition-colors" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-        </svg>
-        <input class="w-full rounded-lg border-1.5 border-outline-variant bg-surface-container-lowest text-on-surface font-body-md text-body-md pl-12 pr-4 py-3.5 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200" id="avoid-input" placeholder="e.g. retinol, fragrance, alcohol denat." type="text"/>
-      </div>
-    </div>
-    <button class="w-full bg-gradient-to-r from-[#695683] to-[#5a4a73] text-white hover:shadow-[0_8px_32px_rgba(105,86,131,0.3)] active:scale-[0.98] transition-all px-8 py-4 rounded-lg font-label-md text-[16px] font-semibold disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:shadow-none inline-flex items-center justify-center gap-3 focus:ring-2 focus:ring-primary focus:ring-offset-2" disabled id="analyse-btn" type="button">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-.813-5.096L3 15l5.096-.813L9 9l.813 5.096L15 15l-5.187.904zM19.071 4.929l-.244 1.53L17.297 7l1.53.244.244 1.53.244-1.53L21 7l-1.683-.827-.246-1.244z" />
-      </svg>
-      Analyse my skin
-    </button>
-  </div>
+    </footer>
 
-  <div class="hidden max-w-[620px] mx-auto text-center" id="screen-loading">
-    <h2 class="font-headline-lg text-headline-lg text-on-surface">Analysing your skin</h2>
-    <p class="font-body-md text-body-md text-on-surface-variant mt-2 mb-stack-lg">Keep this tab open while Confidence builds your routine.</p>
-    <div class="flex justify-center mb-8">
-      <svg class="animate-spin h-12 w-12 text-[#695683]" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-      </svg>
-    </div>
-    <div class="hidden" id="dot-matrix"></div>
-    <div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden text-left shadow-[0_8px_48px_rgba(157,136,185,0.08)]">
-      <div class="analysis-step step-active flex items-center gap-4 p-5 border-b border-outline-variant opacity-30 transition-all" id="step-1"><div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0"><svg class="step-symbol w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" /></svg><span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-[#695683]/20 border-t-[#695683]"></span></div><div><p class="font-label-md text-label-md text-on-surface">Uploading photo</p><p class="font-label-sm text-label-sm text-on-surface-variant">Sending your image securely</p></div></div>
-      <div class="analysis-step flex items-center gap-4 p-5 border-b border-outline-variant opacity-30 transition-all" id="step-2"><div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0"><svg class="step-symbol w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18a2.25 2.25 0 01-2.25 2.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M12 9v6m3-3H9" /></svg><span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-[#695683]/20 border-t-[#695683]"></span></div><div><p class="font-label-md text-label-md text-on-surface">Analysing skin</p><p class="font-label-sm text-label-sm text-on-surface-variant">Reading visible skin markers</p></div></div>
-      <div class="analysis-step flex items-center gap-4 p-5 border-b border-outline-variant opacity-30 transition-all" id="step-3"><div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0"><svg class="step-symbol w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.128 16.556 18 12 18s-8.25-1.872-8.25-4.125v-3.75" /></svg><span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-[#695683]/20 border-t-[#695683]"></span></div><div><p class="font-label-md text-label-md text-on-surface">Matching products</p><p class="font-label-sm text-label-sm text-on-surface-variant">Checking ingredient fit</p></div></div>
-      <div class="analysis-step flex items-center gap-4 p-5 opacity-30 transition-all" id="step-4"><div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0"><svg class="step-symbol w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-.813-5.096L3 15l5.096-.813L9 9l.813 5.096L15 15l-5.187.904zM19.071 4.929l-.244 1.53L17.297 7l1.53.244.244 1.53.244-1.53L21 7l-1.683-.827-.246-1.244z" /></svg><span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-[#695683]/20 border-t-[#695683]"></span></div><div><p class="font-label-md text-label-md text-on-surface">Generating routine</p><p class="font-label-sm text-label-sm text-on-surface-variant">Creating morning and evening steps</p></div></div>
-    </div>
-  </div>
+    <!-- Core Interactive Logic Script -->
+    <script>
+      const API_URL = 'https://confidence-api-59597652459.us-central1.run.app/analyse';
 
-  <div class="hidden max-w-[1040px] mx-auto" id="screen-results">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-stack-lg">
-      <h2 class="font-headline-lg text-headline-lg text-on-surface">Your <span class="italic text-primary">routine</span></h2>
-      <button class="border border-outline-variant text-on-surface-variant hover:text-[#695683] hover:border-[#695683] rounded-full px-5 py-2.5 font-label-md text-label-md inline-flex items-center gap-2 w-fit transition-colors" id="restart-btn" type="button">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-        </svg>
-        Analyse again
-      </button>
-    </div>
-    <div id="referrals-wrap"></div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-stack-md">
-      <div id="profile-card" class="lg:col-span-7" style="background:#ffffff;border-radius:16px;padding:28px 32px;box-shadow:0 1px 3px rgba(0,0,0,0.06);">
-        <p style="font-family:'Manrope',sans-serif;font-size:10px;font-weight:600;letter-spacing:0.14em;color:#7B757E;text-transform:uppercase;margin:0 0 20px 0;">SKIN PROFILE</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;padding-bottom:20px;border-bottom:1px solid #F0F0F0;margin-bottom:20px;">
-          <div>
-            <p style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;color:#7B757E;text-transform:uppercase;margin:0 0 8px 0;">Skin Type</p>
-            <p id="r-skin-type" style="font-family:'Playfair Display',serif;font-size:48px;font-weight:400;color:#1A1C1C;letter-spacing:-0.02em;margin:0;line-height:1.1;text-transform:capitalize;">-</p>
-          </div>
-          <div>
-            <p style="font-family:'Manrope',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.08em;color:#7B757E;text-transform:uppercase;margin:0 0 8px 0;">Skin Score</p>
-            <p id="r-skin-score" style="font-family:'Playfair Display',serif;font-size:48px;font-weight:400;color:#1A1C1C;margin:0;line-height:1.1;">-</p>
-            <div style="height:3px;background:#E2E2E2;border-radius:0;overflow:hidden;margin-top:12px;">
-              <div id="score-fill" style="height:100%;background:#695683;border-radius:0;width:0;transition:width 1s ease-out;"></div>
-            </div>
-          </div>
-        </div>
-        <div id="r-concerns" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
-      </div>
-      <div class="lg:col-span-5 bg-primary/5 border border-primary/20 rounded-lg p-6 shadow-[0_8px_48px_rgba(157,136,185,0.08)]">
-        <p class="font-label-md text-label-md text-primary uppercase tracking-[0.12em] mb-4 flex items-center gap-2">
-          <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-          </svg>
-          What this means
-        </p>
-        <p class="font-body-md text-body-md text-on-surface-variant">Use these results as a structured starting point for a gentle routine. They are not a diagnosis. If a concern is painful, changing quickly, bleeding, infected, or persistent, speak with a qualified clinician.</p>
-        <a class="mt-5 inline-flex items-center gap-2 rounded-full border border-[#695683]/30 px-4 py-2 font-label-md text-label-md text-[#695683] hover:bg-[#695683] hover:text-white transition-colors" href="#safety"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 111.086.797l-.14.286-.003.007-.225.465a.75.75 0 00.323 1.01l.142.072M12 18.75h.007v.008H12v-.008zM12 3a9 9 0 100 18 9 9 0 000-18z" /></svg>Read safety notes</a>
-      </div>
-    </div>
-    <div id="nudge-wrap"></div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
-      <div class="hidden bg-surface-container-lowest border border-outline-variant rounded-lg p-6 mb-stack-md shadow-[0_8px_48px_rgba(157,136,185,0.08)]" id="morning-card"><div class="flex items-center justify-between mb-5"><span class="rounded-full bg-primary/10 text-primary px-4 py-2 font-label-md text-label-md inline-flex items-center gap-2"><svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>Morning</span><span class="font-label-sm text-label-sm text-on-surface-variant" id="morning-count"></span></div><div class="grid grid-cols-1 gap-3" id="morning-steps"></div></div>
-      <div class="hidden bg-surface-container-lowest border border-outline-variant rounded-lg p-6 mb-stack-md shadow-[0_8px_48px_rgba(157,136,185,0.08)]" id="evening-card"><div class="flex items-center justify-between mb-5"><span class="rounded-full bg-primary/10 text-primary px-4 py-2 font-label-md text-label-md inline-flex items-center gap-2"><svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>Evening</span><span class="font-label-sm text-label-sm text-on-surface-variant" id="evening-count"></span></div><div class="grid grid-cols-1 gap-3" id="evening-steps"></div></div>
-    </div>
-    <div id="avoid-wrap"></div>
-    <p class="text-center font-label-sm text-label-sm text-on-surface-variant border-t border-outline-variant pt-6 mt-stack-md leading-relaxed">Confidence AI provides general skincare suggestions based on computer vision analysis.<br>This is not medical advice. Consult a dermatologist for persistent or unusual concerns.</p>
-  </div>
-</section>
-<script>
-  const API_URL = 'https://confidence-api-59597652459.us-central1.run.app/analyse';
+      const fileInput = document.getElementById('file-input');
+      const uploadZone = document.getElementById('upload-zone');
+      const previewWrap = document.getElementById('preview-wrap');
+      const previewImg = document.getElementById('preview-img');
+      const changePhoto = document.getElementById('change-photo');
+      const avoidInput = document.getElementById('avoid-input');
+      const analyseBtn = document.getElementById('analyse-btn');
+      const errorToast = document.getElementById('error-toast');
+      const errorMsg = document.getElementById('error-msg');
+      const restartBtn = document.getElementById('restart-btn');
+      const sUpload = document.getElementById('screen-upload');
+      const sLoading = document.getElementById('screen-loading');
+      const sResults = document.getElementById('screen-results');
+      const scanStatus = document.getElementById('scan-status');
+      let selectedFile = null;
 
-  const fileInput = document.getElementById('file-input');
-  const uploadZone = document.getElementById('upload-zone');
-  const previewWrap = document.getElementById('preview-wrap');
-  const previewImg = document.getElementById('preview-img');
-  const changePhoto = document.getElementById('change-photo');
-  const avoidInput = document.getElementById('avoid-input');
-  const analyseBtn = document.getElementById('analyse-btn');
-  const errorToast = document.getElementById('error-toast');
-  const errorMsg = document.getElementById('error-msg');
-  const restartBtn = document.getElementById('restart-btn');
-  const sUpload = document.getElementById('screen-upload');
-  const sLoading = document.getElementById('screen-loading');
-  const sResults = document.getElementById('screen-results');
-  const scanOverlay = document.getElementById('scan-overlay');
-  const scanReadyBadge = document.getElementById('scan-ready-badge');
-  const scanStatus = document.getElementById('scan-status');
-  let selectedFile = null;
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const dotMatrix = document.getElementById('dot-matrix');
-    if (dotMatrix && dotMatrix.children.length === 0) {
-      for (let i = 0; i < 32; i += 1) {
-        const dot = document.createElement('div');
-        dot.className = 'analysis-dot w-2 h-2 rounded-full bg-current';
-        dot.style.animationDelay = `${(i % 8) * 0.1 + Math.floor(i / 8) * 0.2}s`;
-        dotMatrix.appendChild(dot);
-      }
-    }
-
-    document.querySelectorAll('[data-upload-cta]').forEach((btn) => {
-      btn.addEventListener('click', () => show('screen-upload'));
-    });
-  });
-
-  function showErr(message) {
-    errorMsg.textContent = message;
-    errorToast.classList.remove('hidden');
-    errorToast.classList.add('flex');
-  }
-
-  function hideErr() {
-    errorToast.classList.add('hidden');
-    errorToast.classList.remove('flex');
-  }
-
-  function show(id) {
-    [sUpload, sLoading, sResults].forEach((screen) => screen.classList.add('hidden'));
-    document.getElementById(id).classList.remove('hidden');
-    document.getElementById('upload-anchor').scrollIntoView({ behavior: 'smooth' });
-  }
-
-  function setStep(n) {
-    for (let i = 1; i <= 4; i += 1) {
-      const el = document.getElementById('step-' + i);
-      const spinner = el.querySelector('.spinner');
-      const symbol = el.querySelector('.step-symbol');
-      el.classList.remove('step-active', 'step-done');
-      spinner.classList.add('hidden');
-      symbol.classList.remove('hidden');
-      if (i < n) el.classList.add('step-done');
-      if (i === n) {
-        el.classList.add('step-active');
-        spinner.classList.remove('hidden');
-        symbol.classList.add('hidden');
-      }
-    }
-  }
-
-  function runScan() {
-    const line = scanOverlay.querySelector('.analysis-scan-line');
-    line.classList.remove('analysis-scan-line');
-    void line.offsetWidth;
-    line.classList.add('analysis-scan-line');
-    scanOverlay.classList.remove('opacity-0');
-    scanOverlay.classList.add('opacity-100');
-    setTimeout(() => {
-      scanReadyBadge.classList.remove('opacity-0');
-      scanReadyBadge.classList.add('opacity-100');
-      scanStatus.classList.remove('hidden');
-      scanStatus.classList.add('flex');
-      analyseBtn.disabled = false;
-    }, 2300);
-  }
-
-  function resetPreview() {
-    selectedFile = null;
-    fileInput.value = '';
-    previewImg.src = '';
-    previewWrap.classList.add('hidden');
-    uploadZone.classList.remove('hidden');
-    scanStatus.classList.add('hidden');
-    scanStatus.classList.remove('flex');
-    scanOverlay.classList.add('opacity-0');
-    scanOverlay.classList.remove('opacity-100');
-    scanReadyBadge.classList.add('opacity-0');
-    scanReadyBadge.classList.remove('opacity-100');
-    analyseBtn.disabled = true;
-    hideErr();
-  }
-
-  function handleFile(file) {
-    if (!file || !file.type.startsWith('image/')) {
-      showErr('Please choose a JPG, PNG, or WebP image.');
-      return;
-    }
-
-    const img = new Image();
-    const url = URL.createObjectURL(file);
-    img.onload = () => {
-      if (img.width < 480 || img.height < 480) {
-        showErr('Photo too small. Use a clearer image at least 480 by 480 pixels.');
-        selectedFile = null;
-        URL.revokeObjectURL(url);
-        return;
-      }
-      hideErr();
-      selectedFile = file;
-      previewImg.src = url;
-      uploadZone.classList.add('hidden');
-      previewWrap.classList.remove('hidden');
-      scanOverlay.classList.add('opacity-0');
-      scanOverlay.classList.remove('opacity-100');
-      scanReadyBadge.classList.add('opacity-0');
-      scanReadyBadge.classList.remove('opacity-100');
-      scanStatus.classList.add('hidden');
-      scanStatus.classList.remove('flex');
-      analyseBtn.disabled = true;
-      setTimeout(runScan, 300);
-    };
-    img.onerror = () => {
-      showErr('Could not read that image. Try a different photo.');
-      URL.revokeObjectURL(url);
-    };
-    img.src = url;
-  }
-
-  fileInput.addEventListener('change', (event) => handleFile(event.target.files[0]));
-  changePhoto.addEventListener('click', resetPreview);
-
-  uploadZone.addEventListener('dragover', (event) => {
-    event.preventDefault();
-    uploadZone.classList.add('border-primary', 'bg-primary/5');
-  });
-
-  uploadZone.addEventListener('dragleave', () => {
-    uploadZone.classList.remove('border-primary', 'bg-primary/5');
-  });
-
-  uploadZone.addEventListener('drop', (event) => {
-    event.preventDefault();
-    uploadZone.classList.remove('border-primary', 'bg-primary/5');
-    handleFile(event.dataTransfer.files[0]);
-  });
-
-  analyseBtn.addEventListener('click', async () => {
-    if (!selectedFile) return;
-    hideErr();
-    show('screen-loading');
-    setStep(1);
-
-    const fd = new FormData();
-    fd.append('image', selectedFile, selectedFile.name);
-    const av = avoidInput.value.trim();
-    if (av) fd.append('ingredients_to_avoid', av);
-
-    const timers = [
-      setTimeout(() => setStep(2), 2000),
-      setTimeout(() => setStep(3), 8000),
-      setTimeout(() => setStep(4), 16000)
-    ];
-
-    try {
-      const response = await fetch(API_URL, { method: 'POST', body: fd });
-      timers.forEach(clearTimeout);
-      if (!response.ok) {
-        const err = await response.json().catch(() => ({}));
-        show('screen-upload');
-        showErr(err?.detail?.user_message || 'Something went wrong. Please try again.');
-        return;
-      }
-      setStep(4);
-      renderResults(await response.json());
-      show('screen-results');
-    } catch {
-      timers.forEach(clearTimeout);
-      show('screen-upload');
-      showErr('Cannot connect to server. Make sure it is running on port 8000.');
-    }
-  });
-
-  restartBtn.addEventListener('click', () => {
-    resetPreview();
-    avoidInput.value = '';
-    document.getElementById('score-fill').style.width = '0%';
-    show('screen-upload');
-  });
-
-  function tier(score) {
-    return score >= 0.85 ? 'severe' : score >= 0.4 ? 'moderate' : 'mild';
-  }
-
-  function chip(name, score) {
-    return `<span style="background:#FDE8E8;color:#8A3A3A;font-family:'Manrope',sans-serif;font-size:12px;font-weight:500;border-radius:99px;padding:5px 14px;border:none;display:inline-block;text-transform:capitalize;">${name.replace(/_/g, ' ')} ${Math.round(score * 100)}%</span>`;
-  }
-
-  const STEP_ICONS = {
-    cleanser: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v1.242c0 .289.139.56.378.725l4.744 3.284a1.314 1.314 0 00.728.245h.4c.2 0 .393-.058.56-.168l1.66-1.1A2.25 2.25 0 0121 9.24v6.01a2.25 2.25 0 01-1.08 1.923l-6.75 4.07a2.25 2.25 0 01-2.34 0l-6.75-4.07A2.25 2.25 0 013 15.25v-6.01a2.25 2.25 0 011.22-2.007l1.66 1.1a1 1 0 00.56.168h.4c.27 0 .524-.088.728-.245l4.744-3.284A1.314 1.314 0 0012 4.346V3.104M9.75 3.104h4.5" /></svg>`,
-    cleanse: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v1.242c0 .289.139.56.378.725l4.744 3.284a1.314 1.314 0 00.728.245h.4c.2 0 .393-.058.56-.168l1.66-1.1A2.25 2.25 0 0121 9.24v6.01a2.25 2.25 0 01-1.08 1.923l-6.75 4.07a2.25 2.25 0 01-2.34 0l-6.75-4.07A2.25 2.25 0 013 15.25v-6.01a2.25 2.25 0 011.22-2.007l1.66 1.1a1 1 0 00.56.168h.4c.27 0 .524-.088.728-.245l4.744-3.284A1.314 1.314 0 0012 4.346V3.104M9.75 3.104h4.5" /></svg>`,
-    toner: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M18.75 21a2.25 2.25 0 01-2.25 2.25H7.5A2.25 2.25 0 015.25 21V10.5h13.5V21zM9 10.5V3.75A1.5 1.5 0 0110.5 2.25h3A1.5 1.5 0 0115 3.75V10.5" /></svg>`,
-    tone: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M18.75 21a2.25 2.25 0 01-2.25 2.25H7.5A2.25 2.25 0 015.25 21V10.5h13.5V21zM9 10.5V3.75A1.5 1.5 0 0110.5 2.25h3A1.5 1.5 0 0115 3.75V10.5" /></svg>`,
-    serum: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.125a3.375 3.375 0 01-3.375 3.375h-8.5a3.375 3.375 0 01-3.375-3.375L3.75 7.5M12 2.25v5.25m0 0a3 3 0 110-6m0 6v6m3-10.5l-4 2.5m0 0l-4-2.5" /></svg>`,
-    treatment: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.125a3.375 3.375 0 01-3.375 3.375h-8.5a3.375 3.375 0 01-3.375-3.375L3.75 7.5M12 2.25v5.25m0 0a3 3 0 110-6m0 6v6m3-10.5l-4 2.5m0 0l-4-2.5" /></svg>`,
-    retinol: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3c.582 0 1.15.02 1.712.052a9.714 9.714 0 015.921 2.306l.841-.84a1.5 1.5 0 112.121 2.121l-.84.84a9.714 9.714 0 012.306 5.921c.032.562.052 1.13.052 1.712M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
-    vitamin: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>`,
-    moisturiser: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3" /></svg>`,
-    moisturizer: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3" /></svg>`,
-    moisturis: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3" /></svg>`,
-    hydrat: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3" /></svg>`,
-    sunscreen: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>`,
-    spf: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>`,
-    sun: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>`,
-    eye: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.421 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
-    exfoliat: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
-    mask: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
-    oil: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.638 5.214m15.58-1.408a3 3 0 11-6 0 3 3 0 016 0zM9 9.25a.75.75 0 100-1.5.75.75 0 000 1.5z" /></svg>`,
-    balm: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.355.186-.676.461-.841A6.75 6.75 0 1012 20.25a6.75 6.75 0 016.738-7.712c.231-.162.448-.541.448-.945V12a.75.75 0 00-.75-.75H15a.75.75 0 00-.75.75v2.25c0 .414.286.75.75.75h4.547" /></svg>`,
-    lip: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>`,
-    mist: `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.125a3.375 3.375 0 01-3.375 3.375h-8.5a3.375 3.375 0 01-3.375-3.375L3.75 7.5M12 2.25v5.25m0 0a3 3 0 110-6m0 6v6m3-10.5l-4 2.5m0 0l-4-2.5" /></svg>`
-  };
-
-  function stepIcon(role) {
-    const r = (role || '').toLowerCase();
-    for (const [key, svg] of Object.entries(STEP_ICONS)) {
-      if (r.includes(key)) return svg;
-    }
-    return `<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg>`;
-  }
-
-  function stepHTML(step) {
-    const ingredients = (step.key_ingredients || []).join(' · ');
-    const icon = stepIcon(step.role || '');
-    return `<div class="grid grid-cols-[44px_1fr] gap-4 bg-surface-container-low border border-outline-variant rounded-xl p-4 shadow-[0_2px_12px_rgba(157,136,185,0.06)]">
-      <div class="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">${icon}</div>
-      <div class="min-w-0">
-        <p class="font-label-sm text-label-sm text-primary uppercase tracking-[0.12em]">${step.role || ''}</p>
-        <p class="font-label-md text-label-md text-on-surface mt-1">${step.product || ''}</p>
-        ${ingredients ? `<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">${ingredients}</p>` : ''}
-        ${step.reason ? `<p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">${step.reason}</p>` : ''}
-      </div>
-    </div>`;
-  }
-
-  function renderResults(data) {
-    const profile = data.skin_profile || {};
-    document.getElementById('r-skin-type').textContent = profile.skin_type || '-';
-    const score = Math.round((profile.skin_score || 0) * 100);
-    document.getElementById('r-skin-score').textContent = score + '/100';
-    document.getElementById('score-fill').style.width = '0%';
-    setTimeout(() => { document.getElementById('score-fill').style.width = score + '%'; }, 300);
-
-    document.getElementById('r-concerns').innerHTML =
-      (profile.concerns || []).slice(0, 6).map((concern) => chip(concern.name || '', concern.score || 0)).join('');
-
-    const referrals = data.referral_concerns || [];
-    document.getElementById('referrals-wrap').innerHTML = referrals.length
-      ? `<div class="rounded-lg overflow-hidden bg-gradient-to-r from-red-50 to-orange-50 border border-red-100 mb-stack-md shadow-sm">
-          <div class="grid grid-cols-1 lg:grid-cols-[auto_1fr_auto] gap-4 items-start p-6">
-            <div class="w-12 h-12 rounded-lg bg-red-600 text-white flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.008v.008H12v-.008z" />
-              </svg>
-            </div>
-            <div>
-              <span class="font-label-md text-label-md text-red-700 uppercase tracking-[0.12em] font-semibold text-sm">Professional Review Recommended</span>
-              <h3 class="font-headline-md text-red-900 mt-2 mb-2">Some findings require specialist attention</h3>
-              <p class="font-body-sm text-red-800 leading-snug mb-3">These concerns may be better addressed with professional guidance. OTC products alone may not be sufficient. Consider consulting with a dermatologist.</p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">${referrals.map((referral) => `<div class="bg-white/80 border border-red-100 rounded-lg p-3"><p class="font-label-sm text-red-900 capitalize font-semibold text-sm">${(referral.name || '').replace(/_/g, ' ')}</p><p class="font-label-xs text-red-800 mt-1 text-xs">${referral.message || 'High severity'}</p></div>`).join('')}</div>
-            </div>
-            <a class="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 text-white hover:bg-red-700 active:scale-95 transition-all px-4 py-2.5 font-label-sm text-label-sm whitespace-nowrap font-semibold flex-shrink-0" href="https://www.google.com/search?q=dermatologist+near+me" target="_blank" rel="noopener">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-              </svg>
-              Find specialist
-            </a>
-          </div>
-        </div>`
-      : '';
-
-    const nudges = data.moderate_nudge_concerns || [];
-    document.getElementById('nudge-wrap').innerHTML = nudges.length
-      ? `<div class="rounded-lg bg-primary/5 border border-primary/15 p-6 mb-stack-md shadow-sm">
-          <div class="grid grid-cols-[auto_1fr] gap-3">
-            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.008v.008H12v-.008z" />
-              </svg>
-            </div>
-            <div>
-              <p class="font-label-sm text-primary uppercase tracking-[0.12em] font-semibold text-xs">Moderate concerns to monitor</p>
-              <p class="font-body-sm text-on-surface-variant mt-1 text-sm">If these persist after 8 weeks of consistent use, consider consulting with a dermatologist for guidance.</p>
-              <div class="flex flex-wrap gap-2 mt-3">${nudges.map((concern) => `<span class="rounded-full bg-primary/10 text-primary border border-primary/25 px-3 py-1 font-label-xs text-xs capitalize font-medium">${concern.replace(/_/g, ' ')}</span>`).join('')}</div>
-            </div>
-          </div>
-        </div>`
-      : '';
-
-    const morning = data.morning_routine || [];
-    document.getElementById('morning-card').classList.toggle('hidden', morning.length === 0);
-    document.getElementById('morning-count').textContent = morning.length ? morning.length + ' steps' : '';
-    document.getElementById('morning-steps').innerHTML = morning.map(stepHTML).join('');
-
-    const evening = data.evening_routine || [];
-    document.getElementById('evening-card').classList.toggle('hidden', evening.length === 0);
-    document.getElementById('evening-count').textContent = evening.length ? evening.length + ' steps' : '';
-    document.getElementById('evening-steps').innerHTML = evening.map(stepHTML).join('');
-
-    const avoid = data.avoid_ingredient;
-    document.getElementById('avoid-wrap').innerHTML = avoid && avoid.ingredient
-      ? `<div class="rounded-lg bg-orange-50 border border-orange-100 p-6 mb-stack-md shadow-sm">
-          <div class="grid grid-cols-[auto_1fr] gap-3">
-            <div class="w-10 h-10 rounded-lg bg-orange-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-              </svg>
-            </div>
-            <div>
-              <p class="font-label-sm text-orange-700 uppercase tracking-[0.12em] font-semibold text-xs">Ingredient to avoid</p>
-              <p class="font-label-md text-orange-900 mt-1 font-semibold">${avoid.ingredient}</p>
-              <p class="font-body-sm text-orange-800 mt-1 text-sm leading-snug">${avoid.reason || ''}</p>
-            </div>
-          </div>
-        </div>`
-      : '';
-  }
-</script>
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-section-gap" id="skin-basics">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
-<div class="lg:col-span-4">
-<span class="font-label-md text-label-md text-primary tracking-[0.2em] uppercase">Skin basics</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface mt-3">A calmer way to understand your face.</h2>
-<p class="font-body-md text-body-md text-on-surface-variant mt-4">Most daily skincare decisions come back to a few basics: gentle cleansing, moisturising, sun protection, and knowing when a skin concern needs a clinician rather than another product.</p>
-</div>
-<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-gutter">
-<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-[0_8px_48px_rgba(157,136,185,0.08)]">
-<span class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-5">
-  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253M3 12c0 .778.099 1.533.284 2.253" />
-  </svg>
-</span>
-<h3 class="font-headline-md text-[26px] text-on-surface">Keep the barrier boring</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mt-3">A gentle cleanser and moisturiser can reduce friction, dryness, and irritation. Mayo Clinic skin-care guidance emphasises gentle cleansing and moisturising as foundations for healthy skin.</p>
-<a class="inline-flex items-center gap-2 mt-5 font-label-md text-label-md text-primary" href="https://www.mayoclinic.org/health/skin-care/SN00003" rel="noopener" target="_blank"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>Mayo Clinic</a>
-</article>
-<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-[0_8px_48px_rgba(157,136,185,0.08)]">
-<span class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-5">
-  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-  </svg>
-</span>
-<h3 class="font-headline-md text-[26px] text-on-surface">Protect against UV</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mt-3">FDA and CDC guidance both point to broad-spectrum sunscreen with SPF 15 or higher as part of reducing sunburn, skin-cancer risk, and early skin aging from UV exposure.</p>
-<a class="inline-flex items-center gap-2 mt-5 font-label-md text-label-md text-primary" href="https://www.fda.gov/consumers/consumer-updates/tips-stay-safe-sun-sunscreen-sunglasses" rel="noopener" target="_blank"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>FDA sun safety</a>
-</article>
-<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-[0_8px_48px_rgba(157,136,185,0.08)]">
-<span class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-5">
-  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-  </svg>
-</span>
-<h3 class="font-headline-md text-[26px] text-on-surface">Track patterns, not panic</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mt-3">Photo-based tools can help you organise observations over time, such as dryness, oiliness, and visible changes. They should support your judgment, not replace medical assessment.</p>
-<a class="inline-flex items-center gap-2 mt-5 font-label-md text-label-md text-primary" href="https://www.aad.org/public/everyday-care/skin-care-basics/care" rel="noopener" target="_blank"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>AAD skin-care basics</a>
-</article>
-<article class="bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-[0_8px_48px_rgba(157,136,185,0.08)]">
-<span class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-5">
-  <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-  </svg>
-</span>
-<h3 class="font-headline-md text-[26px] text-on-surface">Escalate the right things</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mt-3">If a concern is severe, painful, spreading, bleeding, infected, or not improving, Confidence nudges you toward professional care rather than treating the app result as a diagnosis.</p>
-<a class="inline-flex items-center gap-2 mt-5 font-label-md text-label-md text-primary" href="https://www.cdc.gov/skin-cancer/prevention/index.html" rel="noopener" target="_blank"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" /></svg>CDC prevention</a>
-</article>
-</div>
-</div>
-</section>
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-section-gap" id="safety">
-<div class="bg-primary/5 border border-primary/20 rounded-[32px] p-8 md:p-10">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<div class="lg:col-span-5">
-<span class="font-label-md text-label-md text-primary tracking-[0.2em] uppercase">Safety first</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface mt-3">Useful guidance has limits.</h2>
-</div>
-<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-gutter">
-<div class="flex gap-4">
-  <svg class="w-6 h-6 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v1.242c0 .289.139.56.378.725l4.744 3.284a1.314 1.314 0 00.728.245h.4c.2 0 .393-.058.56-.168l1.66-1.1A2.25 2.25 0 0121 9.24v6.01a2.25 2.25 0 01-1.08 1.923l-6.75 4.07a2.25 2.25 0 01-2.34 0l-6.75-4.07A2.25 2.25 0 013 15.25v-6.01a2.25 2.25 0 011.22-2.007l1.66 1.1a1 1 0 00.56.168h.4c.27 0 .524-.088.728-.245l4.744-3.284A1.314 1.314 0 0012 4.346V3.104M9.75 3.104h4.5" /></svg>
-  <p class="font-body-md text-body-md text-on-surface-variant">Confidence can organise visible skin signals and routine ideas, but it does not diagnose conditions.</p>
-</div>
-<div class="flex gap-4">
-  <svg class="w-6 h-6 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" /></svg>
-  <p class="font-body-md text-body-md text-on-surface-variant">Seek medical advice for sudden, painful, infected, bleeding, changing, or persistent concerns.</p>
-</div>
-<div class="flex gap-4">
-  <svg class="w-6 h-6 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-  <p class="font-body-md text-body-md text-on-surface-variant">Patch test new products and introduce active ingredients slowly, especially if your skin is reactive.</p>
-</div>
-<div class="flex gap-4">
-  <svg class="w-6 h-6 text-primary shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" /></svg>
-  <p class="font-body-md text-body-md text-on-surface-variant">Sun protection, gentle cleansing, and moisturising remain the baseline for most routines.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-section-gap" id="privacy">
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
-<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-[0_4px_24px_rgba(157,136,185,0.08)]">
-  <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary/8 mb-4">
-    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-    </svg>
-  </span>
-  <h2 class="font-headline-md text-[22px] text-on-surface">Privacy Policy</h2>
-  <p class="font-body-md text-[15px] text-on-surface-variant mt-2.5 leading-relaxed">Your selfie is used to generate a skincare analysis for this session. Avoid uploading photos you do not have permission to use. Do not submit medical records or sensitive documents.</p>
-</article>
-<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-[0_4px_24px_rgba(157,136,185,0.08)]" id="terms">
-  <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary/8 mb-4">
-    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
-    </svg>
-  </span>
-  <h2 class="font-headline-md text-[22px] text-on-surface">Terms of Service</h2>
-  <p class="font-body-md text-[15px] text-on-surface-variant mt-2.5 leading-relaxed">Confidence provides educational skincare suggestions only. You are responsible for product choices, patch testing, and seeking professional care when symptoms are concerning.</p>
-</article>
-<article class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-[0_4px_24px_rgba(157,136,185,0.08)]" id="support">
-  <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary/8 mb-4">
-    <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
-    </svg>
-  </span>
-  <h2 class="font-headline-md text-[22px] text-on-surface">Support</h2>
-  <p class="font-body-md text-[15px] text-on-surface-variant mt-2.5 leading-relaxed">For app support, try a clear front-facing photo in good light, check that the backend is running, and avoid heavy filters or makeup that may distort visible skin signals.</p>
-</article>
-</div>
-</section>
-<!-- Footer -->
-<footer class="w-full py-stack-lg px-margin-mobile md:px-margin-desktop bg-surface border-t border-outline-variant">
-<div class="max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-stack-md">
-<div class="flex flex-col gap-2 items-center md:items-start">
-  <div class="flex items-center gap-2.5">
-    <span class="font-label
-  </div>
-  <p class="font-body-md text-body-md text-on-surface-variant"> &copy; 2026 Confidence AI. Precision Skincare Intelligence.</p>
-</div>
-<div class="flex flex-wrap justify-center gap-stack-lg">
-</div>
-</div>
-</footer>
-<script>
-        // Micro-interactions and Scroll Reveal
-        document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.scroll-reveal');
-
-            const revealOnScroll = () => {
-                reveals.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight - 50) {
-                        el.classList.add('active');
-                    }
-                });
-            };
-
-            window.addEventListener('scroll', revealOnScroll);
-            revealOnScroll(); // Initial check
-
-            // Nav background change on scroll
-            const header = document.querySelector('header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('py-2', 'shadow-md');
-                    header.classList.remove('py-4', 'shadow-sm');
-                } else {
-                    header.classList.add('py-4', 'shadow-sm');
-                    header.classList.remove('py-2', 'shadow-md');
-                }
-            });
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('[data-upload-cta]').forEach((btn) => {
+          btn.addEventListener('click', () => show('screen-upload'));
         });
+      });
+
+      function showErr(message) {
+        errorMsg.textContent = message;
+        errorToast.classList.remove('hidden');
+      }
+
+      function hideErr() {
+        errorToast.classList.add('hidden');
+      }
+
+      function show(id) {
+        [sUpload, sLoading, sResults].forEach((screen) => screen.classList.add('hidden'));
+        document.getElementById(id).classList.remove('hidden');
+        document.getElementById('upload-anchor').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function setStep(n) {
+        for (let i = 1; i <= 4; i += 1) {
+          const el = document.getElementById('step-' + i);
+          const spinner = el.querySelector('.spinner');
+          const symbol = el.querySelector('.step-symbol');
+          el.classList.remove('opacity-100');
+          el.classList.add('opacity-40');
+          spinner.classList.add('hidden');
+          symbol.classList.remove('hidden');
+          
+          if (i === n) {
+            el.classList.remove('opacity-40');
+            el.classList.add('opacity-100');
+            spinner.classList.remove('hidden');
+            symbol.classList.add('hidden');
+          } else if (i < n) {
+            el.classList.remove('opacity-40');
+            el.classList.add('opacity-100');
+          }
+        }
+      }
+
+      function runScan() {
+        scanStatus.classList.remove('hidden');
+        analyseBtn.disabled = false;
+      }
+
+      function resetPreview() {
+        selectedFile = null;
+        fileInput.value = '';
+        previewImg.src = '';
+        previewWrap.classList.add('hidden');
+        uploadZone.classList.remove('hidden');
+        scanStatus.classList.add('hidden');
+        analyseBtn.disabled = true;
+        hideErr();
+      }
+
+      function handleFile(file) {
+        if (!file || !file.type.startsWith('image/')) {
+          showErr('Please choose a JPG, PNG, or WebP image.');
+          return;
+        }
+
+        const img = new Image();
+        const url = URL.createObjectURL(file);
+        img.onload = () => {
+          if (img.width < 480 || img.height < 480) {
+            showErr('Photo too small. Use a clearer image at least 480 by 480 pixels.');
+            selectedFile = null;
+            URL.revokeObjectURL(url);
+            return;
+          }
+          hideErr();
+          selectedFile = file;
+          previewImg.src = url;
+          uploadZone.classList.add('hidden');
+          previewWrap.classList.remove('hidden');
+          scanStatus.classList.add('hidden');
+          analyseBtn.disabled = true;
+          setTimeout(runScan, 300);
+        };
+        img.onerror = () => {
+          showErr('Could not read that image. Try a different photo.');
+          URL.revokeObjectURL(url);
+        };
+        img.src = url;
+      }
+
+      fileInput.addEventListener('change', (event) => handleFile(event.target.files[0]));
+      changePhoto.addEventListener('click', resetPreview);
+
+      uploadZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        uploadZone.classList.add('border-brand-gold', 'bg-brand-bgLight/90');
+      });
+
+      uploadZone.addEventListener('dragleave', () => {
+        uploadZone.classList.remove('border-brand-gold', 'bg-brand-bgLight/90');
+      });
+
+      uploadZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        uploadZone.classList.remove('border-brand-gold', 'bg-brand-bgLight/90');
+        handleFile(event.dataTransfer.files[0]);
+      });
+
+      analyseBtn.addEventListener('click', async () => {
+        if (!selectedFile) return;
+        hideErr();
+        show('screen-loading');
+        setStep(1);
+
+        const fd = new FormData();
+        fd.append('image', selectedFile, selectedFile.name);
+        const av = avoidInput.value.trim();
+        if (av) fd.append('ingredients_to_avoid', av);
+
+        const timers = [
+          setTimeout(() => setStep(2), 2000),
+          setTimeout(() => setStep(3), 8000),
+          setTimeout(() => setStep(4), 16000)
+        ];
+
+        try {
+          const response = await fetch(API_URL, { method: 'POST', body: fd });
+          timers.forEach(clearTimeout);
+          if (!response.ok) {
+            const err = await response.json().catch(() => ({}));
+            show('screen-upload');
+            showErr(err?.detail?.user_message || 'Something went wrong. Please try again.');
+            return;
+          }
+          setStep(4);
+          renderResults(await response.json());
+          show('screen-results');
+        } catch {
+          timers.forEach(clearTimeout);
+          show('screen-upload');
+          showErr('Cannot connect to server. Make sure it is running.');
+        }
+      });
+
+      restartBtn.addEventListener('click', () => {
+        resetPreview();
+        avoidInput.value = '';
+        document.getElementById('score-fill').style.width = '0%';
+        show('screen-upload');
+      });
+
+      function chip(name, score) {
+        return `<span class="bg-brand-bgLight text-brand-charcoal border border-brand-borderLight text-xs font-semibold px-4 py-1.5 rounded-full capitalize">${name.replace(/_/g, ' ')} ${Math.round(score * 100)}%</span>`;
+      }
+
+      const STEP_ICONS = {
+        cleanser: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 8.5h-.01M17 5H7a4 4 0 00-4 4v10a4 4 0 004 4h10a4 4 0 004-4V9a4 4 0 00-4-4zM12 12v3m-2-1.5h4"/></svg>`,
+        cleanse: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 8.5h-.01M17 5H7a4 4 0 00-4 4v10a4 4 0 004 4h10a4 4 0 004-4V9a4 4 0 00-4-4zM12 12v3m-2-1.5h4"/></svg>`,
+        toner: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z"/></svg>`,
+        tone: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z"/></svg>`,
+        serum: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v1.242c0 .289.139.56.378.725l4.744 3.284a1.314 1.314 0 00.728.245h.4c.2 0 .393-.058.56-.168l1.66-1.1A2.25 2.25 0 0121 9.24v6.01a2.25 2.25 0 01-1.08 1.923l-6.75 4.07a2.25 2.25 0 01-2.34 0l-6.75-4.07A2.25 2.25 0 013 15.25v-6.01a2.25 2.25 0 011.22-2.007l1.66 1.1a1 1 0 00.56.168h.4c.27 0 .524-.088.728-.245l4.744-3.284A1.314 1.314 0 0012 4.346V3.104M9.75 3.104h4.5"/></svg>`,
+        treatment: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v1.242c0 .289.139.56.378.725l4.744 3.284a1.314 1.314 0 00.728.245h.4c.2 0 .393-.058.56-.168l1.66-1.1A2.25 2.25 0 0121 9.24v6.01a2.25 2.25 0 01-1.08 1.923l-6.75 4.07a2.25 2.25 0 01-2.34 0l-6.75-4.07A2.25 2.25 0 013 15.25v-6.01a2.25 2.25 0 011.22-2.007l1.66 1.1a1 1 0 00.56.168h.4c.27 0 .524-.088.728-.245l4.744-3.284A1.314 1.314 0 0012 4.346V3.104M9.75 3.104h4.5"/></svg>`,
+        retinol: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
+        vitamin: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
+        moisturiser: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
+        moisturizer: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
+        moisturis: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
+        hydrat: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z"/></svg>`,
+        sunscreen: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
+        spf: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
+        sun: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
+        eye: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.421 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+        exfoliat: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.125a3.375 3.375 0 01-3.375 3.375h-8.5a3.375 3.375 0 01-3.375-3.375L3.75 7.5M12 2.25v5.25m0 0a3 3 0 110-6m0 6v6m3-10.5l-4 2.5m0 0l-4-2.5"/></svg>`,
+        mask: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.125a3.375 3.375 0 01-3.375 3.375h-8.5a3.375 3.375 0 01-3.375-3.375L3.75 7.5M12 2.25v5.25m0 0a3 3 0 110-6m0 6v6m3-10.5l-4 2.5m0 0l-4-2.5"/></svg>`,
+        oil: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z"/></svg>`,
+        balm: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
+        lip: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
+        mist: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h12M4 18h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`
+      };
+
+      function stepIcon(role) {
+        const r = (role || '').toLowerCase();
+        for (const [key, iconSVG] of Object.entries(STEP_ICONS)) {
+          if (r.includes(key)) return iconSVG;
+        }
+        return `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`;
+      }
+
+      function stepHTML(step) {
+        const ingredients = (step.key_ingredients || []).join(' · ');
+        const icon = stepIcon(step.role || '');
+        return `
+          <div class="flex items-start gap-4 bg-white border border-brand-borderLight rounded-2xl p-5 hover:bg-brand-bgLight/80 transition-all duration-200 text-brand-charcoal">
+            <div class="w-10 h-10 rounded-full bg-brand-gold/10 text-brand-gold fill-none flex items-center justify-center shrink-0">${icon}</div>
+            <div class="min-w-0">
+              <span class="text-[10px] font-bold text-brand-gold uppercase tracking-wider">${step.role || ''}</span>
+              <p class="text-sm font-bold text-brand-charcoal mt-1">${step.product || ''}</p>
+              ${ingredients ? `<p class="text-xs text-brand-slate mt-1">${ingredients}</p>` : ''}
+              ${step.reason ? `<p class="text-xs text-brand-slate/80 mt-2.5 leading-relaxed">${step.reason}</p>` : ''}
+            </div>
+          </div>
+        `;
+      }
+
+      function renderResults(data) {
+        const profile = data.skin_profile || {};
+        document.getElementById('r-skin-type').textContent = profile.skin_type || '-';
+        const score = Math.round((profile.skin_score || 0) * 100);
+        document.getElementById('r-skin-score').textContent = score + '/100';
+        document.getElementById('score-fill').style.width = '0%';
+        setTimeout(() => { document.getElementById('score-fill').style.width = score + '%'; }, 300);
+
+        document.getElementById('r-concerns').innerHTML =
+          (profile.concerns || []).slice(0, 6).map((concern) => chip(concern.name || '', concern.score || 0)).join('');
+
+        const referrals = data.referral_concerns || [];
+        document.getElementById('referrals-wrap').innerHTML = referrals.length
+          ? `<div class="rounded-3xl bg-red-50 border border-red-200 p-6 mb-8 shadow-sm">
+              <div class="flex flex-col lg:flex-row gap-6 items-start justify-between">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center shrink-0">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.008v.008H12v-.008z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-bold text-red-900">Professional Review Recommended</h3>
+                    <p class="text-xs text-red-700 mt-1 max-w-[500px]">Some findings require specialist attention. Consider consulting with a dermatologist.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
+                      ${referrals.map((referral) => `
+                        <div class="bg-white border border-red-200 rounded-xl p-3">
+                          <p class="text-xs font-bold text-red-900 capitalize">${(referral.name || '').replace(/_/g, ' ')}</p>
+                          <p class="text-[10px] text-red-700/80 mt-1">${referral.message || 'High severity'}</p>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+                <a class="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-full text-xs font-bold transition-all whitespace-nowrap self-stretch lg:self-auto text-center flex items-center justify-center gap-1.5" href="https://www.google.com/search?q=dermatologist+near+me" target="_blank" rel="noopener">
+                  Find Specialist
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                </a>
+              </div>
+            </div>`
+          : '';
+
+        const nudges = data.moderate_nudge_concerns || [];
+        document.getElementById('nudge-wrap').innerHTML = nudges.length
+          ? `<div class="rounded-3xl bg-brand-gold/10 border border-brand-gold/20 p-6 mb-8 shadow-sm">
+              <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-white/5 text-brand-gold flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-3H9v3h3zm0 0h9v-3H12v3zm0-6h9V9h-9v3zm-3 0v-3H3v3h6zm0 6h-6v-3h6v3z"/>
+                    </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Moderate concerns to monitor</p>
+                  <p class="text-xs text-brand-slate mt-1">If these persist after 8 weeks of consistent use, consider consulting with a dermatologist.</p>
+                  <div class="flex flex-wrap gap-2 mt-3">
+                    ${nudges.map((concern) => `<span class="bg-white text-brand-charcoal border border-brand-borderLight text-[11px] font-semibold px-3 py-1 rounded-full capitalize">${concern.replace(/_/g, ' ')}</span>`).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>`
+          : '';
+
+        const morning = data.morning_routine || [];
+        document.getElementById('morning-card').classList.toggle('hidden', morning.length === 0);
+        document.getElementById('morning-count').textContent = morning.length ? morning.length + ' steps' : '';
+        document.getElementById('morning-steps').innerHTML = morning.map(stepHTML).join('');
+
+        const evening = data.evening_routine || [];
+        document.getElementById('evening-card').classList.toggle('hidden', evening.length === 0);
+        document.getElementById('evening-count').textContent = evening.length ? evening.length + ' steps' : '';
+        document.getElementById('evening-steps').innerHTML = evening.map(stepHTML).join('');
+
+        const avoid = data.avoid_ingredient;
+        document.getElementById('avoid-wrap').innerHTML = avoid && avoid.ingredient
+          ? `<div class="rounded-3xl bg-orange-50 border border-orange-200 p-6 mt-8 shadow-sm">
+              <div class="flex gap-4">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                    <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
+                    </svg>
+                </div>
+                <div>
+                  <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">Ingredient to avoid</p>
+                  <p class="text-sm font-bold text-brand-charcoal mt-1">${avoid.ingredient}</p>
+                  <p class="text-xs text-brand-slate mt-1">${avoid.reason || ''}</p>
+                </div>
+              </div>
+            </div>`
+          : '';
+      }
     </script>
 
-</body></html>
+</body>
+</html>
