@@ -26,6 +26,7 @@ from perfect_corp import (
     analyse,
     AnalysisTimeoutError,
     NoFaceDetectedError,
+    ImageTooLargeError,
     PerfectCorpError,
 )
 from rag_products import retrieve_for_skin
@@ -133,6 +134,14 @@ async def analyse_skin(
                 "Try a well-lit photo with your face centred. "
                 "If you have skin concerns you'd like properly assessed, "
                 "consider booking with a skin specialist."
+            ),
+        })
+    except ImageTooLargeError:
+        raise HTTPException(status_code=413, detail={
+            "message": "Uploaded image exceeds the 10MB Perfect Corp file size limit.",
+            "user_message": (
+                "Your photo is too large — please use an image under 10MB. "
+                "Try compressing it or taking a new photo at a lower resolution."
             ),
         })
     except PerfectCorpError as e:

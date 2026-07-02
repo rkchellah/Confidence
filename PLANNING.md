@@ -94,7 +94,7 @@ See STACK.md for full details and deviation rationale.
 | Embed abstraction | Single `embed()` function in `rag_products.py` — swap provider in one place |
 | Vector DB | Supabase pgvector |
 | LLM | DeepSeek (`deepseek-chat`) |
-| Backend | FastAPI on Render |
+| Backend | FastAPI on Google Cloud Run |
 | Frontend | Single HTML file |
 
 ### Data model
@@ -303,64 +303,66 @@ Severe response (one or more concerns at 0.85+):
 ## Step 4 — Implementation Order
 
 ```
-[!] 0. Perfect Corp API key — BLOCKER. Get this first.
+[x] 0. Perfect Corp API key — obtained.
         https://yce.makeupar.com/api-console/en/api-keys/
-        Confirm skin-analysis endpoint is on your tier
-        Verify: curl the upload endpoint returns a file_id
+        Confirmed skin-analysis endpoint is on tier
+        Verified: upload endpoint returns a file_id
 
-[ ] 1. Project setup
-        Create folder structure
+[x] 1. Project setup
+        Folder structure created
         requirements.txt, .env.example, .gitignore, README.md
-        Verify: FastAPI runs locally with GET /health returning 200
+        Verified: FastAPI runs locally with GET /health returning 200
 
-[ ] 2. backend/perfect_corp.py — WRITTEN, needs # VERIFY items confirmed
+[x] 2. backend/perfect_corp.py — written and verified against live API
         upload_image(image_bytes) → file_id
         run_analysis(file_id) → task_id
         poll_until_complete(task_id, timeout=30) → raw result dict
         parse_result(raw) → SkinAnalysisResult
-        Verify: upload real selfie, get back 14 concern scores
+        Verified: upload real selfie, get back 14 concern scores
 
-[ ] 3. Product knowledge base
-        Write scripts/sample_products.json — 100 products across 8 categories
-        Run scripts/build_product_db.py — embed with Voyage AI + index to Supabase
+[x] 3. Product knowledge base
+        scripts/sample_products.json — 100 products across 8 categories
+        scripts/build_product_db.py — embeds with Voyage AI + indexes to Supabase
         Supabase table: skincare_products, vector(1024), ivfflat index
-        Verify: retrieve("moisturiser dry skin dark spots") returns relevant products
+        Verified: retrieve("moisturiser dry skin dark spots") returns relevant products
 
-[ ] 4. backend/rag_products.py
-        embed(text) → vector — Voyage AI primary, Transformers.js fallback in same function
+[x] 4. backend/rag_products.py
+        embed(text) → vector — Voyage AI voyage-4-lite
         build_query(skin_profile) → natural language string
         retrieve(query, k=3) → list of product dicts
-        Verify: dry skin + dark spots → returns vitamin C serums + ceramide moisturisers
+        Verified: dry skin + dark spots → returns vitamin C serums + ceramide moisturisers
 
-[ ] 5. backend/routine_generator.py
+[x] 5. backend/routine_generator.py
         Severity check in Python BEFORE DeepSeek is called — not inside the prompt
           HIGH_SEVERITY_THRESHOLD = 0.85
-          REFERRAL_CONCERNS = {"acne", "redness", "spots", "texture"}
-          If any concern hits threshold → return referral card, skip Claude for that concern
+          REFERRAL_CONCERNS = {"acne", "redness", "spots", "age_spot", "texture"}
+          If any concern hits threshold → return referral card, skip DeepSeek for that concern
         System prompt hard limits (no diagnoses, no prescription products,
           only reference ingredients from RAG context, no efficacy claims)
         Few-shot: 2 example routines in system prompt (dry skin, oily skin)
         Moderate nudge: concerns 0.4–0.85 get "see a derm if persists after 8 weeks"
         Input: skin_profile + retrieved_products + ingredients_to_avoid (optional)
         Output: structured JSON (full schema in Step 3)
-        Verify: severe acne (0.91) → returns referral card, no routine
-        Verify: moderate concern (0.71) → returns routine + nudge
-        Verify: mild concern (0.28) → returns routine only
+        Verified: severe acne (0.91) → returns referral card, no routine
+        Verified: moderate concern (0.71) → returns routine + nudge
+        Verified: mild concern (0.28) → returns routine only
 
-[ ] 6. backend/main.py
+[x] 6. backend/main.py
         POST /analyse — multipart image upload → full pipeline → return JSON
         GET /health
-        Verify: curl POST /analyse with a selfie returns full routine JSON
+        Verified: curl POST /analyse with a selfie returns full routine JSON
 
-[ ] 7. frontend/index.html
+[x] 7. frontend/index.html
         Upload area, loading steps, results cards
-        Responsive, clean, printable
-        Verify: full flow in browser — upload → loading → results
+        Responsive, clean, printable — redesigned to Skiny UI/UX aesthetic (2026-07-01)
+        Verified: full flow in browser — upload → loading → results
 
-[ ] 8. Deploy to Render
-        Push to GitHub, connect Render free tier
-        Set env vars from .env.example
-        Verify: public URL returns routine for a real selfie
+[x] 8. Deploy to Google Cloud Run
+        Pushed to GitHub, containerised with Dockerfile, deployed to Cloud Run
+        Env vars set from .env.example
+        Verified: public URL returns routine for a real selfie
+        Live: https://confidence-api-59597652459.us-central1.run.app
+        Frontend deployed to Vercel: https://confidence-two.vercel.app
 
 [ ] 9. Demo video (1–3 minutes)
         Upload → loading → skin profile → morning routine → evening routine
@@ -377,7 +379,7 @@ Severe response (one or more concerns at 0.85+):
 ## Project Bootstrap Status
 
 ```
-[!] Perfect Corp API key — get this FIRST
+[x] Perfect Corp API key — obtained
 [x] Problem understood
 [x] Vertical structure proposed and approved
 [x] Data model defined
@@ -385,14 +387,15 @@ Severe response (one or more concerns at 0.85+):
 [x] Safety design locked in — three-tier triage in Python, system prompt guardrails,
       no-diagnosis language, allergy field, always-present disclaimer
 [x] Environment variables listed
-[~] backend/perfect_corp.py — written, # VERIFY items pending API key
+[x] backend/perfect_corp.py — written and verified against live API
 [x] .gitignore in place
 [x] requirements.txt written
 [x] .env.example written
 [x] README.md written
-[ ] Local dev running
-[ ] Product knowledge base built
-[ ] First feature verified end to end
+[x] Local dev running
+[x] Product knowledge base built
+[x] First feature verified end to end
+[x] Deployed to Google Cloud Run (backend) + Vercel (frontend)
 ```
 
 ---

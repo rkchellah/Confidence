@@ -11,6 +11,7 @@ BASE_URL = "https://yce-api-01.makeupar.com"
 
 POLL_INTERVAL_SECONDS = 2
 DEFAULT_TIMEOUT_SECONDS = 60
+MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024  # Perfect Corp hard limit — 10MB
 
 HD_ACTIONS = [
     "hd_wrinkle", "hd_pore", "hd_texture", "hd_acne", "hd_oiliness",
@@ -32,6 +33,7 @@ class PerfectCorpError(Exception): pass
 class AnalysisTimeoutError(PerfectCorpError): pass
 class NoFaceDetectedError(PerfectCorpError): pass
 class AnalysisFailedError(PerfectCorpError): pass
+class ImageTooLargeError(PerfectCorpError): pass
 
 @dataclass
 class SkinConcern:
@@ -103,6 +105,8 @@ def poll_until_complete(task_id: str, api_key: str, timeout: int = DEFAULT_TIMEO
                     raise NoFaceDetectedError("Image resolution too low — use a higher quality photo of at least 640x480 pixels.")
                 if error_code == "NO_FACE_DETECTED":
                     raise NoFaceDetectedError("No face detected — try a well-lit, front-facing photo.")
+                if error_code == "exceed_max_filesize":
+                    raise ImageTooLargeError("Image file is too large — please use a photo under 10MB.")
                 raise AnalysisFailedError(f"Task failed: {data}")
             time.sleep(POLL_INTERVAL_SECONDS)
     raise AnalysisTimeoutError(f"Analysis did not complete within {timeout}s")
@@ -136,6 +140,10 @@ def parse_result(raw: dict) -> SkinAnalysisResult:
     return SkinAnalysisResult(skin_type=skin_type, skin_score=overall_score, concerns=concerns)
 
 def analyse(image_bytes: bytes, api_key: str, timeout: int = DEFAULT_TIMEOUT_SECONDS) -> SkinAnalysisResult:
+    if len(image_bytes) > MAX_FILE_SIZE_BYTES:
+        raise ImageTooLargeError(
+            f"Image is {len(image_bytes)} bytes — exceeds the {MAX_FILE_SIZE_BYTES} byte (10MB) limit."
+        )
     file_id = upload_image(image_bytes, api_key)
     task_id = run_analysis(file_id, api_key)
     raw = poll_until_complete(task_id, api_key, timeout=timeout)

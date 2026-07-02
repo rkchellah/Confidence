@@ -32,7 +32,7 @@ flowchart LR
     end
 
     subgraph GENERATE ["GENERATE — grounded only"]
-        H -->|inject as context| I[Groq\nllama-3.3-70b]
+        H -->|inject as context| I[DeepSeek\ndeepseek-chat]
         I --> J[Personalised routine\nno hallucination]
     end
 
@@ -63,7 +63,7 @@ flowchart TD
 
     MOD --> LLM
     MIL --> LLM
-    RET --> LLM[Groq\nllama-3.3-70b-versatile]
+    RET --> LLM[DeepSeek\ndeepseek-chat]
     LLM --> RES[Morning + evening\nroutine JSON]
 
     RES --> FE[Vercel frontend]
@@ -108,7 +108,7 @@ LLM system prompt hard limits: no diagnoses, no prescriptions, only reference re
 | Skin analysis | Perfect Corp HD skin-analysis API |
 | Embeddings | Voyage AI `voyage-4-lite` (1024-dim) |
 | Vector store | Supabase pgvector |
-| LLM | Groq `llama-3.3-70b-versatile` |
+| LLM | DeepSeek `deepseek-chat` |
 | Frontend | HTML — Vercel |
 
 ---
@@ -140,7 +140,7 @@ confidence/
   backend/
     perfect_corp.py      — Perfect Corp API client (async upload → task → poll)
     rag_products.py      — Voyage AI embed + Supabase pgvector retrieve
-    routine_generator.py — Groq + 3-tier triage + structured JSON
+    routine_generator.py — DeepSeek + 3-tier triage + structured JSON
     main.py              — FastAPI routes + CORS
   frontend/
     index.html           — Landing page + upload/results

@@ -125,7 +125,7 @@ def retrieve(
     Returns up to k products sorted by similarity (highest first).
 
     If Supabase is unreachable, returns an empty list — the caller (main.py)
-    handles this gracefully by asking Groq to generate without product context.
+    handles this gracefully by asking DeepSeek to generate without product context.
 
     ingredients_to_avoid: optionally filter out products containing these.
     The filtering is post-retrieval and simple — we check the content string.

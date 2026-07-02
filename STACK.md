@@ -16,13 +16,13 @@ Every deviation is documented below with a reason.
 | Layer | Choice | Reason |
 |-------|--------|--------|
 | Language | Python 3.11+ | Backend is ML/API pipeline — Python is the right tool |
-| Backend | FastAPI on Render | Hackathon timeline — no framework overhead, free deploy |
+| Backend | FastAPI on Google Cloud Run | Hackathon timeline — no framework overhead, container-based free deploy |
 | Frontend | Single HTML file | No component tree needed — one page, fast to build, easy to demo |
 | Skin analysis | Perfect Corp skin-analysis API | Required by challenge brief |
 | Embeddings | Voyage AI `voyage-3-lite` (1024-dim) | Free for new users, Anthropic-recommended for RAG. Fallback: Transformers.js |
 | Vector DB | Supabase pgvector | Free tier, same infra pattern already established |
 | LLM | DeepSeek (`deepseek-chat`) | Strong structured JSON output, OpenAI-compatible API |
-| Deployment | Render free tier | Simple, Git-connected, zero config for FastAPI |
+| Deployment | Google Cloud Run | Container-based, scale-to-zero, simple Docker deploy for FastAPI |
 
 ---
 
@@ -55,7 +55,7 @@ All type safety enforced through Python type hints and dataclasses.
 | OpenAI Python SDK (DeepSeek) | https://api-docs.deepseek.com |
 | Perfect Corp API | https://yce.perfectcorp.com/document/index.html |
 | httpx | https://www.python-httpx.org |
-| Render | https://render.com/docs |
+| Google Cloud Run | https://cloud.google.com/run/docs |
 
 When in doubt about any method, behavior, or version — verify at the official source before using it.
 

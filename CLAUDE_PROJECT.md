@@ -20,13 +20,13 @@ DevNetwork AI+ML Hackathon 2026 — Perfect Corp challenge ($2,500).
 | Layer | Choice |
 |-------|--------|
 | Language | Python 3.11+ |
-| Backend | FastAPI on Render |
+| Backend | FastAPI on Google Cloud Run |
 | Frontend | Single HTML file |
 | Skin analysis | Perfect Corp skin-analysis API (async: upload → task → poll) |
 | Embeddings | Voyage AI `voyage-3-lite` (1024-dim) — fallback: sentence-transformers |
 | Vector DB | Supabase pgvector |
 | LLM | DeepSeek (`deepseek-chat`) |
-| Deployment | Render free tier |
+| Deployment | Google Cloud Run |
 
 ---
 
@@ -143,18 +143,19 @@ supabase/migrations/    ← if they exist, never auto-generate or delete
 ## Current State
 
 ```
-[!] Perfect Corp API key — BLOCKER, everything waits on this
+[x] Perfect Corp API key — obtained, integration verified end to end
 [x] PLANNING.md, STACK.md, VERTICAL.md written
 [x] requirements.txt, .env.example, .gitignore, README.md written
 [x] Safety design locked in — three-tier triage documented in PLANNING.md
-[~] backend/perfect_corp.py — written, # VERIFY items need confirming against API docs
-[ ] backend/rag_products.py
-[ ] backend/routine_generator.py
-[ ] backend/main.py
-[ ] frontend/index.html
-[ ] scripts/build_product_db.py + sample_products.json
-[ ] Supabase table + ivfflat index created
-[ ] Deployed to Render
+[x] backend/perfect_corp.py — written and verified against live API
+[x] backend/rag_products.py
+[x] backend/routine_generator.py
+[x] backend/main.py
+[x] frontend/index.html — redesigned to Skiny UI/UX aesthetic (2026-07-01)
+[x] scripts/build_product_db.py + sample_products.json
+[x] Supabase table + ivfflat index created
+[x] Deployed to Google Cloud Run — https://confidence-api-59597652459.us-central1.run.app
+[x] Frontend deployed to Vercel — https://confidence-two.vercel.app
 [ ] Demo video recorded
 [ ] Hackathon submitted
 ```

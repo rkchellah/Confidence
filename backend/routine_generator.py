@@ -2,12 +2,12 @@
 Routine generation domain — routine_generator.py
 
 Responsibilities:
-  1. check_severity() — Python triage BEFORE Groq is called
-  2. generate_routine() — assemble prompt, call Groq, return structured JSON
+  1. check_severity() — Python triage BEFORE DeepSeek is called
+  2. generate_routine() — assemble prompt, call DeepSeek, return structured JSON
   3. referral_response() — return safe referral card when triage fires
 
 Safety design (enforced in code, not the prompt):
-  - Concerns scoring ≥ 0.85 in REFERRAL_CONCERNS → referral card, Groq not called
+  - Concerns scoring ≥ 0.85 in REFERRAL_CONCERNS → referral card, DeepSeek not called
   - Concerns scoring 0.4–0.85 → routine + soft nudge to see a dermatologist
   - Concerns scoring < 0.4 → full routine, no nudge
 
@@ -84,7 +84,7 @@ class RoutineOutput:
 def check_severity(concerns: list[SkinConcern]) -> list[str]:
     """
     Return names of concerns that are too severe for OTC recommendations.
-    This runs BEFORE Groq is called — the decision is in Python, not the LLM.
+    This runs BEFORE DeepSeek is called — the decision is in Python, not the LLM.
     """
     return [
         c.name for c in concerns
@@ -108,7 +108,7 @@ def referral_response(
 ) -> RoutineOutput:
     """
     Build a safe referral response when severe concerns are detected.
-    Groq is never called when this is returned.
+    DeepSeek is never called when this is returned.
     """
     referrals = []
     for concern_name in severe_concerns:
@@ -244,7 +244,7 @@ EXAMPLE 2 — Oily skin, acne (moderate, score 0.62), enlarged pores:
 }"""
 
 
-# ── 3. Groq call ──────────────────────────────────────────────────────────────
+# ── 3. DeepSeek call ─────────────────────────────────────────────────────────
 
 def _build_user_message(
     skin_result: SkinAnalysisResult,
@@ -283,9 +283,9 @@ PRODUCT CONTEXT (use only these products):
 Generate the morning and evening routine JSON now."""
 
 
-def _parse_groq_response(content: str) -> dict:
+def _parse_llm_response(content: str) -> dict:
     """
-    Parse Groq's response into a dict.
+    Parse DeepSeek's response into a dict.
     Strips any accidental markdown fences if present.
     """
     content = content.strip()
@@ -302,9 +302,9 @@ def generate_routine(
 ) -> RoutineOutput:
     """
     Full pipeline:
-      1. Triage — if severe concerns found, return referral card (Groq not called)
+      1. Triage — if severe concerns found, return referral card (DeepSeek not called)
       2. Build prompt with skin profile + RAG product context
-      3. Call Groq, parse JSON
+      3. Call DeepSeek, parse JSON
       4. Return RoutineOutput
 
     Retries once on JSON parse failure with a correction nudge.
@@ -323,7 +323,7 @@ def generate_routine(
     )
     user_message = _build_user_message(skin_result, products, ingredients_to_avoid, moderate)
 
-    # Step 3 — call Groq (retry once on parse failure)
+    # Step 3 — call DeepSeek (retry once on parse failure)
     raw_content = None
     for attempt in range(2):
         messages = [{"role": "user", "content": user_message}]
@@ -348,11 +348,11 @@ def generate_routine(
         raw_content = response.choices[0].message.content
 
         try:
-            parsed = _parse_groq_response(raw_content)
+            parsed = _parse_llm_response(raw_content)
             break
         except (json.JSONDecodeError, KeyError):
             if attempt == 1:
-                raise ValueError(f"Groq returned invalid JSON after retry: {raw_content}")
+                raise ValueError(f"DeepSeek returned invalid JSON after retry: {raw_content}")
 
     # Step 4 — build RoutineOutput
     def _steps(raw_steps: list[dict]) -> list[RoutineStep]:

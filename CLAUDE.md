@@ -177,7 +177,7 @@ refactor(perfect-corp): …
 | OpenAI Python SDK (DeepSeek) | https://api-docs.deepseek.com |
 | Perfect Corp API | https://yce.perfectcorp.com/document/index.html |
 | httpx | https://www.python-httpx.org |
-| Render | https://render.com/docs |
+| Google Cloud Run | https://cloud.google.com/run/docs |
 
 ### If a Request Breaks a Rule
 
