@@ -4,8 +4,9 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Confidence AI | Precision Skincare Intelligence</title>
-    <!-- Google Fonts: Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+    <link href="data:image/svg+xml,%3Csvg fill='none' height='48' viewBox='0 0 31 48' width='31' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23031E11'%3E%3Cpath d='m0 17.8433 30.9054-17.8433-.8189 12.6994-26.32053 15.1961z'/%3E%3Cpath d='m3.76562 27.8951 21.73568-12.5492-.8189 12.6994-17.15081 9.902z' opacity='.5'/%3E%3Cpath d='m7.5293 37.9477 12.566-7.255-.8189 12.6994-7.9811 4.6079z' opacity='.25'/%3E%3C/g%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
+    <!-- Google Fonts: Inter + Instrument Serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
         tailwind.config = {
@@ -26,7 +27,8 @@
                         }
                     },
                     fontFamily: {
-                        sans: ["Inter", "sans-serif"]
+                        sans: ["Inter", "sans-serif"],
+                        serif: ["Instrument Serif", "serif"]
                     },
                     borderRadius: {
                         '3xl': '24px',
@@ -45,6 +47,12 @@
         }
         .dashed-border {
             border: 1px dashed rgba(3, 30, 17, 0.15);
+        }
+        .hero-portrait {
+            -webkit-mask-image: linear-gradient(to bottom, black 92%, transparent 100%), linear-gradient(to right, black 85%, transparent 100%);
+            -webkit-mask-composite: source-in, source-over;
+            mask-image: linear-gradient(to bottom, black 92%, transparent 100%), linear-gradient(to right, black 85%, transparent 100%);
+            mask-composite: intersect;
         }
         .dark .dashed-border {
             border: 1px dashed rgba(255, 255, 255, 0.1);
@@ -80,13 +88,15 @@
             <!-- Logo -->
             <a class="flex items-center gap-3 shrink-0" href="#">
                 <div class="w-9 h-9 rounded-full bg-brand-charcoal flex items-center justify-center">
-                    <!-- Premium Geometric Leaf & Star Logo -->
-                    <svg class="w-5 h-5 text-brand-gold" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 4C16 10.6274 10.6274 16 4 16C10.6274 16 16 21.3726 16 28C16 21.3726 21.3726 16 28 16C21.3726 16 16 10.6274 16 4Z" fill="currentColor"/>
-                        <circle cx="16" cy="16" r="3" fill="#031E11"/>
+                    <svg class="w-4 h-4" fill="none" height="48" viewBox="0 0 31 48" width="31" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="#fff">
+                            <path d="m0 17.8433 30.9054-17.8433-.8189 12.6994-26.32053 15.1961z"/>
+                            <path d="m3.76562 27.8951 21.73568-12.5492-.8189 12.6994-17.15081 9.902z" opacity=".5"/>
+                            <path d="m7.5293 37.9477 12.566-7.255-.8189 12.6994-7.9811 4.6079z" opacity=".25"/>
+                        </g>
                     </svg>
                 </div>
-                <span class="font-bold text-xl text-brand-charcoal tracking-tight">Confidence<span class="text-brand-gold">.</span></span>
+                <span class="font-bold text-xl text-brand-charcoal tracking-tight">Confidence<span class="text-brand-charcoal">.</span></span>
             </a>
             
             <!-- Nav links -->
@@ -110,42 +120,44 @@
         <!-- Hero Section -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[700px] mb-24">
             <!-- Hero Content -->
-            <div class="lg:col-span-6 flex flex-col gap-8">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-gold/10 border border-brand-gold/20 rounded-full w-fit">
-                    <span class="text-[11px] font-semibold text-brand-gold uppercase tracking-wider">Skiny AI Precision</span>
+            <div class="lg:col-span-6 flex flex-col gap-7">
+                <div class="flex items-center gap-3 w-fit">
+                    <span class="text-[11px] font-semibold text-brand-gold uppercase tracking-[0.22em]">Confidence AI</span>
+                    <span class="w-8 h-px bg-brand-borderLight"></span>
+                    <span class="text-[11px] font-medium text-brand-slate uppercase tracking-[0.22em]">Clinical-Grade Analysis</span>
                 </div>
-                
-                <h1 class="text-5xl md:text-6xl font-extrabold text-brand-charcoal leading-[1.1] tracking-tight">
-                    Your skin, <br/>
-                    <span class="text-brand-slate font-light italic">finally</span> <br/>
-                    understood.
+
+                <h1 class="text-5xl md:text-[64px] font-bold text-brand-charcoal leading-[1.05] tracking-tight">
+                    Your skin,<br/>
+                    <span class="font-serif italic font-normal text-brand-slate text-[1.15em]">finally understood.</span>
                 </h1>
-                
-                <p class="text-lg text-brand-slate leading-relaxed max-w-xl">
-                    Upload a selfie. Get a personalized morning and evening routine, specific products, real ingredient science, no guesswork.
+
+                <p class="text-lg text-brand-slate leading-relaxed max-w-lg">
+                    Upload a selfie. Get a personalized morning and evening routine, specific products, and real ingredient science.
                 </p>
-                
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
-                    <button class="bg-brand-gold hover:bg-brand-goldHover text-brand-charcoal font-bold px-8 py-4 rounded-full text-base flex items-center justify-center gap-3 transition-all duration-200 shadow-lg shadow-brand-gold/20" data-upload-cta type="button">
+
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                    <button class="group bg-brand-charcoal hover:bg-brand-charcoal/90 text-white font-semibold pl-6 pr-2 py-2 rounded-full text-sm flex items-center justify-center gap-3 transition-all duration-200 shadow-md shadow-brand-charcoal/10 active:scale-[0.98] w-fit" data-upload-cta type="button">
                         Analyse my skin
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/15 group-hover:bg-white/25 transition-colors">
+                            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                            </svg>
+                        </span>
                     </button>
-                    <div class="flex items-center justify-center sm:justify-start gap-2 text-sm text-brand-slate font-medium px-4">
-                        <svg class="w-4 h-4 text-brand-gold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                        </svg>
-                        <span>100+ clinical products indexed</span>
+                    <div class="hidden sm:block w-px h-8 bg-brand-borderLight"></div>
+                    <div class="flex items-center justify-center sm:justify-start gap-1.5 text-sm text-brand-slate">
+                        <span class="font-semibold text-brand-charcoal">100+</span>
+                        <span>clinical products indexed</span>
                     </div>
                 </div>
             </div>
 
             <!-- Hero Visual -->
-            <div class="lg:col-span-6 relative h-[450px] md:h-[600px] w-full rounded-4xl overflow-hidden dashed-border p-3">
-                <div class="w-full h-full rounded-3xl overflow-hidden relative">
+            <div class="lg:col-span-6 relative h-[450px] md:h-[600px] w-full rounded-4xl overflow-hidden">
+                <div class="w-full h-full rounded-4xl overflow-hidden relative">
                     <!-- Main Hero Image -->
-                    <img alt="Confidence AI Face Analysis" class="w-full h-full object-cover object-top filter grayscale-[20%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwzy-bni4qvsXHUqnrfOVzaq_33jf4O_01hWQuIneWc1Ck6pa1U5G9R8ZPN3e8yNGu-BC_F101RfGGVrG5rLIAhyUInZZp_WC7JyHAz05CvpzQn3i7tgkbLOP27Nh7b9egiF8Dqkg7sfd7s9hyVk-YrySYAT7u8RsUEG2sTa_7Z48HpSmpEp71-URX_1-4tP0Ce3sEnvkkOqIOgZniFs8ZGFx2rM3Bsrja9VkHJp91mo2xtcvC2vyKLri1YEX7C6ph0d4A0YWfavSN"/>
+                    <img alt="Person wearing clear glasses, featured in the Confidence skincare analysis" class="w-full h-full object-cover object-[58%_center] filter grayscale-[20%] hero-portrait" src="assets/image.png"/>
                 </div>
             </div>
         </section>
@@ -228,8 +240,8 @@
             <!-- SCREEN UPLOAD -->
             <div class="block" id="screen-upload">
                 <div class="text-center mb-10">
-                    <span class="inline-block text-[10px] font-bold text-brand-gold uppercase tracking-[0.25em] bg-brand-gold/10 border border-brand-gold/20 rounded-full px-4 py-1.5 mb-4">Start your analysis</span>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-charcoal tracking-tight">Upload a <span class="text-brand-gold font-light italic">selfie</span></h2>
+                    <span class="inline-block text-[10px] font-bold text-brand-slate uppercase tracking-[0.25em] bg-brand-charcoal/5 border border-brand-borderLight rounded-full px-4 py-1.5 mb-4">Start your analysis</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-charcoal tracking-tight">Upload a <span class="font-serif italic font-normal text-brand-slate">selfie</span></h2>
                     <p class="text-sm text-brand-slate mt-3 max-w-[500px] mx-auto leading-relaxed">Use a clear, front-facing photo in natural light. Confidence will analyze visible skin markers to build your personalized routine.</p>
                 </div>
 
@@ -242,12 +254,12 @@
                 </div>
 
                 <!-- Drag Drop / Input Area -->
-                <label class="group block cursor-pointer relative rounded-3xl overflow-hidden border-2 border-dashed border-brand-borderLight hover:border-brand-gold/40 transition-all duration-300 bg-brand-bgLight hover:bg-brand-bgLight/80 p-12" id="upload-zone">
+                <label class="group block cursor-pointer relative rounded-3xl overflow-hidden border-2 border-dashed border-brand-borderLight hover:border-brand-charcoal/30 transition-all duration-300 bg-brand-bgLight hover:bg-brand-bgLight/80 p-12" id="upload-zone">
                     <input accept="image/*" capture="user" class="sr-only" id="file-input" type="file"/>
                     <div class="flex flex-col items-center gap-6">
-                        <div class="w-16 h-16 rounded-2xl bg-brand-gold text-brand-charcoal flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                        <div class="w-16 h-16 rounded-2xl bg-brand-charcoal text-white flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                             <!-- Camera SVG -->
-                            <svg class="w-8 h-8 text-brand-charcoal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"/>
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"/>
                             </svg>
@@ -286,10 +298,10 @@
                 <!-- Avoid Input -->
                 <div class="mb-8">
                     <label class="block text-xs font-bold text-brand-charcoal uppercase tracking-widest mb-3" for="avoid-input">Ingredients to avoid <span class="normal-case tracking-normal font-normal text-brand-slate">(optional)</span></label>
-                    <input class="w-full rounded-2xl border-brand-borderLight bg-brand-bgLight text-brand-charcoal placeholder-brand-slate/60 text-sm px-5 py-4 focus:border-brand-gold focus:ring-1 focus:ring-brand-gold/30 transition-all duration-200" id="avoid-input" placeholder="e.g. retinol, fragrance, alcohol denat." type="text"/>
+                    <input class="w-full rounded-2xl border-brand-borderLight bg-brand-bgLight text-brand-charcoal placeholder-brand-slate/60 text-sm px-5 py-4 focus:border-brand-charcoal/40 focus:ring-1 focus:ring-brand-charcoal/20 transition-all duration-200" id="avoid-input" placeholder="e.g. retinol, fragrance, alcohol denat." type="text"/>
                 </div>
 
-                <button class="w-full bg-brand-gold hover:bg-brand-goldHover text-brand-charcoal font-bold py-4 rounded-full text-base disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-3" disabled id="analyse-btn" type="button">
+                <button class="w-full bg-brand-charcoal hover:bg-brand-charcoal/90 text-white font-bold py-4 rounded-full text-base disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-3" disabled id="analyse-btn" type="button">
                     Analyse my skin
                 </button>
             </div>
@@ -525,9 +537,12 @@
         <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-3">
                 <div class="w-8 h-8 rounded-full bg-brand-charcoal flex items-center justify-center">
-                    <svg class="w-4.5 h-4.5 text-brand-gold" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16 4C16 10.6274 10.6274 16 4 16C10.6274 16 16 21.3726 16 28C16 21.3726 21.3726 16 28 16C21.3726 16 16 10.6274 16 4Z" fill="currentColor"/>
-                        <circle cx="16" cy="16" r="3" fill="#031E11"/>
+                    <svg class="w-3.5 h-3.5" fill="none" height="48" viewBox="0 0 31 48" width="31" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="#fff">
+                            <path d="m0 17.8433 30.9054-17.8433-.8189 12.6994-26.32053 15.1961z"/>
+                            <path d="m3.76562 27.8951 21.73568-12.5492-.8189 12.6994-17.15081 9.902z" opacity=".5"/>
+                            <path d="m7.5293 37.9477 12.566-7.255-.8189 12.6994-7.9811 4.6079z" opacity=".25"/>
+                        </g>
                     </svg>
                 </div>
                 <p class="text-xs font-semibold text-brand-charcoal"> &copy; 2026 Confidence AI. Precision Skincare Intelligence.</p>
