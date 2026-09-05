@@ -9,7 +9,7 @@ A RAG-powered skincare intelligence system - selfie to personalised routine in u
 
 ## What is RAG and why it matters here
 
-Without RAG, a language model generates skincare recommendations from its training data — generic, unverifiable, hallucinated product names and ingredients.
+Without RAG, a language model generates skincare recommendations from its training data - generic, unverifiable, hallucinated product names and ingredients.
 
 Confidence uses **Retrieval-Augmented Generation**. The LLM never invents products. Every recommendation traces back to a real row in a vetted product database.
 
@@ -19,19 +19,19 @@ Confidence uses **Retrieval-Augmented Generation**. The LLM never invents produc
 
 ```mermaid
 flowchart LR
-    subgraph INDEX ["INDEX PHASE — run once"]
+    subgraph INDEX ["INDEX PHASE - run once"]
         A[100 skincare products] -->|embed| B[Voyage AI\nvoyage-4-lite]
         B -->|store 1024-dim vector| C[(Supabase\npgvector)]
     end
 
-    subgraph QUERY ["QUERY PHASE — every request"]
+    subgraph QUERY ["QUERY PHASE - every request"]
         D[Skin scores\nfrom Perfect Corp] -->|build query| E[Natural language\nquery string]
-        E -->|embed — same model| F[Voyage AI\nvoyage-4-lite]
+        E -->|embed - same model| F[Voyage AI\nvoyage-4-lite]
         F -->|cosine similarity| G[(Supabase\npgvector)]
         G -->|top-k matches| H[Retrieved\nproducts]
     end
 
-    subgraph GENERATE ["GENERATE — grounded only"]
+    subgraph GENERATE ["GENERATE - grounded only"]
         H -->|inject as context| I[DeepSeek\ndeepseek-chat]
         I --> J[Personalised routine\nno hallucination]
     end
@@ -39,7 +39,7 @@ flowchart LR
     C -.->|same vector space| G
 ```
 
-> The same embedding model is used at both index time and query time. Using different models would place vectors in different semantic spaces — similarity scores would be meaningless.
+> The same embedding model is used at both index time and query time. Using different models would place vectors in different semantic spaces - similarity scores would be meaningless.
 
 ---
 
@@ -94,7 +94,7 @@ The triage runs in Python **before** the LLM is called. Severe concerns are neve
 |---|---|---|
 | Mild | 0 – 0.40 | Full OTC recommendation |
 | Moderate | 0.40 – 0.85 | Recommendation + 8-week derm nudge |
-| Severe | 0.85+ | Referral card only — LLM skipped |
+| Severe | 0.85+ | Referral card only - LLM skipped |
 
 LLM system prompt hard limits: no diagnoses, no prescriptions, only reference retrieved products.
 
@@ -104,12 +104,12 @@ LLM system prompt hard limits: no diagnoses, no prescriptions, only reference re
 
 | Layer | Choice |
 |---|---|
-| Backend | FastAPI (Python) — Google Cloud Run |
+| Backend | FastAPI (Python) - Google Cloud Run |
 | Skin analysis | Perfect Corp HD skin-analysis API |
 | Embeddings | Voyage AI `voyage-4-lite` (1024-dim) |
 | Vector store | Supabase pgvector |
 | LLM | DeepSeek `deepseek-chat` |
-| Frontend | HTML — Vercel |
+| Frontend | HTML - Vercel |
 
 ---
 
@@ -122,7 +122,7 @@ pip install -r requirements.txt
 cp env.example .env.local
 # Fill in all values
 
-# Seed the RAG knowledge base — run once
+# Seed the RAG knowledge base - run once
 python scripts/build_product_db.py
 
 # Start the backend
@@ -138,15 +138,15 @@ uvicorn backend.main:app --reload
 ```
 confidence/
   backend/
-    perfect_corp.py      — Perfect Corp API client (async upload → task → poll)
-    rag_products.py      — Voyage AI embed + Supabase pgvector retrieve
-    routine_generator.py — DeepSeek + 3-tier triage + structured JSON
-    main.py              — FastAPI routes + CORS
+    perfect_corp.py      - Perfect Corp API client (async upload → task → poll)
+    rag_products.py      - Voyage AI embed + Supabase pgvector retrieve
+    routine_generator.py - DeepSeek + 3-tier triage + structured JSON
+    main.py              - FastAPI routes + CORS
   frontend/
-    index.html           — Landing page + upload/results
+    index.html           - Landing page + upload/results
   scripts/
-    build_product_db.py  — RAG knowledge base seeding (run once)
-    sample_products.json — 100 product knowledge base
+    build_product_db.py  - RAG knowledge base seeding (run once)
+    sample_products.json - 100 product knowledge base
   Dockerfile
   requirements.txt
 ```

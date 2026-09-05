@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact - Confidence</title>
+    <link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 37 25'%3E%3Crect x='1.75' y='1.75' width='33.5' height='21.5' rx='10.75' stroke='%23242426' stroke-width='2.5'/%3E%3Ccircle cx='12.5' cy='12.5' r='3.25' fill='%23242426'/%3E%3Ccircle cx='24.5' cy='12.5' r='3.25' fill='%23242426'/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
+    <link rel="preconnect" href="https://framerusercontent.com" crossorigin/>
+    <style>
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/DF7bjCRmStYPqSb945lAlMfCCVQ.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/bHYNJqzTyl2lqvmMiRRS6Y16Es.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/r0mv3NegmA0akcQsNFotG32Las.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/iwWTDc49ENF2tCHbqlNARXw6Ug.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/MJ3N6lfN4iP5Um8rJGqLYl03tE.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/PfdOpgzFf7N2Uye9JX7xRKYTgSc.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/P0JCAnd2N1Q6qwTQohre3XmQ.woff2") format("woff2");
+            font-style: italic;
+            font-weight: 400;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        :root {
+            --bg: #ebeff5;
+            --ink: #242426;
+            --ink-75: rgba(36, 36, 38, 0.75);
+            --ink-50: rgba(36, 36, 38, 0.5);
+            --ink-12: rgba(36, 36, 38, 0.12);
+            --dark: #35363b;
+            --lime: #d9ff5c;
+            --white: #ffffff;
+            --nav-pill: #f4f6fa;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        html, body, button, input, textarea, select {
+            font-family: "Inter Display", sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--ink);
+            font-family: "Inter Display", sans-serif;
+            font-optical-sizing: auto;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        button, input, textarea {
+            font: inherit;
+            border: 0;
+            outline: 0;
+            background: none;
+        }
+
+        .page { max-width: 1440px; margin: 0 auto; }
+
+        /* ── Nav ── */
+        .nav-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 16px 40px 0;
+            transition: padding 0.25s ease;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+            max-width: 1360px;
+            margin: 0 auto;
+            transition: background 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease, border-radius 0.25s ease;
+        }
+
+        .nav.is-solid {
+            background: var(--white);
+            border-radius: 999px;
+            padding: 0 10px 0 16px;
+            box-shadow: 0 1px 0 rgba(36, 36, 38, 0.04);
+        }
+
+        .logo {
+            display: block;
+            width: 37px;
+            height: 25px;
+            line-height: 0;
+        }
+
+        .logo svg {
+            display: block;
+            width: 37px;
+            height: 25px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--ink-75);
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.is-active { color: var(--ink); }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            height: 40px;
+            padding: 4px 12px 4px 4px;
+            border-radius: 12px;
+            background: #fff;
+        }
+
+        .nav.is-solid .nav-cta { background: var(--nav-pill); }
+
+        .nav-cta .arrow {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: var(--bg);
+            display: grid;
+            place-items: center;
+        }
+
+        .nav.is-solid .nav-cta .arrow { background: #fff; }
+
+        .nav-cta span {
+            font-size: 14px;
+            padding-right: 10px;
+            color: var(--ink);
+        }
+
+        /* ── Hero ── */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 584px;
+            gap: 48px;
+            align-items: start;
+            width: min(1200px, calc(100% - 80px));
+            margin: 0 auto;
+            padding: 180px 0 80px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 32px;
+            padding: 0 12px 0 10px;
+            border-radius: 999px;
+            background: var(--white);
+            font-size: 13px;
+            color: var(--ink);
+        }
+
+        .badge svg { width: 16px; height: 16px; }
+
+        .hero h1 {
+            margin-top: 28px;
+            font-size: 64px;
+            font-weight: 400;
+            line-height: 80px;
+            letter-spacing: -2.56px;
+            color: var(--ink);
+            max-width: 568px;
+        }
+
+        .hero-copy {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 27px;
+            color: var(--ink-75);
+            max-width: 540px;
+        }
+
+        .trusted {
+            margin-top: 88px;
+            font-size: 12px;
+            color: var(--ink);
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-top: 18px;
+            color: rgba(36, 36, 38, 0.35);
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+        }
+
+        .logo-row span { white-space: nowrap; }
+
+        /* ── Contact card ── */
+        .card {
+            background: var(--dark);
+            border-radius: 24px;
+            padding: 8px;
+        }
+
+        .card-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 28px 28px 22px;
+        }
+
+        .card-head h3 {
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 45px;
+            letter-spacing: -1.08px;
+            color: #fff;
+        }
+
+        .card-head p {
+            width: 246px;
+            font-size: 14px;
+            line-height: 21px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .card-head a { color: rgba(255, 255, 255, 0.5); }
+
+        form {
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-bottom: 14px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid var(--ink-12);
+        }
+
+        .field label {
+            font-size: 14px;
+            color: var(--ink);
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            font-size: 14px;
+            line-height: 21px;
+            color: var(--ink);
+            resize: none;
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: var(--ink-75);
+        }
+
+        .field textarea { min-height: 88px; }
+
+        .submit {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 48px;
+            margin-top: 8px;
+            padding: 4px;
+            border-radius: 16px;
+            background: var(--dark);
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .submit .arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--lime);
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+
+        .submit .label {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #fff;
+        }
+
+        /* ── Help cards ── */
+        .help {
+            width: min(1200px, calc(100% - 80px));
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            padding: 40px 0 80px;
+        }
+
+        .help-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 36px;
+            min-height: 311px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .help-card .card-ico {
+            display: block;
+            color: var(--ink);
+            line-height: 0;
+        }
+        .help-card .card-ico svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 1.5;
+        }
+        .chip .chip-ico {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fff;
+            display: grid;
+            place-items: center;
+        }
+        .chip .chip-ico svg {
+            width: 11px;
+            height: 11px;
+            color: #242426;
+            stroke-width: 2;
+        }
+        .nav-cta .arrow svg {
+            width: 16px;
+            height: 16px;
+            color: #0f0f0f;
+        }
+        .submit .arrow svg {
+            width: 18px;
+            height: 18px;
+            color: #35363b;
+        }
+        .cta-btn .arrow svg {
+            width: 20px;
+            height: 20px;
+            color: #fff;
+        }
+
+        .help-card h5 {
+            margin-top: 28px;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+        }
+
+        .help-card p {
+            margin-top: 10px;
+            font-size: 15px;
+            line-height: 23px;
+            color: var(--ink-75);
+        }
+
+        .chip {
+            margin-top: auto;
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 36px;
+            padding: 0 14px 0 8px;
+            border-radius: 999px;
+            background: var(--bg);
+            font-size: 13px;
+            color: var(--ink);
+        }
+
+        .chip i {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fff;
+            display: grid;
+            place-items: center;
+        }
+
+        /* ── CTA ── */
+        .cta {
+            width: min(1360px, calc(100% - 40px));
+            margin: 0 auto;
+            background: var(--dark);
+            border-radius: 40px 40px 0 0;
+            padding: 88px 48px 64px;
+            text-align: center;
+        }
+
+        .cta-logo {
+            width: 44px;
+            height: 30px;
+            margin: 0 auto 28px;
+            border-radius: 999px;
+            background: #fff;
+            position: relative;
+        }
+
+        .cta-logo::before,
+        .cta-logo::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--dark);
+            transform: translateY(-50%);
+        }
+
+        .cta-logo::before { left: 9px; }
+        .cta-logo::after { right: 9px; }
+
+        .cta h1 {
+            font-size: 64px;
+            font-weight: 400;
+            line-height: 80px;
+            letter-spacing: -2.56px;
+            color: #fff;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .cta p {
+            margin: 18px auto 0;
+            max-width: 520px;
+            font-size: 18px;
+            line-height: 27px;
+            color: #fff;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            height: 64px;
+            margin-top: 32px;
+            padding: 0 22px 0 8px;
+            border-radius: 20px;
+            background: var(--lime);
+            color: var(--ink);
+            font-size: 16px;
+        }
+
+        .cta-btn .arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: var(--dark);
+            display: grid;
+            place-items: center;
+        }
+
+        .cta-shot {
+            display: block;
+            width: min(980px, 100%);
+            margin: 56px auto 0;
+            border-radius: 24px 24px 0 0;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            width: min(1360px, calc(100% - 40px));
+            margin: 0 auto 40px;
+            padding: 72px 48px 40px;
+            container-type: inline-size;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .copy {
+            font-size: 14px;
+            color: var(--ink-75);
+        }
+
+        .cols {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(110px, 1fr));
+            gap: 32px;
+        }
+
+        .cols h6 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink-75);
+            margin-bottom: 16px;
+        }
+
+        .cols a {
+            display: block;
+            font-size: 14px;
+            color: var(--ink-75);
+            margin-bottom: 10px;
+        }
+
+        .cols a:hover { color: var(--ink); }
+
+        .wordmark {
+            margin-top: 48px;
+            font-size: clamp(40px, 13.6cqi, 132px);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            color: var(--ink);
+            white-space: nowrap;
+        }
+
+        .ok {
+            display: none;
+            padding: 28px 8px;
+            text-align: center;
+            font-size: 15px;
+            color: var(--ink-75);
+        }
+
+        .ok.show { display: block; }
+
+        @media (max-width: 1100px) {
+            .hero {
+                grid-template-columns: 1fr;
+                width: calc(100% - 40px);
+                padding-top: 120px;
+            }
+            .help {
+                grid-template-columns: 1fr;
+                width: calc(100% - 40px);
+            }
+            .nav-links { display: none; }
+            .hero h1, .cta h1 { font-size: 44px; line-height: 52px; letter-spacing: -1.6px; }
+            .cta { padding: 64px 24px; border-radius: 28px 28px 0 0; }
+            .footer { padding: 48px 24px 32px; }
+            .footer-top { flex-direction: column; }
+            .cols { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="nav-wrap">
+            <nav class="nav" id="nav">
+                <a class="logo" href="index.html" aria-label="Confidence">
+                    <svg fill="none" viewBox="0 0 37 25" xmlns="http://www.w3.org/2000/svg">
+                        <rect height="21.5" rx="10.75" stroke="#242426" stroke-width="2.5" width="33.5" x="1.75" y="1.75"/>
+                        <circle cx="12.5" cy="12.5" fill="#242426" r="3.25"/>
+                        <circle cx="24.5" cy="12.5" fill="#242426" r="3.25"/>
+                    </svg>
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#upload-anchor">Analyse</a>
+                    <a href="index.html#safety">Safety</a>
+                    <a class="is-active" href="contact.html">Contact</a>
+                </div>
+                <a class="nav-cta" href="index.html#upload-anchor">
+                    <span class="arrow">
+                        <i data-lucide="arrow-right"></i>
+                    </span>
+                    <span>Get started</span>
+                </a>
+            </nav>
+        </div>
+
+        <section class="hero">
+            <div>
+                <h1>Questions about your routine?</h1>
+                <p class="hero-copy">Send a note if analysis failed, a product looks wrong, or you want to talk through a result. We usually reply within a day.</p>
+                <p class="trusted">Selfie in. Routine out. Under 60 seconds.</p>
+            </div>
+
+            <aside class="card">
+                <div class="card-head">
+                    <h3>Contact us</h3>
+                    <p>Fill the form, or email <a href="mailto:hello@confidence.ai">hello@confidence.ai</a></p>
+                </div>
+                <form id="form">
+                    <div class="row">
+                        <div class="field">
+                            <label for="first">First name*</label>
+                            <input id="first" name="first" required placeholder="Jane"/>
+                        </div>
+                        <div class="field">
+                            <label for="last">Last name*</label>
+                            <input id="last" name="last" required placeholder="Smith"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email*</label>
+                        <input id="email" name="email" type="email" required placeholder="you@email.com"/>
+                    </div>
+                    <div class="field">
+                        <label for="help">How can we help?</label>
+                        <textarea id="help" name="help" placeholder="Tell us what happened, or what you need."></textarea>
+                    </div>
+                    <button class="submit" type="submit">
+                        <span class="arrow">
+                            <i data-lucide="arrow-right"></i>
+                        </span>
+                        <span class="label">Send message</span>
+                    </button>
+                    <p class="ok" id="ok">Thanks. We’ll get back to you shortly.</p>
+                </form>
+            </aside>
+        </section>
+
+        <section class="help">
+            <article class="help-card">
+                <span class="card-ico"><i data-lucide="scan-face"></i></span>
+                <h5>Photo analysis</h5>
+                <p>Use a clear, front-facing selfie in natural light. Avoid heavy makeup and cropped faces.</p>
+                <a class="chip" href="index.html#upload-anchor"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>Start analysis</a>
+            </article>
+            <article class="help-card">
+                <span class="card-ico"><i data-lucide="sparkles"></i></span>
+                <h5>Product match</h5>
+                <p>Recommendations come from a vetted catalogue. The model does not invent product names.</p>
+                <a class="chip" href="index.html#upload-anchor"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>See how it works</a>
+            </article>
+            <article class="help-card">
+                <span class="card-ico"><i data-lucide="shield-check"></i></span>
+                <h5>Safety first</h5>
+                <p>Severe concerns skip product advice and show a specialist referral before any routine is generated.</p>
+                <a class="chip" href="index.html#safety"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>Read safety notes</a>
+            </article>
+        </section>
+
+        <section class="cta" id="cta">
+            <h1>Your skin, finally understood.</h1>
+            <p>Upload a selfie or capture one now. Get a morning and evening routine in under 60 seconds.</p>
+            <a class="cta-btn" href="index.html#upload-anchor">
+                <span class="arrow">
+                    <i data-lucide="arrow-right"></i>
+                </span>
+                Get started
+            </a>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-top">
+                <p class="copy">© 2026 Confidence AI. All Rights reserved.</p>
+                <div class="cols">
+                    <div>
+                        <h6>Index</h6>
+                    <a href="index.html#upload-anchor">Analyse</a>
+                    <a href="index.html#safety">Safety</a>
+                    <a href="index.html#privacy">Privacy</a>
+                    </div>
+                    <div>
+                        <h6>Company</h6>
+                        <a href="index.html">About us</a>
+                        <a href="index.html#upload-anchor">Analyse</a>
+                    <a href="contact.html">Contact</a>
+                    </div>
+                    <div>
+                        <h6>Social</h6>
+                        <a href="#">X / Twitter</a>
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Discord</a>
+                    </div>
+                    <div>
+                        <h6>Legal</h6>
+                        <a href="index.html#privacy">Terms of Use</a>
+                        <a href="index.html#privacy">Privacy Policy</a>
+                        <a href="index.html#privacy">Cookie policy</a>
+                    </div>
+                </div>
+            </div>
+            <p class="wordmark">Confidence.</p>
+        </footer>
+    </div>
+
+    <script>
+        const nav = document.getElementById("nav");
+        const onScroll = () => {
+            nav.classList.toggle("is-solid", window.scrollY > 8);
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+
+        document.getElementById("form").addEventListener("submit", (event) => {
+            event.preventDefault();
+            document.getElementById("ok").classList.add("show");
+        });
+    </script>
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <script>lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });</script>
+</body>
+</html>

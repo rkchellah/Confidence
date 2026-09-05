@@ -4,7 +4,7 @@ project: Confidence
 read when: suggesting a library, using a framework API, installing a package, any version-specific question
 ---
 
-# Stack Rules — Confidence
+# Stack Rules - Confidence
 
 ---
 
@@ -15,9 +15,9 @@ Every deviation is documented below with a reason.
 
 | Layer | Choice | Reason |
 |-------|--------|--------|
-| Language | Python 3.11+ | Backend is ML/API pipeline — Python is the right tool |
-| Backend | FastAPI on Google Cloud Run | Hackathon timeline — no framework overhead, container-based free deploy |
-| Frontend | Single HTML file | No component tree needed — one page, fast to build, easy to demo |
+| Language | Python 3.11+ | Backend is ML/API pipeline - Python is the right tool |
+| Backend | FastAPI on Google Cloud Run | Hackathon timeline - no framework overhead, container-based free deploy |
+| Frontend | Single HTML file | No component tree needed - one page, fast to build, easy to demo |
 | Skin analysis | Perfect Corp skin-analysis API | Required by challenge brief |
 | Embeddings | Voyage AI `voyage-3-lite` (1024-dim) | Free for new users, Anthropic-recommended for RAG. Fallback: Transformers.js |
 | Vector DB | Supabase pgvector | Free tier, same infra pattern already established |
@@ -36,9 +36,9 @@ the UI. Build time saved goes into product quality.
 ### 2. Voyage AI instead of OpenAI for embeddings
 **Reason:** No budget for OpenAI API. GCP credits are policy-restricted to rkchellah.org.
 Voyage AI has a free tier for new users and is Anthropic's recommended embedding partner for RAG.
-Fallback is Transformers.js (zero cost, zero API key, runs in Python) — swap one function if needed.
+Fallback is Transformers.js (zero cost, zero API key, runs in Python) - swap one function if needed.
 
-### 3. No TypeScript — Python throughout
+### 3. No TypeScript - Python throughout
 **Reason:** The entire stack is Python. FastAPI has full type hint support via Pydantic.
 All type safety enforced through Python type hints and dataclasses.
 
@@ -57,7 +57,7 @@ All type safety enforced through Python type hints and dataclasses.
 | httpx | https://www.python-httpx.org |
 | Google Cloud Run | https://cloud.google.com/run/docs |
 
-When in doubt about any method, behavior, or version — verify at the official source before using it.
+When in doubt about any method, behavior, or version - verify at the official source before using it.
 
 ---
 
@@ -84,19 +84,19 @@ Every dependency is a liability. Before adding a package:
 **Packages confirmed for this project:**
 
 ```
-fastapi          — web framework
-uvicorn          — ASGI server for FastAPI
-httpx            — async HTTP client (Perfect Corp API calls)
-supabase         — Supabase Python SDK
-python-dotenv    — load .env.local
-pydantic         — request/response validation (comes with FastAPI)
-openai           — OpenAI SDK (DeepSeek API, OpenAI-compatible)
-voyageai         — Voyage AI embeddings (verify package name at https://docs.voyageai.com)
+fastapi          - web framework
+uvicorn          - ASGI server for FastAPI
+httpx            - async HTTP client (Perfect Corp API calls)
+supabase         - Supabase Python SDK
+python-dotenv    - load .env.local
+pydantic         - request/response validation (comes with FastAPI)
+openai           - OpenAI SDK (DeepSeek API, OpenAI-compatible)
+voyageai         - Voyage AI embeddings (verify package name at https://docs.voyageai.com)
 ```
 
 **Transformers.js fallback (Python equivalent):**
 ```
-sentence-transformers   — if Voyage AI is unavailable; model: all-MiniLM-L6-v2 (384-dim)
+sentence-transformers   - if Voyage AI is unavailable; model: all-MiniLM-L6-v2 (384-dim)
                           Note: if switching to this, update vector column to vector(384)
 ```
 
@@ -108,12 +108,12 @@ All secrets live in `.env.local`. Never in code. Never committed.
 
 | Variable | Description |
 |----------|-------------|
-| `PERFECTCORP_API_KEY` | Perfect Corp API key — get from https://yce.makeupar.com/api-console/en/api-keys/ |
-| `VOYAGE_API_KEY` | Voyage AI — get from https://dash.voyageai.com |
+| `PERFECTCORP_API_KEY` | Perfect Corp API key - get from https://yce.makeupar.com/api-console/en/api-keys/ |
+| `VOYAGE_API_KEY` | Voyage AI - get from https://dash.voyageai.com |
 | `DEEPSEEK_API_KEY` | DeepSeek API key |
 | `SUPABASE_URL` | Supabase project URL |
-| `SUPABASE_KEY` | Supabase service role key — never exposed to frontend |
-| `POLL_TIMEOUT_SECONDS` | Perfect Corp poll timeout — default 30 |
+| `SUPABASE_KEY` | Supabase service role key - never exposed to frontend |
+| `POLL_TIMEOUT_SECONDS` | Perfect Corp poll timeout - default 30 |
 
 `.env.local` is always in `.gitignore`. Always.
 `.env.example` lists every variable name with a description but no real values. Committed to repo.

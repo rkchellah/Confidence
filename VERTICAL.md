@@ -4,7 +4,7 @@ description: Structural rules for every new project. Propose verticals, get appr
 project: Confidence
 note: This project uses a backend/frontend/scripts layout justified by the hackathon
       timeline and single-page architecture. The domain-first naming principles still apply
-      within each folder — no junk drawers, no files stranded from the domain they serve.
+      within each folder - no junk drawers, no files stranded from the domain they serve.
 ---
 
 # Vertical Codebase Rules
@@ -17,7 +17,7 @@ Group code by what it does, not what it technically is.
 ## How This Applies to Confidence
 
 Confidence uses a backend/frontend/scripts split rather than a full vertical tree.
-This is an approved deviation for the hackathon — one HTML page and a four-file
+This is an approved deviation for the hackathon - one HTML page and a four-file
 Python backend do not need a src/ tree with domain folders.
 
 The vertical principles still apply inside the backend:
@@ -27,7 +27,7 @@ backend/
   perfect_corp.py      → everything to do with Perfect Corp API
   rag_products.py      → everything to do with retrieval and embeddings
   routine_generator.py → everything to do with DeepSeek and routine output
-  main.py              → FastAPI wiring only — thin, no business logic here
+  main.py              → FastAPI wiring only - thin, no business logic here
 ```
 
 `main.py` is thin. It connects the parts. Business logic lives in the domain files.
@@ -40,13 +40,13 @@ If logic starts accumulating in main.py, it belongs in one of the other three fi
 **Group by what code does, not what it technically is.**
 
 ```
-✅ perfect_corp.py     — the Perfect Corp domain
-✅ rag_products.py     — the retrieval domain
-✅ routine_generator.py— the routine generation domain
+✅ perfect_corp.py     - the Perfect Corp domain
+✅ rag_products.py     - the retrieval domain
+✅ routine_generator.py- the routine generation domain
 
-❌ api_client.py       — describes what it technically is
-❌ utils.py            — a junk drawer waiting to happen
-❌ helpers.py          — means nothing
+❌ api_client.py       - describes what it technically is
+❌ utils.py            - a junk drawer waiting to happen
+❌ helpers.py          - means nothing
 ```
 
 ---
@@ -55,7 +55,7 @@ If logic starts accumulating in main.py, it belongs in one of the other three fi
 
 `main.py` is allowed to contain:
 - FastAPI app initialisation
-- Route definitions (thin — delegate immediately to domain files)
+- Route definitions (thin - delegate immediately to domain files)
 - Request/response models (Pydantic)
 - Error handler registration
 
@@ -76,8 +76,8 @@ Every helper, type, and constant belongs to the domain file it serves.
 ✅ embed() function lives in rag_products.py
 ✅ RoutineOutput type lives in routine_generator.py
 
-❌ types.py at top level — stranded from the domain it serves
-❌ utils.py holding embed() — no domain owner
+❌ types.py at top level - stranded from the domain it serves
+❌ utils.py holding embed() - no domain owner
 ```
 
 ---
@@ -87,13 +87,13 @@ Every helper, type, and constant belongs to the domain file it serves.
 Name things after what they do in the product, not after technical patterns.
 
 ```
-✅ perfect_corp.py        — the domain
-✅ routine_generator.py   — what it produces
-✅ rag_products.py        — what it retrieves
+✅ perfect_corp.py        - the domain
+✅ routine_generator.py   - what it produces
+✅ rag_products.py        - what it retrieves
 
-❌ api_wrapper.py         — technical description
-❌ llm_caller.py          — technical description
-❌ vector_search.py       — technical description
+❌ api_wrapper.py         - technical description
+❌ llm_caller.py          - technical description
+❌ vector_search.py       - technical description
 ```
 
 ---
@@ -109,7 +109,7 @@ If someone reads the backend/ folder and understands it's about:
 
 You've done it right.
 
-If they see utils.py, helpers.py, and api_client.py — they understand nothing
+If they see utils.py, helpers.py, and api_client.py - they understand nothing
 about the product. They just know you know what a function is.
 
 ---
@@ -119,15 +119,15 @@ about the product. They just know you know what a function is.
 ```
 confidence/
   backend/
-    perfect_corp.py      — Perfect Corp API: upload, task, poll, parse
-    rag_products.py      — Voyage AI embed + Supabase pgvector retrieve
-    routine_generator.py — DeepSeek prompt, few-shot, structured JSON output
-    main.py              — FastAPI routes only, delegates to above
+    perfect_corp.py      - Perfect Corp API: upload, task, poll, parse
+    rag_products.py      - Voyage AI embed + Supabase pgvector retrieve
+    routine_generator.py - DeepSeek prompt, few-shot, structured JSON output
+    main.py              - FastAPI routes only, delegates to above
   frontend/
-    index.html           — entire frontend: upload, loading, results
+    index.html           - entire frontend: upload, loading, results
   scripts/
-    build_product_db.py  — one-time: seed Supabase with embedded products
-    sample_products.json — 100 skincare products structured data
+    build_product_db.py  - one-time: seed Supabase with embedded products
+    sample_products.json - 100 skincare products structured data
   PLANNING.md
   STACK.md
   VERTICAL.md

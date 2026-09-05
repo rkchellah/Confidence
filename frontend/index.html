@@ -1,34 +1,30 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Confidence AI | Precision Skincare Intelligence</title>
-    <link href="data:image/svg+xml,%3Csvg fill='none' height='48' viewBox='0 0 31 48' width='31' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23031E11'%3E%3Cpath d='m0 17.8433 30.9054-17.8433-.8189 12.6994-26.32053 15.1961z'/%3E%3Cpath d='m3.76562 27.8951 21.73568-12.5492-.8189 12.6994-17.15081 9.902z' opacity='.5'/%3E%3Cpath d='m7.5293 37.9477 12.566-7.255-.8189 12.6994-7.9811 4.6079z' opacity='.25'/%3E%3C/g%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
-    <!-- Google Fonts: Inter + Instrument Serif -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 37 25'%3E%3Crect x='1.75' y='1.75' width='33.5' height='21.5' rx='10.75' stroke='%23242426' stroke-width='2.5'/%3E%3Ccircle cx='12.5' cy='12.5' r='3.25' fill='%23242426'/%3E%3Ccircle cx='24.5' cy='12.5' r='3.25' fill='%23242426'/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
+    <!-- Inter Display - same cuts as https://makro.framer.website/ -->
+    <link rel="preconnect" href="https://framerusercontent.com" crossorigin/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            gold: "#F7CE26",
-                            goldHover: "#DFB81E",
-                            mint: "#A2D9CE",
-                            charcoal: "#031E11",
-                            darkCard: "#0C2919",
-                            slate: "#5D6D7E",
-                            bgLight: "#F4F4F6",
-                            borderLight: "#E5E7EB",
-                            borderDark: "rgba(255,255,255,0.08)"
+                            gold: "#D9FF5C",
+                            mint: "#D9FF5C",
+                            charcoal: "#242426",
+                            darkCard: "#35363B",
+                            slate: "rgba(36, 36, 38, 0.75)",
+                            bgLight: "#EBEFF5",
+                            borderLight: "rgba(36, 36, 38, 0.12)"
                         }
                     },
                     fontFamily: {
-                        sans: ["Inter", "sans-serif"],
-                        serif: ["Instrument Serif", "serif"]
+                        sans: ["Inter Display", "sans-serif"]
                     },
                     borderRadius: {
                         '3xl': '24px',
@@ -39,23 +35,223 @@
         }
     </script>
     <style>
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/DF7bjCRmStYPqSb945lAlMfCCVQ.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/bHYNJqzTyl2lqvmMiRRS6Y16Es.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/r0mv3NegmA0akcQsNFotG32Las.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/iwWTDc49ENF2tCHbqlNARXw6Ug.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/MJ3N6lfN4iP5Um8rJGqLYl03tE.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            unicode-range: U+100-24F, U+259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/PfdOpgzFf7N2Uye9JX7xRKYTgSc.woff2") format("woff2");
+            font-style: normal;
+            font-weight: 600;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/P0JCAnd2N1Q6qwTQohre3XmQ.woff2") format("woff2");
+            font-style: italic;
+            font-weight: 400;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        @font-face {
+            font-family: "Inter Display";
+            src: url("https://framerusercontent.com/assets/RkMAGv2iAm3rw7tZzs7FaZf0rM.woff2") format("woff2");
+            font-style: italic;
+            font-weight: 500;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2070, U+2074-207E, U+2080-208E, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        html, body, button, input, textarea, select {
+            font-family: "Inter Display", sans-serif;
+        }
         body {
-            background-color: #F4F4F6;
-            font-family: 'Inter', sans-serif;
-            color: #031E11;
+            background-color: #EBEFF5;
+            font-family: "Inter Display", sans-serif;
+            font-optical-sizing: auto;
+            color: #242426;
             -webkit-font-smoothing: antialiased;
         }
-        .dashed-border {
-            border: 1px dashed rgba(3, 30, 17, 0.15);
+        .nav-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 16px 40px 0;
         }
-        .hero-portrait {
-            -webkit-mask-image: linear-gradient(to bottom, black 92%, transparent 100%), linear-gradient(to right, black 85%, transparent 100%);
-            -webkit-mask-composite: source-in, source-over;
-            mask-image: linear-gradient(to bottom, black 92%, transparent 100%), linear-gradient(to right, black 85%, transparent 100%);
+        .shell-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 56px;
+            max-width: 1360px;
+            margin: 0 auto;
+            transition: background 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease, border-radius 0.25s ease;
+        }
+        .shell-nav.is-solid {
+            background: #fff;
+            border-radius: 999px;
+            padding: 0 10px 0 16px;
+        }
+        .logo-mark {
+            display: block;
+            width: 37px;
+            height: 25px;
+            line-height: 0;
+        }
+        .logo-mark svg {
+            display: block;
+            width: 37px;
+            height: 25px;
+        }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            height: 40px;
+            padding: 4px 12px 4px 4px;
+            border-radius: 12px;
+            background: #fff;
+            color: #242426;
+        }
+        .nav-cta .arrow {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: #EBEFF5;
+            display: grid;
+            place-items: center;
+        }
+        .hero-frame {
+            position: relative;
+        }
+        .hero-shot {
+            display: block;
+            width: 100%;
+            height: 560px;
+            object-fit: cover;
+            object-position: 50% 22%;
+            box-shadow: none;
+            -webkit-mask-image:
+                linear-gradient(180deg, #000 74%, rgba(0, 0, 0, 0.4) 88%, transparent 100%),
+                radial-gradient(ellipse 46% 52% at 100% 88%, transparent 0%, #000 68%);
+            -webkit-mask-composite: source-in;
+            mask-image:
+                linear-gradient(180deg, #000 74%, rgba(0, 0, 0, 0.4) 88%, transparent 100%),
+                radial-gradient(ellipse 46% 52% at 100% 88%, transparent 0%, #000 68%);
             mask-composite: intersect;
         }
-        .dark .dashed-border {
-            border: 1px dashed rgba(255, 255, 255, 0.1);
+        .hero-blur {
+            position: absolute;
+            inset: 0;
+            display: block;
+            width: 100%;
+            height: 560px;
+            object-fit: cover;
+            object-position: 50% 22%;
+            pointer-events: none;
+            filter: blur(18px);
+            transform: scale(1.06);
+            transform-origin: 100% 85%;
+            -webkit-mask-image: radial-gradient(ellipse 42% 58% at 100% 78%, #000 0%, rgba(0, 0, 0, 0.7) 38%, transparent 72%);
+            mask-image: radial-gradient(ellipse 42% 58% at 100% 78%, #000 0%, rgba(0, 0, 0, 0.7) 38%, transparent 72%);
+        }
+        .hero-frame::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 40%;
+            height: 44%;
+            pointer-events: none;
+            background: radial-gradient(ellipse 100% 90% at 100% 90%, #EBEFF5 0%, rgba(235, 239, 245, 0.7) 34%, transparent 74%);
+        }
+        .card-ico {
+            display: block;
+            color: #242426;
+            line-height: 0;
+        }
+        .card-ico svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 1.5;
+        }
+        .chip .chip-ico {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fff;
+            display: grid;
+            place-items: center;
+        }
+        .chip .chip-ico svg {
+            width: 11px;
+            height: 11px;
+            color: #242426;
+            stroke-width: 2;
+        }
+        .nav-cta .arrow svg {
+            width: 16px;
+            height: 16px;
+            color: #0f0f0f;
+        }
+        .cta-btn .arrow svg {
+            width: 20px;
+            height: 20px;
+            color: #fff;
+        }
+        .analyse-submit .arrow svg,
+        .refer-btn .arrow svg {
+            width: 18px;
+            height: 18px;
+            color: #35363b;
+        }
+        .source-btn i svg {
+            width: 16px;
+            height: 16px;
+            color: #242426;
+        }
+        button[data-upload-cta] svg {
+            width: 18px;
+            height: 18px;
         }
         .analysis-spinner {
             animation: spin 0.8s linear infinite;
@@ -69,7 +265,7 @@
             height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #F4F4F6;
+            background: #EBEFF5;
         }
         ::-webkit-scrollbar-thumb {
             background: #D1D5DB;
@@ -78,285 +274,670 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #9CA3AF;
         }
+        .chip {
+            margin-top: auto;
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            height: 36px;
+            padding: 0 14px 0 8px;
+            border-radius: 999px;
+            background: #EBEFF5;
+            font-size: 13px;
+            color: #242426;
+        }
+        .chip i {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #fff;
+            display: grid;
+            place-items: center;
+        }
+        .chip i svg {
+            width: 11px;
+            height: 11px;
+            color: #242426;
+        }
+        .source-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .source-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            height: 48px;
+            padding: 4px 16px 4px 4px;
+            border-radius: 16px;
+            background: #EBEFF5;
+            color: #242426;
+            font: inherit;
+            font-size: 14px;
+            cursor: pointer;
+            border: 0;
+        }
+        .source-btn:hover { background: #e3e8f0; }
+        .source-btn i {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #fff;
+            display: grid;
+            place-items: center;
+        }
+        .notes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            padding: 8px 8px 0;
+        }
+        .notes h5 {
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: -0.03em;
+        }
+        .notes p {
+            margin-top: 10px;
+            font-size: 15px;
+            line-height: 23px;
+            color: rgba(36, 36, 38, 0.75);
+        }
+        .camera-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 80;
+            background: rgba(36, 36, 38, 0.72);
+            display: none;
+            place-items: center;
+            padding: 24px;
+        }
+        .camera-overlay.is-open { display: grid; }
+        .camera-panel {
+            width: min(560px, 100%);
+            background: #35363B;
+            border-radius: 24px;
+            padding: 8px;
+        }
+        .camera-panel video,
+        .camera-panel canvas {
+            display: block;
+            width: 100%;
+            height: 360px;
+            object-fit: cover;
+            background: #111;
+            border-radius: 16px;
+        }
+        .camera-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 20px 16px;
+        }
+        .camera-actions p {
+            font-size: 14px;
+            line-height: 21px;
+            color: rgba(255,255,255,0.75);
+        }
+        .help-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 36px;
+            min-height: 311px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: none;
+        }
+        .help-card .card-ico {
+            display: block;
+            color: #242426;
+            line-height: 0;
+        }
+        .help-card h5 {
+            margin-top: 28px;
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+        }
+        .help-card p {
+            margin-top: 10px;
+            font-size: 15px;
+            line-height: 23px;
+            color: rgba(36, 36, 38, 0.75);
+        }
+        .section-lead {
+            max-width: 640px;
+            margin-bottom: 28px;
+        }
+        .section-lead h2 {
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 45px;
+            letter-spacing: -1.08px;
+        }
+        .section-lead p {
+            margin-top: 10px;
+            font-size: 15px;
+            line-height: 23px;
+            color: rgba(36, 36, 38, 0.75);
+        }
+        .cta {
+            width: min(1360px, calc(100% - 40px));
+            margin: 0 auto;
+            background: #35363B;
+            border-radius: 40px 40px 0 0;
+            padding: 88px 48px 64px;
+            text-align: center;
+        }
+        .cta h2 {
+            font-size: 64px;
+            font-weight: 400;
+            line-height: 80px;
+            letter-spacing: -2.56px;
+            color: #fff;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .cta p {
+            margin: 18px auto 0;
+            max-width: 520px;
+            font-size: 18px;
+            line-height: 27px;
+            color: #fff;
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            height: 64px;
+            margin-top: 32px;
+            padding: 0 22px 0 8px;
+            border-radius: 20px;
+            background: #D9FF5C;
+            color: #242426;
+            font-size: 16px;
+        }
+        .cta-btn .arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            background: #35363B;
+            display: grid;
+            place-items: center;
+        }
+        .footer {
+            width: min(1360px, calc(100% - 40px));
+            margin: 0 auto 40px;
+            padding: 72px 48px 40px;
+            container-type: inline-size;
+        }
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .copy { font-size: 14px; color: rgba(36, 36, 38, 0.75); }
+        .cols {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(110px, 1fr));
+            gap: 32px;
+        }
+        .cols h6 {
+            font-size: 18px;
+            font-weight: 600;
+            color: rgba(36, 36, 38, 0.75);
+            margin-bottom: 16px;
+        }
+        .cols a {
+            display: block;
+            font-size: 14px;
+            color: rgba(36, 36, 38, 0.75);
+            margin-bottom: 10px;
+        }
+        .cols a:hover { color: #242426; }
+        .wordmark {
+            margin-top: 48px;
+            font-size: clamp(40px, 13.6cqi, 132px);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            color: #242426;
+            white-space: nowrap;
+        }
+        .result-lead {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 28px;
+        }
+        .result-lead h2 {
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 45px;
+            letter-spacing: -1.08px;
+        }
+        .result-lead p {
+            margin-top: 10px;
+            font-size: 15px;
+            line-height: 23px;
+            color: rgba(36, 36, 38, 0.75);
+            max-width: 520px;
+        }
+        .result-stat {
+            background: #fff;
+            border-radius: 24px;
+            padding: 36px;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+        }
+        .result-stat .label {
+            font-size: 14px;
+            color: rgba(36, 36, 38, 0.75);
+        }
+        .result-stat .value {
+            margin-top: 20px;
+            font-size: 44px;
+            line-height: 52px;
+            letter-spacing: -1.6px;
+            text-transform: capitalize;
+        }
+        .result-stat p.body {
+            margin-top: 20px;
+            font-size: 15px;
+            line-height: 23px;
+            color: rgba(36, 36, 38, 0.75);
+        }
+        .result-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 36px;
+        }
+        .result-card h5 {
+            font-size: 22px;
+            font-weight: 500;
+            letter-spacing: -0.04em;
+        }
+        .result-step {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(36, 36, 38, 0.12);
+        }
+        .result-step:last-child { border-bottom: 0; padding-bottom: 0; }
+        .load-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 22px 0;
+            border-bottom: 1px solid rgba(36, 36, 38, 0.12);
+            transition: opacity 0.25s ease;
+        }
+        .load-step:last-child { border-bottom: 0; padding-bottom: 0; }
+        .load-index {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #EBEFF5;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+        .result-step .role {
+            font-size: 13px;
+            color: rgba(36, 36, 38, 0.75);
+            text-transform: capitalize;
+        }
+        .result-step .product {
+            margin-top: 6px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .result-step .meta {
+            margin-top: 6px;
+            font-size: 14px;
+            line-height: 21px;
+            color: rgba(36, 36, 38, 0.75);
+        }
+        .analyse-card {
+            background: #35363B;
+            border-radius: 24px;
+            padding: 8px;
+        }
+        .analyse-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 28px 28px 22px;
+        }
+        .analyse-head h3 {
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 45px;
+            letter-spacing: -1.08px;
+            color: #fff;
+        }
+        .analyse-head p {
+            width: 200px;
+            font-size: 14px;
+            line-height: 21px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .analyse-form {
+            background: #fff;
+            border-radius: 16px;
+            padding: 36px;
+        }
+        .analyse-field {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-bottom: 14px;
+            margin: 18px 0;
+            border-bottom: 1px solid rgba(36, 36, 38, 0.12);
+        }
+        .analyse-field label { font-size: 14px; }
+        .analyse-field input {
+            width: 100%;
+            font-size: 14px;
+            line-height: 21px;
+            background: transparent;
+            border: 0;
+            outline: 0;
+        }
+        .analyse-submit {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 48px;
+            margin-top: 8px;
+            padding: 4px;
+            border-radius: 16px;
+            background: #35363B;
+            color: #fff;
+            position: relative;
+        }
+        .analyse-submit .arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #D9FF5C;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+        .analyse-submit .label {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            line-height: 1;
+        }
+        .analyse-submit:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .refer-card {
+            background: #35363B;
+            border-radius: 24px;
+            padding: 8px;
+            margin-bottom: 16px;
+        }
+        .refer-btn {
+            display: inline-flex;
+            align-items: center;
+            height: 48px;
+            padding: 4px 20px 4px 4px;
+            gap: 14px;
+            border-radius: 16px;
+            background: #242426;
+            color: #fff;
+            font-size: 14px;
+            line-height: 1;
+            white-space: nowrap;
+            flex-shrink: 0;
+            align-self: center;
+        }
+        .refer-btn .arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: #D9FF5C;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+        }
+        .refer-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            padding: 28px 28px 22px;
+        }
+        .refer-head h3 {
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 45px;
+            letter-spacing: -1.08px;
+            color: #fff;
+        }
+        .refer-head p {
+            margin-top: 10px;
+            max-width: 360px;
+            font-size: 14px;
+            line-height: 21px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+        .refer-body {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 36px 36px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 1100px) {
+            .result-lead { flex-direction: column; align-items: flex-start; }
+            .refer-head { flex-direction: column; }
+            .refer-body { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 1100px) {
+            .source-actions { flex-direction: column; align-items: stretch; }
+            .notes { grid-template-columns: 1fr; gap: 28px; }
+            .cta { padding: 64px 24px; border-radius: 28px 28px 0 0; }
+            .cta h2 { font-size: 44px; line-height: 52px; letter-spacing: -1.6px; }
+            .footer { padding: 48px 24px 32px; }
+            .footer-top { flex-direction: column; }
+            .cols { grid-template-columns: 1fr 1fr; }
+        }
     </style>
 </head>
 <body class="overflow-x-hidden selection:bg-brand-gold/30">
 
-    <!-- TopNavBar -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-[#F4F4F6]/80 backdrop-blur-md border-b border-brand-borderLight transition-all duration-300 py-4">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-            <!-- Logo -->
-            <a class="flex items-center gap-3 shrink-0" href="#">
-                <div class="w-9 h-9 rounded-full bg-brand-charcoal flex items-center justify-center">
-                    <svg class="w-4 h-4" fill="none" height="48" viewBox="0 0 31 48" width="31" xmlns="http://www.w3.org/2000/svg">
-                        <g fill="#fff">
-                            <path d="m0 17.8433 30.9054-17.8433-.8189 12.6994-26.32053 15.1961z"/>
-                            <path d="m3.76562 27.8951 21.73568-12.5492-.8189 12.6994-17.15081 9.902z" opacity=".5"/>
-                            <path d="m7.5293 37.9477 12.566-7.255-.8189 12.6994-7.9811 4.6079z" opacity=".25"/>
-                        </g>
-                    </svg>
-                </div>
-                <span class="font-bold text-xl text-brand-charcoal tracking-tight">Confidence<span class="text-brand-charcoal">.</span></span>
+    <div class="nav-wrap">
+        <nav class="shell-nav" id="nav">
+            <a class="logo-mark" href="index.html" aria-label="Confidence">
+                <svg fill="none" viewBox="0 0 37 25" xmlns="http://www.w3.org/2000/svg">
+                    <rect height="21.5" rx="10.75" stroke="#242426" stroke-width="2.5" width="33.5" x="1.75" y="1.75"/>
+                    <circle cx="12.5" cy="12.5" fill="#242426" r="3.25"/>
+                    <circle cx="24.5" cy="12.5" fill="#242426" r="3.25"/>
+                </svg>
             </a>
-            
-            <!-- Nav links -->
-            <nav class="hidden md:flex items-center gap-8">
-                <a class="text-[13px] font-semibold text-brand-charcoal border-b-2 border-brand-gold pb-0.5" href="#upload-anchor">Analyse</a>
-                <a class="text-[13px] font-medium text-brand-slate hover:text-brand-charcoal transition-colors" href="#skin-basics">Skin Basics</a>
-                <a class="text-[13px] font-medium text-brand-slate hover:text-brand-charcoal transition-colors" href="#safety">Safety</a>
-                <a class="text-[13px] font-medium text-brand-slate hover:text-brand-charcoal transition-colors" href="#privacy">Privacy</a>
-            </nav>
-
-            <!-- Actions -->
-            <div class="flex items-center gap-3">
-                <button class="bg-brand-charcoal hover:bg-brand-charcoal/90 text-white active:scale-95 transition-all px-5 py-2.5 rounded-full text-[13px] font-semibold" data-upload-cta type="button">
-                    Analyse my skin
-                </button>
+            <div class="hidden md:flex items-center gap-7">
+                <a class="text-[14px] text-brand-charcoal" href="index.html">Home</a>
+                <a class="text-[14px] text-brand-slate hover:text-brand-charcoal" href="#upload-anchor">Analyse</a>
+                <a class="text-[14px] text-brand-slate hover:text-brand-charcoal" href="#safety">Safety</a>
+                <a class="text-[14px] text-brand-slate hover:text-brand-charcoal" href="contact.html">Contact</a>
             </div>
-        </div>
-    </header>
+            <button class="nav-cta" data-upload-cta type="button">
+                <span class="arrow">
+                    <i data-lucide="arrow-right"></i>
+                </span>
+                <span class="text-[14px] pr-1">Get started</span>
+            </button>
+        </nav>
+    </div>
 
-    <main class="max-w-7xl mx-auto px-6 md:px-12 pt-32 pb-24">
-        <!-- Hero Section -->
-        <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center min-h-[700px] mb-24">
-            <!-- Hero Content -->
-            <div class="lg:col-span-6 flex flex-col gap-7">
-                <div class="flex items-center gap-3 w-fit">
-                    <span class="text-[11px] font-semibold text-brand-gold uppercase tracking-[0.22em]">Confidence AI</span>
-                    <span class="w-8 h-px bg-brand-borderLight"></span>
-                    <span class="text-[11px] font-medium text-brand-slate uppercase tracking-[0.22em]">Clinical-Grade Analysis</span>
-                </div>
-
-                <h1 class="text-5xl md:text-[64px] font-bold text-brand-charcoal leading-[1.05] tracking-tight">
-                    Your skin,<br/>
-                    <span class="font-serif italic font-normal text-brand-slate text-[1.15em]">finally understood.</span>
+    <main class="w-[min(1200px,calc(100%-80px))] mx-auto pt-[180px] pb-24 max-md:w-[calc(100%-40px)] max-md:pt-[120px]">
+        <section class="grid grid-cols-1 lg:grid-cols-[1fr_584px] gap-12 items-start mb-24">
+            <div class="lg:pt-[108px]">
+                <h1 class="text-[44px] md:text-[64px] font-normal text-brand-charcoal leading-[52px] md:leading-[80px] tracking-[-1.6px] md:tracking-[-2.56px] max-w-[568px]">
+                    Your skin, finally understood.
                 </h1>
-
-                <p class="text-lg text-brand-slate leading-relaxed max-w-lg">
+                <p class="mt-5 text-[18px] leading-[27px] text-brand-slate max-w-[540px]">
                     Upload a selfie. Get a personalized morning and evening routine, specific products, and real ingredient science.
                 </p>
-
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-                    <button class="group bg-brand-charcoal hover:bg-brand-charcoal/90 text-white font-semibold pl-6 pr-2 py-2 rounded-full text-sm flex items-center justify-center gap-3 transition-all duration-200 shadow-md shadow-brand-charcoal/10 active:scale-[0.98] w-fit" data-upload-cta type="button">
-                        Analyse my skin
-                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-white/15 group-hover:bg-white/25 transition-colors">
-                            <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="hidden sm:block w-px h-8 bg-brand-borderLight"></div>
-                    <div class="flex items-center justify-center sm:justify-start gap-1.5 text-sm text-brand-slate">
-                        <span class="font-semibold text-brand-charcoal">100+</span>
-                        <span>clinical products indexed</span>
-                    </div>
-                </div>
+                <button class="mt-8 inline-flex items-center h-12 p-1 pr-5 gap-3.5 rounded-2xl bg-brand-darkCard text-white" data-upload-cta type="button">
+                    <span class="w-10 h-10 rounded-xl bg-brand-gold grid place-items-center shrink-0 text-[#35363b]">
+                        <i data-lucide="arrow-right"></i>
+                    </span>
+                    <span class="text-[14px] pr-1">Get started</span>
+                </button>
+                <p class="mt-16 text-xs text-brand-charcoal">Selfie in. Routine out. Under 60 seconds.</p>
             </div>
 
-            <!-- Hero Visual -->
-            <div class="lg:col-span-6 relative h-[450px] md:h-[600px] w-full rounded-4xl overflow-hidden">
-                <div class="w-full h-full rounded-4xl overflow-hidden relative">
-                    <!-- Main Hero Image -->
-                    <img alt="Person wearing clear glasses, featured in the Confidence skincare analysis" class="w-full h-full object-cover object-[58%_center] filter grayscale-[20%] hero-portrait" src="assets/image.png"/>
-                </div>
+            <div class="hero-frame">
+                <img alt="Person wearing clear glasses, featured in the Confidence skincare analysis" class="hero-shot" src="assets/image.png"/>
+                <img alt="" aria-hidden="true" class="hero-blur" src="assets/image.png"/>
             </div>
         </section>
 
-        <!-- Bento Features Section -->
-        <section class="mb-24">
-            <div class="flex flex-col gap-2 mb-12">
-                <span class="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Scientific First</span>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-charcoal tracking-tight">Digital Dermatology</h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-                <!-- Large Feature -->
-                <div class="md:col-span-8 h-[380px] rounded-4xl bg-white relative overflow-hidden group p-3 dashed-border">
-                    <div class="w-full h-full rounded-3xl overflow-hidden relative">
-                        <img alt="Scientific formulation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter saturate-[80%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9q4DMwjBGC9JFgnLFM5EsbVPhh21JtEH6qCCP4sP8O58_DlJVQHrJXAnoj99Dpze0d3onQjS62ddGgFCQhZg6-9SScXgbAm49t33qRE52nchpit3G1kgLC_YZ88GIV5C5ANs_rcRaqgU3BxphtXorYJT7th7LGsCIYz4DXMCQ0x2Ao7rIA-_lZ5gvjUkVZiB2wnGyk-bU94N4Oo5YISoOeYRSPNxxRiWTInuo-bwAm5G32SyNE7VzK93ed0xIq0Ld9J0xFtEF0IFm"/>
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/80 via-brand-charcoal/20 to-transparent p-8 flex flex-col justify-end">
-                            <h3 class="text-2xl font-bold text-white mb-2">Molecular Precision</h3>
-                            <p class="text-white/80 text-sm max-w-md">Every recommendation is cross-referenced with 5,000+ clinical studies on active ingredients.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Small Feature 1 -->
-                <div class="md:col-span-4 h-[380px] rounded-4xl bg-white p-8 flex flex-col justify-between border border-brand-borderLight shadow-sm">
-                    <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-4">
-                        <svg class="w-6 h-6 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21l-.813-5.096L3 15l5.096-.813L9 9l.813 5.096L15 15l-5.187.904z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-brand-charcoal mb-2">Photo analysis</h3>
-                        <p class="text-brand-slate text-sm leading-relaxed">Identify visible hydration, redness, and texture levels instantly to align your product ingredients.</p>
-                    </div>
-                    <div class="pt-6 border-t border-brand-borderLight">
-                        <a class="text-[13px] font-semibold text-brand-charcoal flex items-center gap-2 group hover:text-brand-gold transition-colors" href="#">
-                            Explore the tech
-                            <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Small Feature 2 -->
-                <div class="md:col-span-4 h-[380px] rounded-4xl bg-white p-8 flex flex-col justify-center items-center gap-6 border border-brand-borderLight shadow-sm text-center">
-                    <span class="text-[11px] font-bold text-brand-gold uppercase tracking-wider">ACTIVE PROGRESS</span>
-                    <div class="w-28 h-28 relative">
-                        <svg class="w-full h-full -rotate-90">
-                            <circle class="text-brand-bgLight" cx="56" cy="56" fill="transparent" r="50" stroke="currentColor" stroke-width="8"></circle>
-                            <circle class="text-brand-mint transition-all duration-1000" cx="56" cy="56" fill="transparent" r="50" stroke="currentColor" stroke-dasharray="314.16" stroke-dashoffset="80" stroke-width="8" stroke-linecap="round"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <span class="text-2xl font-black text-brand-charcoal">82%</span>
-                        </div>
-                    </div>
-                    <p class="text-xs font-semibold text-brand-slate px-4">Average skin health improvement within the first 14 days.</p>
-                </div>
-
-                <!-- Medium Feature -->
-                <div class="md:col-span-8 h-[380px] rounded-4xl bg-white relative overflow-hidden p-3 dashed-border">
-                    <div class="w-full h-full rounded-3xl overflow-hidden relative">
-                        <img alt="Mobile experience" class="w-full h-full object-cover filter saturate-[80%]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBc98_kKk-4Q3O-_z6f4MfK3BduO2HjzbKuO30tLU5MInPUAereBOJHM3jnukE2Avu1k38y3NPY_aF6mhv_VbOvBFARewvlVNifKH89enTnjmUSz2-c_5DsFotVKHadG8mIvuuiC4GDlSFr1tzDGyJeaeF3OZVkyo1wDdKwlrxtKoM-ZAjBnkynbB89X2H0ZK0YdTUZD1F-lH5v0T8ZcE9wpEE-vtqHbdf_QK09IR81L9pMziPafMs5SDVq62RrgwzujavVWyE1B_V"/>
-                        <div class="absolute top-6 left-6 bg-brand-charcoal/90 backdrop-blur-md p-6 rounded-2xl max-w-[280px] text-white">
-                            <h3 class="text-lg font-bold mb-2">Live Weather Sync</h3>
-                            <p class="text-white/70 text-xs leading-relaxed">Adjust your routine based on local weather, pollution, and UV levels in real-time.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-24">
+            <article class="bg-white rounded-[24px] p-9 min-h-[311px] flex flex-col">
+                <span class="card-ico"><i data-lucide="scan-face"></i></span>
+                <h5 class="mt-7 text-[22px] font-medium tracking-tight">Photo analysis</h5>
+                <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">Identify visible hydration, redness, and texture from a selfie, then align products to those markers.</p>
+                <a class="chip mt-auto" href="#upload-anchor"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>Start analysis</a>
+            </article>
+            <article class="bg-white rounded-[24px] p-9 min-h-[311px] flex flex-col">
+                <span class="card-ico"><i data-lucide="sparkles"></i></span>
+                <h5 class="mt-7 text-[22px] font-medium tracking-tight">Product match</h5>
+                <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">Every recommendation is pulled from a vetted catalogue. The model does not invent product names.</p>
+                <a class="chip mt-auto" href="#upload-anchor"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>See how it works</a>
+            </article>
+            <article class="bg-white rounded-[24px] p-9 min-h-[311px] flex flex-col">
+                <span class="card-ico"><i data-lucide="shield-check"></i></span>
+                <h5 class="mt-7 text-[22px] font-medium tracking-tight">Safety first</h5>
+                <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">Severe concerns skip product advice and show a specialist referral before any routine is generated.</p>
+                <a class="chip mt-auto" href="#safety"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>Read safety notes</a>
+            </article>
         </section>
         
         <div id="upload-anchor"></div>
 
         <!-- Interactive Flow Container -->
-        <section class="max-w-4xl mx-auto bg-white border border-brand-borderLight text-brand-charcoal rounded-4xl p-8 md:p-16 mb-24 shadow-sm relative overflow-hidden" id="analysis-flow">
-            <!-- Leaf decorative outline -->
-            <div class="absolute top-0 right-0 w-64 h-64 border border-brand-charcoal/5 rounded-full -mr-20 -mt-20 pointer-events-none"></div>
-            
+        <section class="mb-24 relative" id="analysis-flow">
+            <div id="analysis-panel">
             <!-- SCREEN UPLOAD -->
-            <div class="block" id="screen-upload">
-                <div class="text-center mb-10">
-                    <span class="inline-block text-[10px] font-bold text-brand-slate uppercase tracking-[0.25em] bg-brand-charcoal/5 border border-brand-borderLight rounded-full px-4 py-1.5 mb-4">Start your analysis</span>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-charcoal tracking-tight">Upload a <span class="font-serif italic font-normal text-brand-slate">selfie</span></h2>
-                    <p class="text-sm text-brand-slate mt-3 max-w-[500px] mx-auto leading-relaxed">Use a clear, front-facing photo in natural light. Confidence will analyze visible skin markers to build your personalized routine.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-[1fr_584px] gap-12 items-start" id="screen-upload">
+                <div>
+                    <h2 class="text-[36px] md:text-[64px] leading-[45px] md:leading-[80px] tracking-[-1.08px] md:tracking-[-2.56px] font-normal text-brand-charcoal">Analyse your skin</h2>
+                    <p class="mt-5 text-[18px] leading-[27px] text-brand-slate max-w-[540px]">Upload a selfie from your library, or capture one now. Use a clear, front-facing photo in natural light.</p>
+                    <p class="mt-16 text-xs text-brand-charcoal">Selfie in. Routine out. Under 60 seconds.</p>
                 </div>
 
-                <!-- Error Box -->
-                <div class="hidden items-start gap-3 bg-red-50 text-red-800 border border-red-200 rounded-2xl p-5 mb-8 text-sm" id="error-toast">
-                    <svg class="w-5 h-5 text-red-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
-                    </svg>
-                    <span id="error-msg"></span>
-                </div>
-
-                <!-- Drag Drop / Input Area -->
-                <label class="group block cursor-pointer relative rounded-3xl overflow-hidden border-2 border-dashed border-brand-borderLight hover:border-brand-charcoal/30 transition-all duration-300 bg-brand-bgLight hover:bg-brand-bgLight/80 p-12" id="upload-zone">
-                    <input accept="image/*" capture="user" class="sr-only" id="file-input" type="file"/>
-                    <div class="flex flex-col items-center gap-6">
-                        <div class="w-16 h-16 rounded-2xl bg-brand-charcoal text-white flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                            <!-- Camera SVG -->
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 015.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 00-1.134-.175 2.31 2.31 0 01-1.64-1.055l-.822-1.316a2.192 2.192 0 00-1.736-1.039 48.774 48.774 0 00-5.232 0 2.192 2.192 0 00-1.736 1.039l-.821 1.316z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z"/>
-                            </svg>
-                        </div>
-                        <div class="text-center">
-                            <span class="block text-lg font-bold text-brand-charcoal">Choose your photo</span>
-                            <span class="block text-xs text-brand-slate mt-2">Drag & drop or click to select • JPG, PNG, or WebP</span>
-                        </div>
-                        <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
-                            <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-charcoal/5 px-4 py-1.5 text-[11px] font-semibold text-brand-charcoal border border-brand-borderLight">
-                                Instant analysis
-                            </span>
-                            <span class="inline-flex items-center gap-1.5 rounded-full bg-brand-charcoal/5 px-4 py-1.5 text-[11px] font-semibold text-brand-charcoal border border-brand-borderLight">
-                                Secure & private
-                            </span>
-                        </div>
+                <aside class="analyse-card">
+                    <div class="analyse-head">
+                        <h3>Upload a selfie</h3>
+                        <p>Library or camera. Natural light works best.</p>
                     </div>
-                </label>
+                    <div class="analyse-form">
+                        <p class="hidden text-[14px] text-brand-slate mb-5" id="error-toast"><span id="error-msg"></span></p>
 
-                <!-- Preview Box -->
-                <div class="hidden rounded-3xl overflow-hidden bg-brand-bgLight border border-brand-borderLight relative mb-8 shadow-sm" id="preview-wrap">
-                    <img alt="Selected skin analysis preview" class="w-full max-h-[400px] object-cover block filter grayscale-[20%]" id="preview-img" src=""/>
-                    <button class="absolute top-4 right-4 bg-brand-charcoal hover:bg-brand-charcoal/90 text-white active:scale-95 transition-all rounded-full px-5 py-2.5 text-xs font-semibold backdrop-blur-sm shadow-md" id="change-photo" type="button">
-                        Change Photo
-                    </button>
-                </div>
+                        <input accept="image/*" class="sr-only" id="file-input" type="file"/>
+                        <input accept="image/*" capture="user" class="sr-only" id="camera-input" type="file"/>
 
-                <!-- Scan Status Badge -->
-                <div class="hidden items-center gap-3 bg-brand-mint/20 border border-brand-mint/40 rounded-2xl p-4 mb-8 text-brand-charcoal text-xs font-semibold" id="scan-status">
-                    <svg class="w-4 h-4 text-brand-charcoal shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>Photo uploaded. Ready to analyse.</span>
-                </div>
+                        <div class="source-actions" id="upload-zone">
+                            <button class="source-btn" id="upload-btn" type="button">
+                                <i><i data-lucide="upload"></i></i>
+                                Upload photo
+                            </button>
+                            <button class="source-btn" id="capture-btn" type="button">
+                                <i><i data-lucide="camera"></i></i>
+                                Capture image
+                            </button>
+                        </div>
 
-                <!-- Avoid Input -->
-                <div class="mb-8">
-                    <label class="block text-xs font-bold text-brand-charcoal uppercase tracking-widest mb-3" for="avoid-input">Ingredients to avoid <span class="normal-case tracking-normal font-normal text-brand-slate">(optional)</span></label>
-                    <input class="w-full rounded-2xl border-brand-borderLight bg-brand-bgLight text-brand-charcoal placeholder-brand-slate/60 text-sm px-5 py-4 focus:border-brand-charcoal/40 focus:ring-1 focus:ring-brand-charcoal/20 transition-all duration-200" id="avoid-input" placeholder="e.g. retinol, fragrance, alcohol denat." type="text"/>
-                </div>
+                        <div class="hidden relative rounded-2xl overflow-hidden mb-5" id="preview-wrap">
+                            <img alt="Selected skin analysis preview" class="w-full max-h-[280px] object-cover block" id="preview-img" src=""/>
+                            <button class="chip absolute top-3 right-3" id="change-photo" type="button">
+                                <span class="chip-ico"><i data-lucide="arrow-right"></i></span>
+                                Change photo
+                            </button>
+                        </div>
 
-                <button class="w-full bg-brand-charcoal hover:bg-brand-charcoal/90 text-white font-bold py-4 rounded-full text-base disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center gap-3" disabled id="analyse-btn" type="button">
-                    Analyse my skin
-                </button>
+                        <p class="hidden text-[14px] text-brand-slate mb-5" id="scan-status">Photo uploaded. Ready to analyse.</p>
+
+                        <div class="analyse-field">
+                            <label for="avoid-input">Ingredients to avoid (optional)</label>
+                            <input id="avoid-input" placeholder="e.g. retinol, fragrance, alcohol denat." type="text"/>
+                        </div>
+
+                        <button class="analyse-submit" disabled id="analyse-btn" type="button">
+                            <span class="arrow">
+                                <i data-lucide="arrow-right"></i>
+                            </span>
+                            <span class="label">Analyse my skin</span>
+                        </button>
+                    </div>
+                </aside>
+            </div>
+
             </div>
 
             <!-- SCREEN LOADING -->
-            <div class="hidden max-w-[500px] mx-auto text-center" id="screen-loading">
-                <h2 class="text-3xl font-extrabold text-brand-charcoal tracking-tight">Structuring routine</h2>
-                <p class="text-sm text-brand-slate mt-2 mb-8">Please wait while Confidence reviews your selections.</p>
-                <div class="flex justify-center mb-10">
-                    <svg class="animate-spin h-10 w-10 text-brand-gold" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                </div>
-                <div class="hidden" id="dot-matrix"></div>
-                
-                <div class="bg-brand-bgLight border border-brand-borderLight rounded-3xl overflow-hidden text-left shadow-sm">
-                    <div class="flex items-center gap-4 p-5 border-b border-brand-borderLight opacity-40 transition-all" id="step-1">
-                        <div class="w-9 h-9 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center shrink-0">
-                            <span class="step-symbol font-bold text-sm">1</span>
-                            <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-brand-gold/20 border-t-brand-gold"></span>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Uploading photo</p>
-                            <p class="text-[11px] text-brand-slate mt-0.5">Sending image securely</p>
+            <div class="hidden" id="screen-loading">
+                <div class="grid grid-cols-1 lg:grid-cols-[1fr_584px] gap-12 items-start">
+                    <div>
+                        <h2 class="text-[36px] leading-[45px] tracking-[-1.08px] font-normal text-brand-charcoal">Structuring routine</h2>
+                        <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate max-w-[420px]">Please wait while Confidence reviews this photo and matches products.</p>
+                        <div class="mt-8 w-10 h-10 rounded-xl bg-brand-gold grid place-items-center">
+                            <span class="analysis-spinner w-4 h-4 rounded-full border-2 border-[#35363B]/20 border-t-[#35363B]"></span>
                         </div>
                     </div>
-                    <div class="flex items-center gap-4 p-5 border-b border-brand-borderLight opacity-40 transition-all" id="step-2">
-                        <div class="w-9 h-9 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center shrink-0">
-                            <span class="step-symbol font-bold text-sm">2</span>
-                            <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-brand-gold/20 border-t-brand-gold"></span>
+                    <div class="result-card">
+                        <div class="load-step opacity-40" id="step-1">
+                            <div class="load-index">
+                                <span class="step-symbol text-[14px]">1</span>
+                                <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-[#35363B]/20 border-t-[#35363B]"></span>
+                            </div>
+                            <div>
+                                <p class="text-[16px] font-medium">Uploading photo</p>
+                                <p class="mt-1 text-[14px] text-brand-slate">Sending image securely</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Analysing skin</p>
-                            <p class="text-[11px] text-brand-slate mt-0.5">Reading visible skin markers</p>
+                        <div class="load-step opacity-40" id="step-2">
+                            <div class="load-index">
+                                <span class="step-symbol text-[14px]">2</span>
+                                <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-[#35363B]/20 border-t-[#35363B]"></span>
+                            </div>
+                            <div>
+                                <p class="text-[16px] font-medium">Analysing skin</p>
+                                <p class="mt-1 text-[14px] text-brand-slate">Reading visible skin markers</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex items-center gap-4 p-5 border-b border-brand-borderLight opacity-40 transition-all" id="step-3">
-                        <div class="w-9 h-9 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center shrink-0">
-                            <span class="step-symbol font-bold text-sm">3</span>
-                            <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-brand-gold/20 border-t-brand-gold"></span>
+                        <div class="load-step opacity-40" id="step-3">
+                            <div class="load-index">
+                                <span class="step-symbol text-[14px]">3</span>
+                                <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-[#35363B]/20 border-t-[#35363B]"></span>
+                            </div>
+                            <div>
+                                <p class="text-[16px] font-medium">Matching products</p>
+                                <p class="mt-1 text-[14px] text-brand-slate">Checking ingredient fit</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Matching products</p>
-                            <p class="text-[11px] text-brand-slate mt-0.5">Checking ingredient fit</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 p-5 opacity-40 transition-all" id="step-4">
-                        <div class="w-9 h-9 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center shrink-0">
-                            <span class="step-symbol font-bold text-sm">4</span>
-                            <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-brand-gold/20 border-t-brand-gold"></span>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Generating routine</p>
-                            <p class="text-[11px] text-brand-slate mt-0.5">Creating morning & night steps</p>
+                        <div class="load-step opacity-40" id="step-4">
+                            <div class="load-index">
+                                <span class="step-symbol text-[14px]">4</span>
+                                <span class="spinner analysis-spinner hidden w-4 h-4 rounded-full border-2 border-[#35363B]/20 border-t-[#35363B]"></span>
+                            </div>
+                            <div>
+                                <p class="text-[16px] font-medium">Generating routine</p>
+                                <p class="mt-1 text-[14px] text-brand-slate">Creating morning and night steps</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -364,194 +945,135 @@
 
             <!-- SCREEN RESULTS -->
             <div class="hidden" id="screen-results">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-                    <h2 class="text-3xl font-extrabold text-brand-charcoal tracking-tight">Your Skin <span class="text-brand-gold font-light italic">Routine</span></h2>
-                    <button class="border border-brand-borderLight text-brand-charcoal hover:bg-brand-gold hover:border-brand-gold rounded-full px-5 py-2.5 text-xs font-bold transition-all duration-200" id="restart-btn" type="button">
-                        Analyse Again
+                <div class="result-lead">
+                    <div>
+                        <h2>Your skin, understood.</h2>
+                        <p>A morning and evening routine matched to this photo. Educational suggestions only.</p>
+                    </div>
+                    <button class="chip" id="restart-btn" type="button">
+                        <span class="chip-ico"><i data-lucide="arrow-right"></i></span>
+                        Analyse again
                     </button>
                 </div>
-                
+
                 <div id="referrals-wrap"></div>
-                
-                <!-- Profile details -->
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
-                    <div id="profile-card" class="lg:col-span-7 bg-brand-bgLight border border-brand-borderLight rounded-3xl p-8 shadow-sm">
-                        <p class="text-[10px] font-bold text-brand-slate uppercase tracking-widest mb-6">SKIN PROFILE</p>
-                        <div class="grid grid-cols-2 gap-6 pb-6 border-b border-brand-borderLight mb-6">
-                            <div>
-                                <p class="text-[10px] font-semibold text-brand-slate uppercase tracking-wider mb-2">Skin Type</p>
-                                <p id="r-skin-type" class="text-3xl font-extrabold text-brand-charcoal capitalize">-</p>
-                            </div>
-                            <div>
-                                <p class="text-[10px] font-semibold text-brand-slate uppercase tracking-wider mb-2">Skin Score</p>
-                                <p id="r-skin-score" class="text-3xl font-extrabold text-brand-charcoal">-</p>
-                                <div class="h-1.5 bg-brand-borderLight rounded-full overflow-hidden mt-3">
-                                    <div id="score-fill" class="h-full bg-brand-mint rounded-full w-0 transition-all duration-1000"></div>
-                                </div>
-                            </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                    <article class="result-stat" id="profile-card">
+                        <p class="label">Skin type</p>
+                        <p class="value" id="r-skin-type">-</p>
+                    </article>
+                    <article class="result-stat">
+                        <p class="label">Skin score</p>
+                        <p class="value" id="r-skin-score">-</p>
+                        <div class="mt-auto pt-6 h-1.5 bg-[#EBEFF5] rounded-full overflow-hidden">
+                            <div class="h-full bg-brand-gold rounded-full w-0 transition-all duration-1000" id="score-fill"></div>
                         </div>
-                        <div id="r-concerns" class="flex flex-wrap gap-2"></div>
-                    </div>
-                    
-                    <div class="lg:col-span-5 bg-brand-bgLight border border-brand-borderLight rounded-3xl p-8 flex flex-col justify-between">
-                        <div>
-                            <p class="text-xs font-bold text-brand-gold uppercase tracking-wider mb-4 flex items-center gap-2">
-                                <svg class="w-4 h-4 text-brand-gold shrink-0" fill="none" stroke="currentColor" stroke-width="2.25" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                                </svg>
-                                Disclaimer
-                            </p>
-                            <p class="text-xs text-brand-slate leading-relaxed">
-                                Use these results as a structured starting point for a gentle routine. They are not a medical diagnosis. If a concern is painful, changing quickly, bleeding, or persistent, speak with a qualified clinician.
-                            </p>
-                        </div>
-                        <a class="mt-6 inline-flex items-center gap-2 rounded-full border border-brand-borderLight px-5 py-2.5 text-xs text-brand-charcoal hover:bg-brand-gold hover:text-brand-charcoal transition-all font-semibold w-fit" href="#safety">
-                            Read safety notes
-                        </a>
-                    </div>
+                    </article>
+                    <article class="result-stat">
+                        <p class="label">Disclaimer</p>
+                        <p class="body">A structured starting point, not a diagnosis. Painful, changing, or persistent concerns belong with a clinician.</p>
+                        <a class="chip" href="#safety"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>Read safety notes</a>
+                    </article>
+                </div>
+
+                <div class="result-card mb-4 hidden" id="concerns-card">
+                    <h5>Visible markers</h5>
+                    <div class="flex flex-wrap gap-2 mt-6" id="r-concerns"></div>
                 </div>
 
                 <div id="nudge-wrap"></div>
-                
-                <!-- Morning / Evening Cards -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Morning Card -->
-                    <div class="hidden bg-brand-bgLight border border-brand-borderLight rounded-3xl p-8 shadow-sm" id="morning-card">
-                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-brand-borderLight">
-                            <span class="rounded-full bg-brand-gold/10 text-brand-charcoal px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
-                                ☀️ Morning
-                            </span>
-                            <span class="text-xs text-brand-slate font-medium" id="morning-count"></span>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+                    <article class="result-card hidden" id="morning-card">
+                        <div class="flex items-center justify-between gap-4">
+                            <h5>Morning</h5>
+                            <span class="text-[14px] text-brand-slate" id="morning-count"></span>
                         </div>
-                        <div class="grid grid-cols-1 gap-4" id="morning-steps"></div>
-                    </div>
-                    
-                    <!-- Evening Card -->
-                    <div class="hidden bg-brand-bgLight border border-brand-borderLight rounded-3xl p-8 shadow-sm" id="evening-card">
-                        <div class="flex items-center justify-between mb-6 pb-4 border-b border-brand-borderLight">
-                            <span class="rounded-full bg-brand-mint/10 text-brand-charcoal px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
-                                🌙 Evening
-                            </span>
-                            <span class="text-xs text-brand-slate font-medium" id="evening-count"></span>
+                        <div class="mt-4" id="morning-steps"></div>
+                    </article>
+                    <article class="result-card hidden" id="evening-card">
+                        <div class="flex items-center justify-between gap-4">
+                            <h5>Evening</h5>
+                            <span class="text-[14px] text-brand-slate" id="evening-count"></span>
                         </div>
-                        <div class="grid grid-cols-1 gap-4" id="evening-steps"></div>
-                    </div>
+                        <div class="mt-4" id="evening-steps"></div>
+                    </article>
                 </div>
-                
+
                 <div id="avoid-wrap"></div>
-                
-                <p class="text-center text-[10px] text-brand-slate mt-12 border-t border-brand-borderLight pt-6 leading-relaxed">
-                    Confidence provides general skincare suggestions based on computer vision analysis.<br>This is not medical advice. Consult a dermatologist for persistent or unusual concerns.
-                </p>
             </div>
         </section>
 
-        <!-- Skin Basics Section -->
-        <section class="mb-24" id="skin-basics">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-                <div class="lg:col-span-4 flex flex-col gap-4">
-                    <span class="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Skin basics</span>
-                    <h2 class="text-3xl font-extrabold text-brand-charcoal tracking-tight">A calmer way to understand your face.</h2>
-                    <p class="text-sm text-brand-slate leading-relaxed">Most daily skincare decisions come back to a few basics: gentle cleansing, moisturising, sun protection, and knowing when a skin concern needs a clinician.</p>
-                </div>
-                <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-brand-gold/10 text-brand-gold flex items-center justify-center mb-6">
-                            <svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-1.5l1.359-3.057a1.935 1.935 0 013.3 0L16.5 15.75m-6 0a3 3 0 106 0v-3.75m-6 3.75H7.5m3-3.75H6.75m3-3h1.5" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-charcoal mb-3">Keep the barrier boring</h3>
-                        <p class="text-xs text-brand-slate leading-relaxed mb-6">A gentle cleanser and moisturiser can reduce friction, dryness, and irritation. Mayo Clinic skin-care guidance outlines this baseline.</p>
-                        <a class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-charcoal hover:text-brand-gold transition-colors" href="https://www.mayoclinic.org/health/skin-care/SN00003" rel="noopener" target="_blank">
-                            Mayo Clinic guidance →
-                        </a>
-                    </article>
-                    <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
-                        <div class="w-10 h-10 rounded-xl bg-brand-mint/10 text-brand-mint flex items-center justify-center mb-6">
-                            <svg class="w-5 h-5 text-brand-mint" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
-                            </svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-brand-charcoal mb-3">Protect against UV</h3>
-                        <p class="text-xs text-brand-slate leading-relaxed mb-6">FDA and CDC guidance both point to broad-spectrum sunscreen with SPF 15 or higher to reduce sunburn and aging.</p>
-                        <a class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-charcoal hover:text-brand-gold transition-colors" href="https://www.fda.gov/consumers/consumer-updates/tips-stay-safe-sun-sunscreen-sunglasses" rel="noopener" target="_blank">
-                            FDA safety tips →
-                        </a>
-                    </article>
-                </div>
+        <section class="notes mb-8">
+            <div id="safety">
+                <h5>Safety</h5>
+                <p>This is not a diagnosis. Painful, bleeding, changing, or persistent concerns belong with a clinician.</p>
             </div>
-        </section>
-
-        <!-- Safety Section -->
-        <section class="mb-24" id="safety">
-            <div class="bg-white border border-brand-borderLight rounded-4xl p-8 md:p-12 shadow-sm dashed-border">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-5 flex flex-col gap-3">
-                        <span class="text-xs font-bold text-brand-gold uppercase tracking-[0.2em]">Safety first</span>
-                        <h2 class="text-3xl font-extrabold text-brand-charcoal tracking-tight">Useful guidance has limits.</h2>
-                    </div>
-                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-brand-slate">
-                        <div class="flex gap-3">
-                            <span class="text-brand-gold">●</span>
-                            <p>Confidence can organise visible skin signals and routine ideas, but it does not diagnose conditions.</p>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="text-brand-gold">●</span>
-                            <p>Seek medical advice for sudden, painful, infected, bleeding, changing, or persistent concerns.</p>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="text-brand-gold">●</span>
-                            <p>Patch test new products and introduce active ingredients slowly, especially if your skin is reactive.</p>
-                        </div>
-                        <div class="flex gap-3">
-                            <span class="text-brand-gold">●</span>
-                            <p>Sun protection, gentle cleansing, and moisturising remain the baseline for most routines.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Privacy Section -->
-        <section class="mb-24" id="privacy">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
-                    <h2 class="text-lg font-bold text-brand-charcoal mb-3">Privacy Policy</h2>
-                    <p class="text-xs text-brand-slate leading-relaxed">Your selfie is used to generate a skincare analysis for this session. Avoid uploading photos you do not have permission to use.</p>
-                </article>
-                <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
-                    <h2 class="text-lg font-bold text-brand-charcoal mb-3">Terms of Service</h2>
-                    <p class="text-xs text-brand-slate leading-relaxed">Confidence provides educational skincare suggestions only. You are responsible for product choices and patch testing.</p>
-                </article>
-                <article class="bg-white border border-brand-borderLight rounded-3xl p-8 shadow-sm">
-                    <h2 class="text-lg font-bold text-brand-charcoal mb-3">Support</h2>
-                    <p class="text-xs text-brand-slate leading-relaxed">For support, try a clear front-facing photo in good light, check that the backend is running, and avoid heavy makeup.</p>
-                </article>
+            <div id="privacy">
+                <h5>Privacy</h5>
+                <p>Your selfie is used for this session only. Educational suggestions - you choose what to try.</p>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="w-full py-12 bg-white border-t border-brand-borderLight">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-brand-charcoal flex items-center justify-center">
-                    <svg class="w-3.5 h-3.5" fill="none" height="48" viewBox="0 0 31 48" width="31" xmlns="http://www.w3.org/2000/svg">
-                        <g fill="#fff">
-                            <path d="m0 17.8433 30.9054-17.8433-.8189 12.6994-26.32053 15.1961z"/>
-                            <path d="m3.76562 27.8951 21.73568-12.5492-.8189 12.6994-17.15081 9.902z" opacity=".5"/>
-                            <path d="m7.5293 37.9477 12.566-7.255-.8189 12.6994-7.9811 4.6079z" opacity=".25"/>
-                        </g>
-                    </svg>
+    <div class="camera-overlay" id="camera-overlay" hidden>
+        <div class="camera-panel">
+            <video autoplay muted playsinline id="camera-video"></video>
+            <canvas class="hidden" id="camera-canvas"></canvas>
+            <div class="camera-actions">
+                <p>Hold still, face the camera, then capture.</p>
+                <div class="flex gap-2">
+                    <button class="h-10 px-4 rounded-xl bg-white/10 text-white text-[14px]" id="camera-cancel" type="button">Cancel</button>
+                    <button class="h-10 px-4 rounded-xl bg-brand-gold text-brand-charcoal text-[14px] font-medium" id="camera-shot" type="button">Capture image</button>
                 </div>
-                <p class="text-xs font-semibold text-brand-charcoal"> &copy; 2026 Confidence AI. Precision Skincare Intelligence.</p>
-            </div>
-            <div class="flex gap-6 text-xs text-brand-slate font-medium">
-                <a class="hover:text-brand-charcoal" href="#privacy">Privacy</a>
-                <a class="hover:text-brand-charcoal" href="#safety">Safety</a>
             </div>
         </div>
+    </div>
+
+    <section class="cta">
+        <h2>Your skin, finally understood.</h2>
+        <p>Upload a selfie or capture one now. Get a morning and evening routine in under 60 seconds.</p>
+        <button class="cta-btn" data-upload-cta type="button">
+            <span class="arrow">
+                <i data-lucide="arrow-right"></i>
+            </span>
+            Get started
+        </button>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <p class="copy">© 2026 Confidence AI. All Rights reserved.</p>
+            <div class="cols">
+                <div>
+                    <h6>Index</h6>
+                    <a href="#upload-anchor">Analyse</a>
+                    <a href="#safety">Safety</a>
+                    <a href="#privacy">Privacy</a>
+                </div>
+                <div>
+                    <h6>Company</h6>
+                    <a href="index.html">About us</a>
+                    <a href="#upload-anchor">Analyse</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div>
+                    <h6>Social</h6>
+                    <a href="#">X / Twitter</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Discord</a>
+                </div>
+                <div>
+                    <h6>Legal</h6>
+                    <a href="#privacy">Terms of Use</a>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#privacy">Cookie policy</a>
+                </div>
+            </div>
+        </div>
+        <p class="wordmark">Confidence.</p>
     </footer>
 
     <!-- Core Interactive Logic Script -->
@@ -559,6 +1081,14 @@
       const API_URL = 'https://confidence-api-59597652459.us-central1.run.app/analyse';
 
       const fileInput = document.getElementById('file-input');
+      const cameraInput = document.getElementById('camera-input');
+      const uploadBtn = document.getElementById('upload-btn');
+      const captureBtn = document.getElementById('capture-btn');
+      const cameraOverlay = document.getElementById('camera-overlay');
+      const cameraVideo = document.getElementById('camera-video');
+      const cameraCanvas = document.getElementById('camera-canvas');
+      const cameraCancel = document.getElementById('camera-cancel');
+      const cameraShot = document.getElementById('camera-shot');
       const uploadZone = document.getElementById('upload-zone');
       const previewWrap = document.getElementById('preview-wrap');
       const previewImg = document.getElementById('preview-img');
@@ -571,6 +1101,7 @@
       const sUpload = document.getElementById('screen-upload');
       const sLoading = document.getElementById('screen-loading');
       const sResults = document.getElementById('screen-results');
+      const analysisPanel = document.getElementById('analysis-panel');
       const scanStatus = document.getElementById('scan-status');
       let selectedFile = null;
 
@@ -578,6 +1109,10 @@
         document.querySelectorAll('[data-upload-cta]').forEach((btn) => {
           btn.addEventListener('click', () => show('screen-upload'));
         });
+        const nav = document.getElementById('nav');
+        const onScroll = () => nav.classList.toggle('is-solid', window.scrollY > 8);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
       });
 
       function showErr(message) {
@@ -592,6 +1127,7 @@
       function show(id) {
         [sUpload, sLoading, sResults].forEach((screen) => screen.classList.add('hidden'));
         document.getElementById(id).classList.remove('hidden');
+        analysisPanel.classList.toggle('hidden', id === 'screen-results' || id === 'screen-loading');
         document.getElementById('upload-anchor').scrollIntoView({ behavior: 'smooth' });
       }
 
@@ -600,19 +1136,23 @@
           const el = document.getElementById('step-' + i);
           const spinner = el.querySelector('.spinner');
           const symbol = el.querySelector('.step-symbol');
+          const index = el.querySelector('.load-index');
           el.classList.remove('opacity-100');
           el.classList.add('opacity-40');
           spinner.classList.add('hidden');
           symbol.classList.remove('hidden');
+          index.style.background = '#EBEFF5';
           
           if (i === n) {
             el.classList.remove('opacity-40');
             el.classList.add('opacity-100');
             spinner.classList.remove('hidden');
             symbol.classList.add('hidden');
+            index.style.background = '#D9FF5C';
           } else if (i < n) {
             el.classList.remove('opacity-40');
             el.classList.add('opacity-100');
+            index.style.background = '#D9FF5C';
           }
         }
       }
@@ -625,6 +1165,7 @@
       function resetPreview() {
         selectedFile = null;
         fileInput.value = '';
+        cameraInput.value = '';
         previewImg.src = '';
         previewWrap.classList.add('hidden');
         uploadZone.classList.remove('hidden');
@@ -664,7 +1205,59 @@
         img.src = url;
       }
 
+      let cameraStream = null;
+
+      function stopCamera() {
+        if (cameraStream) {
+          cameraStream.getTracks().forEach((track) => track.stop());
+          cameraStream = null;
+        }
+        cameraVideo.srcObject = null;
+        cameraOverlay.classList.remove('is-open');
+        cameraOverlay.hidden = true;
+      }
+
+      async function openCamera() {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          cameraInput.click();
+          return;
+        }
+        try {
+          cameraStream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: 'user', width: { ideal: 1280 }, height: { ideal: 1280 } },
+            audio: false
+          });
+          cameraVideo.srcObject = cameraStream;
+          cameraOverlay.hidden = false;
+          cameraOverlay.classList.add('is-open');
+        } catch {
+          cameraInput.click();
+        }
+      }
+
+      function takePhoto() {
+        const width = cameraVideo.videoWidth;
+        const height = cameraVideo.videoHeight;
+        if (!width || !height) return;
+        cameraCanvas.width = width;
+        cameraCanvas.height = height;
+        cameraCanvas.getContext('2d').drawImage(cameraVideo, 0, 0, width, height);
+        cameraCanvas.toBlob((blob) => {
+          stopCamera();
+          if (!blob) {
+            showErr('Could not capture that image. Try again.');
+            return;
+          }
+          handleFile(new File([blob], 'capture.jpg', { type: 'image/jpeg' }));
+        }, 'image/jpeg', 0.92);
+      }
+
       fileInput.addEventListener('change', (event) => handleFile(event.target.files[0]));
+      cameraInput.addEventListener('change', (event) => handleFile(event.target.files[0]));
+      uploadBtn.addEventListener('click', () => fileInput.click());
+      captureBtn.addEventListener('click', openCamera);
+      cameraCancel.addEventListener('click', stopCamera);
+      cameraShot.addEventListener('click', takePhoto);
       changePhoto.addEventListener('click', resetPreview);
 
       uploadZone.addEventListener('dragover', (event) => {
@@ -726,54 +1319,58 @@
       });
 
       function chip(name, score) {
-        return `<span class="bg-brand-bgLight text-brand-charcoal border border-brand-borderLight text-xs font-semibold px-4 py-1.5 rounded-full capitalize">${name.replace(/_/g, ' ')} ${Math.round(score * 100)}%</span>`;
+        return `<span class="inline-flex items-center h-9 px-4 rounded-full bg-[#EBEFF5] text-[13px] capitalize">${name.replace(/_/g, ' ')} ${Math.round(score * 100)}%</span>`;
       }
 
       const STEP_ICONS = {
-        cleanser: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 8.5h-.01M17 5H7a4 4 0 00-4 4v10a4 4 0 004 4h10a4 4 0 004-4V9a4 4 0 00-4-4zM12 12v3m-2-1.5h4"/></svg>`,
-        cleanse: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 8.5h-.01M17 5H7a4 4 0 00-4 4v10a4 4 0 004 4h10a4 4 0 004-4V9a4 4 0 00-4-4zM12 12v3m-2-1.5h4"/></svg>`,
-        toner: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z"/></svg>`,
-        tone: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z"/></svg>`,
-        serum: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v1.242c0 .289.139.56.378.725l4.744 3.284a1.314 1.314 0 00.728.245h.4c.2 0 .393-.058.56-.168l1.66-1.1A2.25 2.25 0 0121 9.24v6.01a2.25 2.25 0 01-1.08 1.923l-6.75 4.07a2.25 2.25 0 01-2.34 0l-6.75-4.07A2.25 2.25 0 013 15.25v-6.01a2.25 2.25 0 011.22-2.007l1.66 1.1a1 1 0 00.56.168h.4c.27 0 .524-.088.728-.245l4.744-3.284A1.314 1.314 0 0012 4.346V3.104M9.75 3.104h4.5"/></svg>`,
-        treatment: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v1.242c0 .289.139.56.378.725l4.744 3.284a1.314 1.314 0 00.728.245h.4c.2 0 .393-.058.56-.168l1.66-1.1A2.25 2.25 0 0121 9.24v6.01a2.25 2.25 0 01-1.08 1.923l-6.75 4.07a2.25 2.25 0 01-2.34 0l-6.75-4.07A2.25 2.25 0 013 15.25v-6.01a2.25 2.25 0 011.22-2.007l1.66 1.1a1 1 0 00.56.168h.4c.27 0 .524-.088.728-.245l4.744-3.284A1.314 1.314 0 0012 4.346V3.104M9.75 3.104h4.5"/></svg>`,
-        retinol: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
-        vitamin: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
-        moisturiser: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
-        moisturizer: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
-        moisturis: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
-        hydrat: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z"/></svg>`,
-        sunscreen: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
-        spf: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
-        sun: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>`,
-        eye: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.421 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
-        exfoliat: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.125a3.375 3.375 0 01-3.375 3.375h-8.5a3.375 3.375 0 01-3.375-3.375L3.75 7.5M12 2.25v5.25m0 0a3 3 0 110-6m0 6v6m3-10.5l-4 2.5m0 0l-4-2.5"/></svg>`,
-        mask: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.125a3.375 3.375 0 01-3.375 3.375h-8.5a3.375 3.375 0 01-3.375-3.375L3.75 7.5M12 2.25v5.25m0 0a3 3 0 110-6m0 6v6m3-10.5l-4 2.5m0 0l-4-2.5"/></svg>`,
-        oil: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25s-7.5-4.108-7.5-11.25a7.5 7.5 0 1115 0z"/></svg>`,
-        balm: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
-        lip: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`,
-        mist: `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h12M4 18h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`
+        cleanser: 'droplets',
+        cleanse: 'droplets',
+        toner: 'droplet',
+        tone: 'droplet',
+        serum: 'flask-conical',
+        treatment: 'flask-conical',
+        retinol: 'sparkles',
+        vitamin: 'plus-circle',
+        moisturiser: 'heart',
+        moisturizer: 'heart',
+        moisturis: 'heart',
+        hydrat: 'droplet',
+        sunscreen: 'sun',
+        spf: 'sun',
+        sun: 'sun',
+        eye: 'eye',
+        exfoliat: 'layers',
+        mask: 'layers',
+        oil: 'droplet',
+        balm: 'circle-dot',
+        lip: 'heart',
+        mist: 'wind'
       };
+
+      function paintIcons() {
+        if (window.lucide) window.lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });
+      }
 
       function stepIcon(role) {
         const r = (role || '').toLowerCase();
-        for (const [key, iconSVG] of Object.entries(STEP_ICONS)) {
-          if (r.includes(key)) return iconSVG;
+        let name = 'circle-plus';
+        for (const [key, icon] of Object.entries(STEP_ICONS)) {
+          if (r.includes(key)) {
+            name = icon;
+            break;
+          }
         }
-        return `<svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M3 12h18M12 3a9 9 0 110 18 9 9 0 010-18z"/></svg>`;
+        return `<i class="w-5 h-5 text-brand-gold" data-lucide="${name}"></i>`;
       }
 
       function stepHTML(step) {
         const ingredients = (step.key_ingredients || []).join(' · ');
-        const icon = stepIcon(step.role || '');
         return `
-          <div class="flex items-start gap-4 bg-white border border-brand-borderLight rounded-2xl p-5 hover:bg-brand-bgLight/80 transition-all duration-200 text-brand-charcoal">
-            <div class="w-10 h-10 rounded-full bg-brand-gold/10 text-brand-gold fill-none flex items-center justify-center shrink-0">${icon}</div>
-            <div class="min-w-0">
-              <span class="text-[10px] font-bold text-brand-gold uppercase tracking-wider">${step.role || ''}</span>
-              <p class="text-sm font-bold text-brand-charcoal mt-1">${step.product || ''}</p>
-              ${ingredients ? `<p class="text-xs text-brand-slate mt-1">${ingredients}</p>` : ''}
-              ${step.reason ? `<p class="text-xs text-brand-slate/80 mt-2.5 leading-relaxed">${step.reason}</p>` : ''}
-            </div>
+          <div class="result-step">
+            <p class="role">${step.role || ''}</p>
+            <p class="product">${step.product || ''}</p>
+            ${ingredients ? `<p class="meta">${ingredients}</p>` : ''}
+            ${step.reason ? `<p class="meta">${step.reason}</p>` : ''}
           </div>
         `;
       }
@@ -786,56 +1383,42 @@
         document.getElementById('score-fill').style.width = '0%';
         setTimeout(() => { document.getElementById('score-fill').style.width = score + '%'; }, 300);
 
+        const concerns = (profile.concerns || []).slice(0, 6);
         document.getElementById('r-concerns').innerHTML =
-          (profile.concerns || []).slice(0, 6).map((concern) => chip(concern.name || '', concern.score || 0)).join('');
+          concerns.map((concern) => chip(concern.name || '', concern.score || 0)).join('');
+        document.getElementById('concerns-card').classList.toggle('hidden', concerns.length === 0);
 
         const referrals = data.referral_concerns || [];
         document.getElementById('referrals-wrap').innerHTML = referrals.length
-          ? `<div class="rounded-3xl bg-red-50 border border-red-200 p-6 mb-8 shadow-sm">
-              <div class="flex flex-col lg:flex-row gap-6 items-start justify-between">
-                <div class="flex items-start gap-4">
-                  <div class="w-12 h-12 rounded-xl bg-red-100 text-red-600 flex items-center justify-center shrink-0">
-                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.008v.008H12v-.008z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-lg font-bold text-red-900">Professional Review Recommended</h3>
-                    <p class="text-xs text-red-700 mt-1 max-w-[500px]">Some findings require specialist attention. Consider consulting with a dermatologist.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
-                      ${referrals.map((referral) => `
-                        <div class="bg-white border border-red-200 rounded-xl p-3">
-                          <p class="text-xs font-bold text-red-900 capitalize">${(referral.name || '').replace(/_/g, ' ')}</p>
-                          <p class="text-[10px] text-red-700/80 mt-1">${referral.message || 'High severity'}</p>
-                        </div>
-                      `).join('')}
-                    </div>
-                  </div>
+          ? `<div class="refer-card">
+              <div class="refer-head">
+                <div>
+                  <h3>See a specialist</h3>
+                  <p>Some findings need a clinician before a full over-the-counter routine.</p>
                 </div>
-                <a class="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-full text-xs font-bold transition-all whitespace-nowrap self-stretch lg:self-auto text-center flex items-center justify-center gap-1.5" href="https://www.google.com/search?q=dermatologist+near+me" target="_blank" rel="noopener">
-                  Find Specialist
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"/></svg>
+                <a class="refer-btn" href="https://www.google.com/search?q=dermatologist+near+me" rel="noopener" target="_blank">
+                  <span class="arrow"><i data-lucide="arrow-right"></i></span>
+                  <span>Find specialist</span>
                 </a>
+              </div>
+              <div class="refer-body">
+                ${referrals.map((referral) => `
+                  <div>
+                    <p class="text-[14px] text-brand-slate capitalize">${(referral.name || '').replace(/_/g, ' ')}</p>
+                    <p class="mt-2 text-[15px] leading-[23px] text-brand-charcoal">${referral.message || 'High severity. Speak with a clinician.'}</p>
+                  </div>
+                `).join('')}
               </div>
             </div>`
           : '';
 
         const nudges = data.moderate_nudge_concerns || [];
         document.getElementById('nudge-wrap').innerHTML = nudges.length
-          ? `<div class="rounded-3xl bg-brand-gold/10 border border-brand-gold/20 p-6 mb-8 shadow-sm">
-              <div class="flex gap-4">
-                <div class="w-10 h-10 rounded-xl bg-white/5 text-brand-gold flex items-center justify-center shrink-0">
-                    <svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-3H9v3h3zm0 0h9v-3H12v3zm0-6h9V9h-9v3zm-3 0v-3H3v3h6zm0 6h-6v-3h6v3z"/>
-                    </svg>
-                </div>
-                <div>
-                  <p class="text-xs font-bold text-brand-charcoal uppercase tracking-wider">Moderate concerns to monitor</p>
-                  <p class="text-xs text-brand-slate mt-1">If these persist after 8 weeks of consistent use, consider consulting with a dermatologist.</p>
-                  <div class="flex flex-wrap gap-2 mt-3">
-                    ${nudges.map((concern) => `<span class="bg-white text-brand-charcoal border border-brand-borderLight text-[11px] font-semibold px-3 py-1 rounded-full capitalize">${concern.replace(/_/g, ' ')}</span>`).join('')}
-                  </div>
-                </div>
+          ? `<div class="result-card mb-4">
+              <h5>Watch over 8 weeks</h5>
+              <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">If these persist after consistent use, consider a clinician.</p>
+              <div class="flex flex-wrap gap-2 mt-6">
+                ${nudges.map((concern) => `<span class="inline-flex items-center h-9 px-4 rounded-full bg-[#EBEFF5] text-[13px] capitalize">${String(concern).replace(/_/g, ' ')}</span>`).join('')}
               </div>
             </div>`
           : '';
@@ -855,9 +1438,7 @@
           ? `<div class="rounded-3xl bg-orange-50 border border-orange-200 p-6 mt-8 shadow-sm">
               <div class="flex gap-4">
                 <div class="w-10 h-10 rounded-xl bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
-                    <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
-                    </svg>
+                    <i class="w-5 h-5 text-orange-600" data-lucide="ban"></i>
                 </div>
                 <div>
                   <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">Ingredient to avoid</p>
@@ -867,8 +1448,11 @@
               </div>
             </div>`
           : '';
+        paintIcons();
       }
     </script>
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <script>lucide.createIcons({ attrs: { 'stroke-width': 1.75 } });</script>
 
 </body>
 </html>

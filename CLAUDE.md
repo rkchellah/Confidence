@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Project Is
 
-Confidence — selfie to personalised skincare routine in under 60 seconds.
+Confidence - selfie to personalised skincare routine in under 60 seconds.
 Hackathon project for DevNetwork AI+ML Hackathon 2026 (Perfect Corp Challenge, $2,500).
 Deadline: May 27–28 2026.
 
@@ -32,10 +32,10 @@ Backend starts at `http://localhost:8000`. Check `GET /health` first.
 python scripts/build_product_db.py
 ```
 Embeds 100 products from `scripts/sample_products.json` and indexes them to Supabase.
-Re-running is safe but will duplicate rows — only run once per Supabase project.
+Re-running is safe but will duplicate rows - only run once per Supabase project.
 
 **Open the frontend:**
-Open `frontend/index.html` directly in a browser. No build step — single HTML file.
+Open `frontend/index.html` directly in a browser. No build step - single HTML file.
 
 **Hit the API manually:**
 ```bash
@@ -71,7 +71,7 @@ image bytes
 | `backend/routine_generator.py` | Three-tier triage check in Python (before DeepSeek is called), DeepSeek prompt assembly, structured JSON output. Defines `RoutineOutput`. |
 | `backend/main.py` | FastAPI routes, CORS, startup env-var validation, `_serialise()`. |
 
-### Perfect Corp API — Async Pattern
+### Perfect Corp API - Async Pattern
 
 The API is not synchronous. Every call follows this exact sequence:
 
@@ -84,7 +84,7 @@ result  = parse_result(raw)                          # → SkinAnalysisResult
 
 Do not deviate from this. Polling too fast risks rate limiting; 2s is the correct interval.
 
-### Three-Tier Triage — The Most Important Architectural Decision
+### Three-Tier Triage - The Most Important Architectural Decision
 
 Safety enforcement is in Python code, not in the LLM prompt. This runs in `routine_generator.py` before any DeepSeek call:
 
@@ -92,13 +92,13 @@ Safety enforcement is in Python code, not in the LLM prompt. This runs in `routi
 |---|---|---|
 | Mild | 0–0.4 | Full product recommendation |
 | Moderate | 0.4–0.85 | Recommendation + soft nudge to see a derm if it persists |
-| Severe | 0.85+ | Referral card only — DeepSeek is **not called** for this concern |
+| Severe | 0.85+ | Referral card only - DeepSeek is **not called** for this concern |
 
 Severe triage only fires for `REFERRAL_CONCERNS = {"acne", "redness", "spots", "texture"}`. Cosmetic concerns like pores and dark circles at high severity still get OTC recommendations.
 
 ### Embedding Abstraction
 
-`embed()` in `rag_products.py` is the only place the embedding provider is referenced. Primary: Voyage AI `voyage-3-lite` (1024-dim). Fallback: `sentence-transformers` `all-MiniLM-L6-v2` (384-dim — requires updating the Supabase `vector(1024)` column and rebuilding the index).
+`embed()` in `rag_products.py` is the only place the embedding provider is referenced. Primary: Voyage AI `voyage-3-lite` (1024-dim). Fallback: `sentence-transformers` `all-MiniLM-L6-v2` (384-dim - requires updating the Supabase `vector(1024)` column and rebuilding the index).
 
 ### Supabase Schema
 
@@ -108,8 +108,8 @@ skincare_products
   name        text
   brand       text
   category    text
-  content     text         — embedding chunk
-  metadata    jsonb        — {brand, category, skin_types[], concerns[], price_tier, ingredients[]}
+  content     text         - embedding chunk
+  metadata    jsonb        - {brand, category, skin_types[], concerns[], price_tier, ingredients[]}
   embedding   vector(1024)
 
 RPC: match_skincare_products(query_embedding vector(1024), match_count int)
@@ -118,7 +118,7 @@ RPC: match_skincare_products(query_embedding vector(1024), match_count int)
 
 ### Graceful Degradation
 
-If Supabase is unreachable, `retrieve()` returns `[]` and logs the error. The pipeline continues — DeepSeek generates a routine without specific product matches. This is intentional and documented.
+If Supabase is unreachable, `retrieve()` returns `[]` and logs the error. The pipeline continues - DeepSeek generates a routine without specific product matches. This is intentional and documented.
 
 ### Error Handling Contract
 
@@ -137,7 +137,7 @@ All secrets in `.env.local` (never committed). Copy from `.env.example`.
 | `DEEPSEEK_API_KEY` | DeepSeek LLM (`deepseek-chat`) |
 | `SUPABASE_URL` | Supabase project URL |
 | `SUPABASE_KEY` | Supabase service role key (never in frontend) |
-| `POLL_TIMEOUT_SECONDS` | Perfect Corp poll timeout — default 30 |
+| `POLL_TIMEOUT_SECONDS` | Perfect Corp poll timeout - default 30 |
 
 ---
 
@@ -154,9 +154,9 @@ All secrets in `.env.local` (never committed). Copy from `.env.example`.
 
 ### Code Structure
 
-`main.py` is thin — it connects parts. Domain files own their logic. No new `utils.py`, `helpers.py`, or `api_client.py` files. Any new functionality belongs to an existing domain file or a new domain-named file proposed first.
+`main.py` is thin - it connects parts. Domain files own their logic. No new `utils.py`, `helpers.py`, or `api_client.py` files. Any new functionality belongs to an existing domain file or a new domain-named file proposed first.
 
-### Git — Chella Commits
+### Git - Chella Commits
 
 When a task is complete, state: what changed, which files were modified, the suggested commit message. Never suggest running the commit.
 

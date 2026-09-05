@@ -1,27 +1,27 @@
 ---
 file: PLANNING.md
-project: Confidence — selfie to personalised skincare routine
+project: Confidence - selfie to personalised skincare routine
 hackathon: DevNetwork AI+ML Hackathon 2026
 deadline: May 27–28, 2026
-challenge: Perfect Corp — Building the Next Generation of AI-Driven Consumer Experiences ($2,500)
+challenge: Perfect Corp - Building the Next Generation of AI-Driven Consumer Experiences ($2,500)
 ---
 
-# Confidence — Project Plan
+# Confidence - Project Plan
 
 ---
 
-## Step 1 — Problem, Users, Constraints
+## Step 1 - Problem, Users, Constraints
 
 **Problem:**
 Buying skincare is guesswork. Shelves have hundreds of products, descriptions are vague,
 and what works for one skin type fails on another. People either buy the wrong products
 or pay for expensive consultations. Confidence turns a selfie into a personalised morning
-and evening routine — specific products, grounded in real ingredient science, explained
+and evening routine - specific products, grounded in real ingredient science, explained
 in plain language.
 
 **Users:**
-- Consumer uploading a selfie — wants a clear, actionable skincare routine in under 60 seconds
-- Hackathon judges — want to see: Perfect Corp API used meaningfully, RAG as the intelligence
+- Consumer uploading a selfie - wants a clear, actionable skincare routine in under 60 seconds
+- Hackathon judges - want to see: Perfect Corp API used meaningfully, RAG as the intelligence
   layer, a working demo with real output
 
 **Hard constraints:**
@@ -32,12 +32,12 @@ in plain language.
 - Must include a demo video (1–3 minutes) showing the experience end-to-end
 - Must participate in an exit interview if chosen as winner
 - Deadline: May 27–28 2026
-- No OpenAI — Voyage AI for embeddings (free tier), Transformers.js as fallback
+- No OpenAI - Voyage AI for embeddings (free tier), Transformers.js as fallback
 - No GCP outside rkchellah.org policy restriction
 
 ---
 
-## Step 2 — Proposal
+## Step 2 - Proposal
 
 ### What it is
 
@@ -64,20 +64,20 @@ Output rendered as a results page the user can screenshot and act on.
 ```
 confidence/
   backend/
-    perfect_corp.py      — API client: upload → task → poll → parse
-    rag_products.py      — embed query + retrieve top products from Supabase
-    routine_generator.py — Claude prompt, few-shot examples, structured JSON output
-    main.py              — FastAPI: POST /analyse, GET /health
+    perfect_corp.py      - API client: upload → task → poll → parse
+    rag_products.py      - embed query + retrieve top products from Supabase
+    routine_generator.py - Claude prompt, few-shot examples, structured JSON output
+    main.py              - FastAPI: POST /analyse, GET /health
   frontend/
-    index.html           — selfie upload UI + results display (single HTML file)
+    index.html           - selfie upload UI + results display (single HTML file)
   scripts/
-    build_product_db.py  — one-time: embed and index product catalogue to Supabase
-    sample_products.json — 100 skincare products as structured data
+    build_product_db.py  - one-time: embed and index product catalogue to Supabase
+    sample_products.json - 100 skincare products as structured data
   PLANNING.md
   STACK.md
   VERTICAL.md
   .env.example
-  .env.local             — never committed
+  .env.local             - never committed
   .gitignore
   README.md
   requirements.txt
@@ -90,8 +90,8 @@ See STACK.md for full details and deviation rationale.
 | Layer | Choice |
 |---|---|
 | Skin analysis | Perfect Corp skin-analysis API |
-| Embeddings | Voyage AI `voyage-3-lite` (1024-dim) — fallback: Transformers.js |
-| Embed abstraction | Single `embed()` function in `rag_products.py` — swap provider in one place |
+| Embeddings | Voyage AI `voyage-3-lite` (1024-dim) - fallback: Transformers.js |
+| Embed abstraction | Single `embed()` function in `rag_products.py` - swap provider in one place |
 | Vector DB | Supabase pgvector |
 | LLM | DeepSeek (`deepseek-chat`) |
 | Backend | FastAPI on Google Cloud Run |
@@ -100,13 +100,13 @@ See STACK.md for full details and deviation rationale.
 ### Data model
 
 ```
-Supabase — skincare_products table
+Supabase - skincare_products table
   id          bigserial primary key
   name        text
   brand       text
-  category    text       — moisturiser | serum | cleanser | SPF | treatment | eye cream | toner
-  content     text       — full chunk used for embedding (see format below)
-  metadata    jsonb      — {brand, category, skin_types[], concerns[], price_tier, ingredients[]}
+  category    text       - moisturiser | serum | cleanser | SPF | treatment | eye cream | toner
+  content     text       - full chunk used for embedding (see format below)
+  metadata    jsonb      - {brand, category, skin_types[], concerns[], price_tier, ingredients[]}
   embedding   vector(1024)   ← Voyage AI voyage-3-lite output dimension
 
 Index: ivfflat on embedding (vector_cosine_ops), lists=50
@@ -125,28 +125,28 @@ price_tier: {budget|mid|premium}
 ### Auth model
 
 ```
-No auth — public web app for the hackathon demo
+No auth - public web app for the hackathon demo
 All API keys: server-side only (FastAPI env vars, never in frontend HTML)
 Images: sent to Perfect Corp API, not stored by Confidence
-Skin results: not written to database — stays in the browser response only
+Skin results: not written to database - stays in the browser response only
 ```
 
-### Feature list — v1 (hackathon submission only)
+### Feature list - v1 (hackathon submission only)
 
-- [ ] Selfie upload — drag-and-drop or click, shows preview
-- [ ] Optional "ingredients to avoid" field — filtered from RAG + injected into system prompt
-- [ ] Loading state — animated steps (Analysing skin → Searching products → Generating routine)
-- [ ] Skin profile card — skin type, top 3 concerns with scores, skin score /100
-- [ ] Three-tier triage system — enforced in Python before DeepSeek is called (see Safety Design)
+- [ ] Selfie upload - drag-and-drop or click, shows preview
+- [ ] Optional "ingredients to avoid" field - filtered from RAG + injected into system prompt
+- [ ] Loading state - animated steps (Analysing skin → Searching products → Generating routine)
+- [ ] Skin profile card - skin type, top 3 concerns with scores, skin score /100
+- [ ] Three-tier triage system - enforced in Python before DeepSeek is called (see Safety Design)
         Mild (0–0.4): full recommendation
         Moderate (0.4–0.85): recommendation + soft nudge to see derm if it persists
-        Severe (0.85+): referral card only — DeepSeek not called for this concern
-- [ ] Morning routine — 3–4 steps: product name, key ingredients, why it matches
-- [ ] Evening routine — 3–4 steps: product name, key ingredients, why it matches
-- [ ] Ingredient to avoid — one callout with plain-language reason
-- [ ] Always-present disclaimer footer — not medical advice, visible on every result
+        Severe (0.85+): referral card only - DeepSeek not called for this concern
+- [ ] Morning routine - 3–4 steps: product name, key ingredients, why it matches
+- [ ] Evening routine - 3–4 steps: product name, key ingredients, why it matches
+- [ ] Ingredient to avoid - one callout with plain-language reason
+- [ ] Always-present disclaimer footer - not medical advice, visible on every result
 - [ ] "See a professional" nudge on any concern card scoring above 0.6
-- [ ] Graceful error states — every failure mode suggests a specialist where appropriate
+- [ ] Graceful error states - every failure mode suggests a specialist where appropriate
 - [ ] Results are printable / screenshottable
 
 **Not in v1:**
@@ -154,11 +154,11 @@ Skin results: not written to database — stays in the browser response only
 - Virtual try-on
 - Product purchase links or affiliate integration
 - Mobile app
-- Routine conflict checker (deferred — the "products I already own" feature)
+- Routine conflict checker (deferred - the "products I already own" feature)
 
 ---
 
-## Step 3 — Done Looks Like
+## Step 3 - Done Looks Like
 
 **What the user sees:**
 
@@ -179,14 +179,14 @@ Loading steps (sequential, animated):
 
 **Three possible result states depending on triage:**
 
-State 1 — Mild concerns (all scores below 0.4):
+State 1 - Mild concerns (all scores below 0.4):
 ```
 Skin type: Dry · Skin score: 74/100
 Top concerns: Dryness (0.31) · Pores (0.28) · Dark circles (0.22)
 
 Morning routine → [full 4-step routine]
 Evening routine → [full 4-step routine]
-Ingredient to avoid: alcohol denat. — drying
+Ingredient to avoid: alcohol denat. - drying
 
 ─────────────────────────────────────────────────────
 Confidence provides general skincare suggestions based on a
@@ -195,12 +195,12 @@ For persistent skin concerns, consult a dermatologist.
 ─────────────────────────────────────────────────────
 ```
 
-State 2 — Moderate concerns (any score 0.4–0.85):
+State 2 - Moderate concerns (any score 0.4–0.85):
 ```
 Skin type: Combination · Skin score: 58/100
 Top concerns: Acne (0.71) · Redness (0.63) · Oiliness (0.44)
 
-⚠ Acne (0.71) — If this concern persists after 8 weeks of consistent
+⚠ Acne (0.71) - If this concern persists after 8 weeks of consistent
   use, consider speaking to a dermatologist.    [Find a specialist →]
 
 Morning routine → [full routine with acne-suited products]
@@ -210,7 +210,7 @@ Not medical advice. Consult a dermatologist for persistent concerns.
 ─────────────────────────────────────────────────────
 ```
 
-State 3 — Severe concern (any score 0.85+):
+State 3 - Severe concern (any score 0.85+):
 ```
 Skin type: Oily · Skin score: 41/100
 
@@ -257,7 +257,7 @@ Normal response (no severe concerns):
   "evening_routine": [],
   "avoid_ingredient": {
     "ingredient": "alcohol denat.",
-    "reason": "Drying — worsens your moisture concern"
+    "reason": "Drying - worsens your moisture concern"
   },
   "referral_concerns": [],
   "moderate_nudge_concerns": ["dark_spots"]
@@ -295,15 +295,15 @@ Severe response (one or more concerns at 0.85+):
 |---|---|---|
 | Poll exceeds 30s | 408 | "We couldn't complete the analysis in time. Try again with a well-lit, front-facing photo. For persistent skin concerns, a dermatologist is always the most reliable option." |
 | No face detected | 400 | "We couldn't read your skin clearly. Try a well-lit photo with your face centred. If you have skin concerns you'd like properly assessed, consider booking with a skin specialist." |
-| Supabase unreachable | 200 | Silent degradation — triage check still runs, Claude generates routine without specific product matches |
+| Supabase unreachable | 200 | Silent degradation - triage check still runs, Claude generates routine without specific product matches |
 | DeepSeek error (after 1 retry) | 500 | "Something went wrong generating your routine. Try again. For anything persistent or urgent, a dermatologist is always the right call." |
 
 ---
 
-## Step 4 — Implementation Order
+## Step 4 - Implementation Order
 
 ```
-[x] 0. Perfect Corp API key — obtained.
+[x] 0. Perfect Corp API key - obtained.
         https://yce.makeupar.com/api-console/en/api-keys/
         Confirmed skin-analysis endpoint is on tier
         Verified: upload endpoint returns a file_id
@@ -313,7 +313,7 @@ Severe response (one or more concerns at 0.85+):
         requirements.txt, .env.example, .gitignore, README.md
         Verified: FastAPI runs locally with GET /health returning 200
 
-[x] 2. backend/perfect_corp.py — written and verified against live API
+[x] 2. backend/perfect_corp.py - written and verified against live API
         upload_image(image_bytes) → file_id
         run_analysis(file_id) → task_id
         poll_until_complete(task_id, timeout=30) → raw result dict
@@ -321,19 +321,19 @@ Severe response (one or more concerns at 0.85+):
         Verified: upload real selfie, get back 14 concern scores
 
 [x] 3. Product knowledge base
-        scripts/sample_products.json — 100 products across 8 categories
-        scripts/build_product_db.py — embeds with Voyage AI + indexes to Supabase
+        scripts/sample_products.json - 100 products across 8 categories
+        scripts/build_product_db.py - embeds with Voyage AI + indexes to Supabase
         Supabase table: skincare_products, vector(1024), ivfflat index
         Verified: retrieve("moisturiser dry skin dark spots") returns relevant products
 
 [x] 4. backend/rag_products.py
-        embed(text) → vector — Voyage AI voyage-4-lite
+        embed(text) → vector - Voyage AI voyage-4-lite
         build_query(skin_profile) → natural language string
         retrieve(query, k=3) → list of product dicts
         Verified: dry skin + dark spots → returns vitamin C serums + ceramide moisturisers
 
 [x] 5. backend/routine_generator.py
-        Severity check in Python BEFORE DeepSeek is called — not inside the prompt
+        Severity check in Python BEFORE DeepSeek is called - not inside the prompt
           HIGH_SEVERITY_THRESHOLD = 0.85
           REFERRAL_CONCERNS = {"acne", "redness", "spots", "age_spot", "texture"}
           If any concern hits threshold → return referral card, skip DeepSeek for that concern
@@ -348,14 +348,14 @@ Severe response (one or more concerns at 0.85+):
         Verified: mild concern (0.28) → returns routine only
 
 [x] 6. backend/main.py
-        POST /analyse — multipart image upload → full pipeline → return JSON
+        POST /analyse - multipart image upload → full pipeline → return JSON
         GET /health
         Verified: curl POST /analyse with a selfie returns full routine JSON
 
 [x] 7. frontend/index.html
         Upload area, loading steps, results cards
-        Responsive, clean, printable — redesigned to Skiny UI/UX aesthetic (2026-07-01)
-        Verified: full flow in browser — upload → loading → results
+        Responsive, clean, printable - redesigned to Skiny UI/UX aesthetic (2026-07-01)
+        Verified: full flow in browser - upload → loading → results
 
 [x] 8. Deploy to Google Cloud Run
         Pushed to GitHub, containerised with Dockerfile, deployed to Cloud Run
@@ -379,15 +379,15 @@ Severe response (one or more concerns at 0.85+):
 ## Project Bootstrap Status
 
 ```
-[x] Perfect Corp API key — obtained
+[x] Perfect Corp API key - obtained
 [x] Problem understood
 [x] Vertical structure proposed and approved
 [x] Data model defined
-[x] Auth approach decided — no auth
-[x] Safety design locked in — three-tier triage in Python, system prompt guardrails,
+[x] Auth approach decided - no auth
+[x] Safety design locked in - three-tier triage in Python, system prompt guardrails,
       no-diagnosis language, allergy field, always-present disclaimer
 [x] Environment variables listed
-[x] backend/perfect_corp.py — written and verified against live API
+[x] backend/perfect_corp.py - written and verified against live API
 [x] .gitignore in place
 [x] requirements.txt written
 [x] .env.example written
@@ -400,7 +400,7 @@ Severe response (one or more concerns at 0.85+):
 
 ---
 
-## Safety Design — Three-Tier Triage
+## Safety Design - Three-Tier Triage
 
 This is the most important architectural decision in the project.
 Safety boundaries are enforced in Python code, not in the LLM prompt.
@@ -424,7 +424,7 @@ and whether Claude is called at all for that concern.
 
 ### Referral concerns
 
-Not every concern triggers the severe pathway — only the ones where
+Not every concern triggers the severe pathway - only the ones where
 OTC products are genuinely insufficient at high severity:
 
 ```python
@@ -466,7 +466,7 @@ The DeepSeek LLM receives these constraints on every call. They are not softened
 or overrideable by user input:
 
 ```
-HARD LIMITS — never violate these:
+HARD LIMITS - never violate these:
 1. Never diagnose. Say "the analysis detected elevated redness"
    not "you have rosacea". You are not a doctor.
 2. Never recommend prescription products (tretinoin, antibiotics,
@@ -475,7 +475,7 @@ HARD LIMITS — never violate these:
    provided. Never invent ingredients or efficacy claims.
    Never say "clinically proven" unless it appears verbatim in the context.
 4. Never suggest the analysis is medically accurate. It is a
-   computer vision estimate — not a clinical assessment.
+   computer vision estimate - not a clinical assessment.
 5. Scope is OTC products only: cleansers, serums, moisturisers,
    SPF, eye creams, toners. Nothing else.
 ```
@@ -502,7 +502,7 @@ If asked "what about medical accuracy?" in the exit interview, the answer is:
 > get OTC recommendations. Moderate concerns get recommendations plus a prompt
 > to see a specialist if it persists. Severe concerns in safety-sensitive
 > categories get a dermatologist referral and no product recommendation at all.
-> The boundary is in code — outside the LLM's control entirely.
+> The boundary is in code - outside the LLM's control entirely.
 
 That is a more responsible design than most consumer beauty apps on the market.
 
@@ -512,7 +512,7 @@ That is a more responsible design than most consumer beauty apps on the market.
 # Perfect Corp
 PERFECTCORP_API_KEY=     # https://yce.makeupar.com/api-console/en/api-keys/
 
-# Voyage AI (embeddings — primary)
+# Voyage AI (embeddings - primary)
 VOYAGE_API_KEY=          # https://dash.voyageai.com
 
 # DeepSeek
@@ -520,7 +520,7 @@ DEEPSEEK_API_KEY=
 
 # Supabase
 SUPABASE_URL=
-SUPABASE_KEY=            # service role key — never in frontend
+SUPABASE_KEY=            # service role key - never in frontend
 
 # Config
 POLL_TIMEOUT_SECONDS=30
@@ -531,7 +531,7 @@ POLL_TIMEOUT_SECONDS=30
 ## Critical: Perfect Corp API Pattern
 
 The API is async. It does not return results immediately.
-Every call follows this exact pattern — do not deviate:
+Every call follows this exact pattern - do not deviate:
 
 ```python
 file_id = upload_image(image_bytes)        # Step 1: upload
@@ -544,7 +544,7 @@ Polling too fast risks rate limiting. 2-second interval is the correct default.
 
 ---
 
-## Embedding Abstraction — Critical Pattern
+## Embedding Abstraction - Critical Pattern
 
 The embed function lives in `rag_products.py` and is the only place
 the embedding provider is referenced. Swapping Voyage AI for Transformers.js
