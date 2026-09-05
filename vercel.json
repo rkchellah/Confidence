@@ -1,3 +1,9 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/frontend/index.html" },
+    { "source": "/contact", "destination": "/frontend/contact.html" },
+    { "source": "/contact.html", "destination": "/frontend/contact.html" },
+    { "source": "/assets/:path*", "destination": "/frontend/assets/:path*" }
+  ]
 }
