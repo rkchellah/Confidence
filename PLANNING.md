@@ -140,7 +140,7 @@ Skin results: not written to database - stays in the browser response only
 - [ ] Three-tier triage system - enforced in Python before DeepSeek is called (see Safety Design)
         Mild (0–0.4): full recommendation
         Moderate (0.4–0.85): recommendation + soft nudge to see derm if it persists
-        Severe (0.85+): referral card only - DeepSeek not called for this concern
+        Severe (0.85+): referral card + supportive routine - DeepSeek not called. Decision 2026-09-05: routine cards added back (were empty / referral-only).
 - [ ] Morning routine - 3–4 steps: product name, key ingredients, why it matches
 - [ ] Evening routine - 3–4 steps: product name, key ingredients, why it matches
 - [ ] Ingredient to avoid - one callout with plain-language reason
@@ -221,11 +221,12 @@ Skin type: Oily · Skin score: 41/100
 
    [Find a dermatologist near you →]
 
-   We've included a general routine for your other concerns below,
-   but please speak to a specialist about your acne first.
+   We've included a gentle daily routine below.
+   It is cleanser, moisturiser, and SPF only — not a treatment
+   for the high-severity finding. Speak to a specialist first.
 
-Morning routine → [routine for non-severe concerns only]
-Evening routine → [routine for non-severe concerns only]
+Morning routine → [supportive cleanser / moisturiser / SPF]
+Evening routine → [supportive cleanser / moisturiser]
 ─────────────────────────────────────────────────────
 Not medical advice. Consult a dermatologist for persistent concerns.
 ─────────────────────────────────────────────────────
@@ -282,8 +283,15 @@ Severe response (one or more concerns at 0.85+):
       "message": "At this severity, OTC products are unlikely to be sufficient. We recommend a dermatologist consultation before starting any new routine."
     }
   ],
-  "morning_routine": [],
-  "evening_routine": [],
+  "morning_routine": [
+    {"step": 1, "role": "cleanser", "product": "Cetaphil Gentle Skin Cleanser", "key_ingredients": ["glycerin", "panthenol"], "reason": "Wash your face."},
+    {"step": 2, "role": "moisturiser", "product": "La Roche-Posay Toleriane Double Repair Moisturiser", "key_ingredients": ["ceramides", "niacinamide"], "reason": "Apply this cream."},
+    {"step": 3, "role": "SPF", "product": "CeraVe Hydrating Mineral Sunscreen SPF 30", "key_ingredients": ["zinc oxide", "titanium dioxide"], "reason": "Put this on last before you go out."}
+  ],
+  "evening_routine": [
+    {"step": 1, "role": "cleanser", "product": "Cetaphil Gentle Skin Cleanser", "key_ingredients": ["glycerin", "panthenol"], "reason": "Wash your face."},
+    {"step": 2, "role": "moisturiser", "product": "La Roche-Posay Toleriane Double Repair Moisturiser", "key_ingredients": ["ceramides", "niacinamide"], "reason": "Apply this cream before bed."}
+  ],
   "avoid_ingredient": null,
   "moderate_nudge_concerns": ["redness"]
 }
@@ -359,10 +367,14 @@ Severe response (one or more concerns at 0.85+):
 
 [x] 8. Deploy to Google Cloud Run
         Pushed to GitHub, containerised with Dockerfile, deployed to Cloud Run
-        Env vars set from .env.example
-        Verified: public URL returns routine for a real selfie
-        Live: https://confidence-api-59597652459.us-central1.run.app
-        Frontend deployed to Vercel: https://confidence-two.vercel.app
+        Live API: project sightline-2026 (number 59597652459), service confidence-api
+        https://confidence-api-59597652459.us-central1.run.app
+        Frontend: https://confidence-two.vercel.app
+        2026-09-05: Supabase resumed after pausing another free project (2-project cap).
+        Source deploy 00004 failed — DEEPSEEK_API_KEY missing (not a port bug).
+        00006-2d9: key added on old image. 00007-p94: source deploy serving.
+        Severe cards may still say "A gentle cleanser" if RAG returns no row.
+        See DEPLOY.md.
 
 [ ] 9. Demo video (1–3 minutes)
         Upload → loading → skin profile → morning routine → evening routine
@@ -418,7 +430,7 @@ and whether Claude is called at all for that concern.
 |---|---|---|
 | Mild | 0 – 0.4 | Full product recommendation. DeepSeek generates steps normally. |
 | Moderate | 0.4 – 0.85 | Recommendation + soft nudge: "If this persists after 8 weeks, see a dermatologist." |
-| Severe | 0.85+ | Referral card only. DeepSeek is not called for this concern. No OTC recommendation. |
+| Severe | 0.85+ | Referral card + supportive cleanser / moisturiser / SPF. DeepSeek is not called. Decision 2026-09-05: routine cards added back (first version was referral-only / empty arrays). |
 
 ---
 
@@ -453,7 +465,7 @@ def check_severity(concerns: list[dict]) -> list[str]:
 
 severe = check_severity(skin_profile["concerns"])
 if severe:
-    return referral_response(severe)   # DeepSeek never called
+    return referral_response(severe, products)   # DeepSeek never called; supportive routine attached
 
 return call_deepseek(skin_profile, retrieved_products)
 ```
@@ -489,7 +501,7 @@ These are enforced in code, not just in the prompt:
 - Diagnoses any skin condition by name
 - Recommends prescription treatments
 - Makes efficacy claims not in the product knowledge base
-- Provides product advice for concerns scoring above 0.85 in REFERRAL_CONCERNS
+- Calls DeepSeek, or recommends actives, for concerns scoring above 0.85 in REFERRAL_CONCERNS (a supportive cleanser / moisturiser / SPF baseline is allowed; that is the 2026-09-05 decision)
 - Claims the skin analysis is medically accurate
 
 ---

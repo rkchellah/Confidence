@@ -146,6 +146,8 @@ def retrieve(
         )
 
         rows = response.data or []
+        if not rows:
+            print("[rag_products] retrieve() returned no rows — check skincare_products and match_skincare_products")
 
         products: list[RetrievedProduct] = []
         for row in rows:

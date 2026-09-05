@@ -100,13 +100,15 @@ Three-tier triage enforced in Python BEFORE DeepSeek is called:
 ```
 Mild    (0 – 0.4):    full product recommendation
 Moderate (0.4 – 0.85): recommendation + soft nudge to see a dermatologist
-Severe  (0.85+):      referral card only - DeepSeek LLM never called for this concern
+Severe  (0.85+):      referral card + supportive routine. DeepSeek never called.
 ```
 
 ```python
-REFERRAL_CONCERNS = {"acne", "redness", "spots", "texture"}
+REFERRAL_CONCERNS = {"acne", "redness", "spots", "age_spot", "texture"}
 HIGH_SEVERITY_THRESHOLD = 0.85
 ```
+
+Decision change (2026-09-05): severe used to return a referral card and empty routine arrays. The routine cards were added back so the result is not blank. DeepSeek stays off. `_supportive_routine()` / frontend `fallbackRoutine()` may only attach cleanser, moisturiser, and SPF — not actives aimed at the severe finding.
 
 The LLM system prompt hard limits:
 - Never diagnose - say "the analysis detected" not "you have"
@@ -114,7 +116,7 @@ The LLM system prompt hard limits:
 - Only reference ingredients from RAG product context
 - Never claim the analysis is medically accurate
 
-Do not weaken these constraints. They are intentional product decisions.
+Do not weaken the "DeepSeek is not called on severe" rule. Putting the routine cards back is the documented exception; do not send the severe case to the LLM.
 
 ---
 

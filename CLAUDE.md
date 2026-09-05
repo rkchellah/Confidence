@@ -92,9 +92,11 @@ Safety enforcement is in Python code, not in the LLM prompt. This runs in `routi
 |---|---|---|
 | Mild | 0–0.4 | Full product recommendation |
 | Moderate | 0.4–0.85 | Recommendation + soft nudge to see a derm if it persists |
-| Severe | 0.85+ | Referral card only - DeepSeek is **not called** for this concern |
+| Severe | 0.85+ | Referral card **and** a supportive morning/evening routine. DeepSeek is **not called**. |
 
-Severe triage only fires for `REFERRAL_CONCERNS = {"acne", "redness", "spots", "texture"}`. Cosmetic concerns like pores and dark circles at high severity still get OTC recommendations.
+Severe triage only fires for `REFERRAL_CONCERNS = {"acne", "redness", "spots", "age_spot", "texture"}`. Cosmetic concerns like pores and dark circles at high severity still get a normal DeepSeek routine.
+
+**Decision change (2026-09-05):** The first version of severe triage was referral-only — empty `morning_routine` / `evening_routine`, no OTC steps. That left the results page blank after a high redness/acne/spot/texture score. The decision now is to put the routine cards back. DeepSeek is still skipped. `referral_response()` attaches a cleanser / moisturiser / SPF baseline from RAG (`_supportive_routine()`). Those steps are daily care only — they must not treat the severe finding. Until Cloud Run is redeployed, `frontend/index.html` `fallbackRoutine()` fills the same catalogue steps when the API still returns empty arrays.
 
 ### Embedding Abstraction
 
@@ -138,6 +140,12 @@ All secrets in `.env.local` (never committed). Copy from `.env.example`.
 | `SUPABASE_URL` | Supabase project URL |
 | `SUPABASE_KEY` | Supabase service role key (never in frontend) |
 | `POLL_TIMEOUT_SECONDS` | Perfect Corp poll timeout - default 30 |
+
+These must be set on **Cloud Run** (`sightline-2026` / `confidence-api`). `.env.local` is dockerignored and is not uploaded by `gcloud run deploy --source .`. Missing any of the five keys at startup raises in `main.py` `lifespan` and Cloud Run reports a false “not listening on 8080”.
+
+Full host map, pause/resume, failed revision `00004`, and key add on `00006-2d9`: see `DEPLOY.md`.
+
+**Live as of 2026-09-05:** revision `confidence-api-00007-p94` on `sightline-2026` has the key and the supportive-routine Python. Severe results still show `A gentle cleanser` when RAG returns no matching row — check Supabase rows / Cloud Run retrieve logs. Do not deploy to `confidence-497418`.
 
 ---
 

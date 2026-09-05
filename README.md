@@ -5,6 +5,8 @@ A RAG-powered skincare intelligence system - selfie to personalised routine in u
 
 **Live:** https://confidence-two.vercel.app | **API:** https://confidence-api-59597652459.us-central1.run.app/health
 
+Hosts: website = Vercel. API = Cloud Run project **`sightline-2026`** (service `confidence-api`). Catalogue = Supabase. Not the GCP project `confidence-497418`. Ops log: `DEPLOY.md`.
+
 ---
 
 ## What is RAG and why it matters here
@@ -52,7 +54,7 @@ flowchart TD
     PC --> SC[14 concern scores\n+ skin type]
 
     SC --> T{Python safety triage\nnot the LLM}
-    T -->|score ≥ 0.85| REF[Referral card\nLLM never called]
+    T -->|score ≥ 0.85| REF[Referral card\n+ supportive routine\nLLM never called]
     T -->|0.40 – 0.85| MOD[Recommend\n+ derm nudge]
     T -->|score < 0.40| MIL[Full OTC\nrecommendation]
 
@@ -94,7 +96,9 @@ The triage runs in Python **before** the LLM is called. Severe concerns are neve
 |---|---|---|
 | Mild | 0 – 0.40 | Full OTC recommendation |
 | Moderate | 0.40 – 0.85 | Recommendation + 8-week derm nudge |
-| Severe | 0.85+ | Referral card only - LLM skipped |
+| Severe | 0.85+ | Referral card + supportive cleanser / moisturiser / SPF. LLM skipped. |
+
+Decision change (2026-09-05): severe used to hide morning and evening (referral only). Those cards are back. DeepSeek is still not called. Steps are daily care only — they must not treat the high-severity finding.
 
 LLM system prompt hard limits: no diagnoses, no prescriptions, only reference retrieved products.
 

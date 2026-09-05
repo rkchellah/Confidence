@@ -1,10 +1,12 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Confidence AI | Precision Skincare Intelligence</title>
-    <link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 37 25'%3E%3Crect x='1.75' y='1.75' width='33.5' height='21.5' rx='10.75' stroke='%23242426' stroke-width='2.5'/%3E%3Ccircle cx='12.5' cy='12.5' r='3.25' fill='%23242426'/%3E%3Ccircle cx='24.5' cy='12.5' r='3.25' fill='%23242426'/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
+    <link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 37 25'%3E%3Crect x='1.75' y='1.75' width='33.5' height='21.5' rx='10.75' stroke='%23D1D1D1' stroke-width='2.5'/%3E%3Ccircle cx='12.5' cy='12.5' r='3.25' fill='%23D1D1D1'/%3E%3Ccircle cx='24.5' cy='12.5' r='3.25' fill='%23D1D1D1'/%3E%3C/svg%3E" rel="icon" type="image/svg+xml"/>
     <!-- Inter Display - same cuts as https://makro.framer.website/ -->
     <link rel="preconnect" href="https://framerusercontent.com" crossorigin/>
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
@@ -171,38 +173,23 @@
             object-position: 50% 22%;
             box-shadow: none;
             -webkit-mask-image:
-                linear-gradient(180deg, #000 74%, rgba(0, 0, 0, 0.4) 88%, transparent 100%),
-                radial-gradient(ellipse 46% 52% at 100% 88%, transparent 0%, #000 68%);
+                linear-gradient(180deg, #000 66%, rgba(0, 0, 0, 0.78) 78%, rgba(0, 0, 0, 0.32) 90%, transparent 100%),
+                radial-gradient(ellipse 94% 80% at 50% 28%, #000 48%, rgba(0, 0, 0, 0.7) 66%, transparent 86%);
             -webkit-mask-composite: source-in;
             mask-image:
-                linear-gradient(180deg, #000 74%, rgba(0, 0, 0, 0.4) 88%, transparent 100%),
-                radial-gradient(ellipse 46% 52% at 100% 88%, transparent 0%, #000 68%);
+                linear-gradient(180deg, #000 66%, rgba(0, 0, 0, 0.78) 78%, rgba(0, 0, 0, 0.32) 90%, transparent 100%),
+                radial-gradient(ellipse 94% 80% at 50% 28%, #000 48%, rgba(0, 0, 0, 0.7) 66%, transparent 86%);
             mask-composite: intersect;
-        }
-        .hero-blur {
-            position: absolute;
-            inset: 0;
-            display: block;
-            width: 100%;
-            height: 560px;
-            object-fit: cover;
-            object-position: 50% 22%;
-            pointer-events: none;
-            filter: blur(18px);
-            transform: scale(1.06);
-            transform-origin: 100% 85%;
-            -webkit-mask-image: radial-gradient(ellipse 42% 58% at 100% 78%, #000 0%, rgba(0, 0, 0, 0.7) 38%, transparent 72%);
-            mask-image: radial-gradient(ellipse 42% 58% at 100% 78%, #000 0%, rgba(0, 0, 0, 0.7) 38%, transparent 72%);
         }
         .hero-frame::after {
             content: "";
             position: absolute;
+            left: 0;
             right: 0;
             bottom: 0;
-            width: 40%;
-            height: 44%;
+            height: 20%;
             pointer-events: none;
-            background: radial-gradient(ellipse 100% 90% at 100% 90%, #EBEFF5 0%, rgba(235, 239, 245, 0.7) 34%, transparent 74%);
+            background: linear-gradient(180deg, transparent 0%, rgba(235, 239, 245, 0.2) 42%, #EBEFF5 100%);
         }
         .card-ico {
             display: block;
@@ -800,8 +787,7 @@
             </div>
 
             <div class="hero-frame">
-                <img alt="Person wearing clear glasses, featured in the Confidence skincare analysis" class="hero-shot" src="assets/image.png"/>
-                <img alt="" aria-hidden="true" class="hero-blur" src="assets/image.png"/>
+                <img alt="Person featured in the Confidence skincare analysis" class="hero-shot" src="assets/image_2.png"/>
             </div>
         </section>
 
@@ -1363,16 +1349,67 @@
         return `<i class="w-5 h-5 text-brand-gold" data-lucide="${name}"></i>`;
       }
 
-      function stepHTML(step) {
+      function everydayReason(role, slot) {
+        const kind = String(role || '').toLowerCase();
+        if (kind.includes('clean')) return 'Wash your face.';
+        if (kind.includes('moist')) return slot === 'evening' ? 'Apply this cream before bed.' : 'Apply this cream.';
+        if (kind.includes('spf') || kind.includes('sun')) return 'Put this on last before you go out.';
+        if (kind.includes('serum')) return 'Apply a few drops after washing.';
+        if (kind.includes('treat')) return 'Apply a thin layer after washing.';
+        if (kind.includes('eye')) return 'Dab a little under the eyes.';
+        if (kind.includes('toner')) return 'Wipe this on after washing.';
+        return 'Use as part of your usual routine.';
+      }
+
+      function stepHTML(step, slot) {
         const ingredients = (step.key_ingredients || []).join(' · ');
         return `
           <div class="result-step">
             <p class="role">${step.role || ''}</p>
             <p class="product">${step.product || ''}</p>
             ${ingredients ? `<p class="meta">${ingredients}</p>` : ''}
-            ${step.reason ? `<p class="meta">${step.reason}</p>` : ''}
+            <p class="meta">${everydayReason(step.role, slot)}</p>
           </div>
         `;
+      }
+
+      // Decision 2026-09-05: severe triage used to leave these cards empty.
+      // Routine cards are back. Use catalogue steps only when the API
+      // withholds a routine (old Cloud Run still returns []). Daily care
+      // only — no actives aimed at a high-severity finding.
+      function fallbackRoutine(profile) {
+        const type = String(profile.skin_type || '').toLowerCase();
+        const concerns = Array.isArray(profile.concerns) ? profile.concerns : [];
+        const highRedness = concerns.some((item) => String(item.name || '').toLowerCase().includes('redness') && Number(item.score) >= 0.85);
+        const oily = type.includes('oily') && !highRedness;
+        const combination = type.includes('combination') && !highRedness;
+
+        const cleanser = (oily || combination)
+          ? { role: 'cleanser', product: 'CeraVe Foaming Facial Cleanser', key_ingredients: ['niacinamide', 'ceramides', 'hyaluronic acid'], reason: 'Wash your face.' }
+          : { role: 'cleanser', product: 'Cetaphil Gentle Skin Cleanser', key_ingredients: ['glycerin', 'panthenol', 'niacinamide'], reason: 'Wash your face.' };
+
+        const moisturiser = (oily || combination)
+          ? { role: 'moisturiser', product: 'Neutrogena Hydro Boost Water Gel', key_ingredients: ['hyaluronic acid', 'dimethicone', 'glycerin'], reason: 'Apply this cream.' }
+          : { role: 'moisturiser', product: 'La Roche-Posay Toleriane Double Repair Moisturiser', key_ingredients: ['ceramides', 'niacinamide'], reason: 'Apply this cream.' };
+
+        const spf = {
+          role: 'SPF',
+          product: 'CeraVe Hydrating Mineral Sunscreen SPF 30',
+          key_ingredients: ['zinc oxide', 'titanium dioxide', 'ceramides'],
+          reason: 'Put this on last before you go out.'
+        };
+
+        return {
+          morning: [
+            { step: 1, ...cleanser },
+            { step: 2, ...moisturiser },
+            { step: 3, ...spf }
+          ],
+          evening: [
+            { step: 1, ...cleanser },
+            { step: 2, ...moisturiser }
+          ]
+        };
       }
 
       function renderResults(data) {
@@ -1423,15 +1460,19 @@
             </div>`
           : '';
 
-        const morning = data.morning_routine || [];
-        document.getElementById('morning-card').classList.toggle('hidden', morning.length === 0);
+        let morning = Array.isArray(data.morning_routine) ? data.morning_routine : [];
+        let evening = Array.isArray(data.evening_routine) ? data.evening_routine : [];
+        if (!morning.length && !evening.length) {
+          const fallback = fallbackRoutine(profile);
+          morning = fallback.morning;
+          evening = fallback.evening;
+        }
+        document.getElementById('morning-card').classList.remove('hidden');
+        document.getElementById('evening-card').classList.remove('hidden');
         document.getElementById('morning-count').textContent = morning.length ? morning.length + ' steps' : '';
-        document.getElementById('morning-steps').innerHTML = morning.map(stepHTML).join('');
-
-        const evening = data.evening_routine || [];
-        document.getElementById('evening-card').classList.toggle('hidden', evening.length === 0);
         document.getElementById('evening-count').textContent = evening.length ? evening.length + ' steps' : '';
-        document.getElementById('evening-steps').innerHTML = evening.map(stepHTML).join('');
+        document.getElementById('morning-steps').innerHTML = morning.map((step) => stepHTML(step, 'morning')).join('');
+        document.getElementById('evening-steps').innerHTML = evening.map((step) => stepHTML(step, 'evening')).join('');
 
         const avoid = data.avoid_ingredient;
         document.getElementById('avoid-wrap').innerHTML = avoid && avoid.ingredient

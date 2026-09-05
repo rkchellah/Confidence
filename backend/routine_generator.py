@@ -7,9 +7,13 @@ Responsibilities:
   3. referral_response() — return safe referral card when triage fires
 
 Safety design (enforced in code, not the prompt):
-  - Concerns scoring ≥ 0.85 in REFERRAL_CONCERNS → referral card, DeepSeek not called
-  - Concerns scoring 0.4–0.85 → routine + soft nudge to see a dermatologist
-  - Concerns scoring < 0.4 → full routine, no nudge
+  - Concerns scoring ≥ 0.85 in REFERRAL_CONCERNS → referral card + supportive
+    cleanser / moisturiser / SPF routine. DeepSeek is not called.
+    Decision change 2026-09-05: routine cards were added back. The first
+    version returned empty lists (referral only). Empty cards looked like a
+    broken result. The baseline must not treat the severe finding.
+  - Concerns scoring 0.4–0.85 → DeepSeek routine + soft nudge to see a dermatologist
+  - Concerns scoring < 0.4 → full DeepSeek routine, no nudge
 
 System prompt hard limits (injected on every call, not overrideable):
   - Never diagnose — use observation language only
@@ -101,14 +105,112 @@ def get_moderate_concerns(concerns: list[SkinConcern]) -> list[str]:
     ]
 
 
+def _product_label(product: RetrievedProduct) -> str:
+    brand = (product.brand or "").strip()
+    name = (product.name or "").strip()
+    if brand and brand.lower() not in name.lower():
+        return f"{brand} {name}"
+    return name or "A gentle option from the catalogue"
+
+
+def _product_ingredients(product: RetrievedProduct) -> list[str]:
+    raw = product.metadata.get("ingredients", [])
+    if not isinstance(raw, list):
+        return []
+    return [str(item) for item in raw[:3]]
+
+
+def _catalogue_product(name: str, brand: str, category: str, ingredients: list[str]) -> RetrievedProduct:
+    return RetrievedProduct(
+        name=name,
+        brand=brand,
+        category=category,
+        content=f"{category} {name}",
+        metadata={"ingredients": ingredients},
+        similarity=0.0,
+    )
+
+
+# Same trio as frontend fallbackRoutine() when RAG returns nothing.
+_CATALOGUE_CLEANSER = _catalogue_product(
+    "Gentle Skin Cleanser",
+    "Cetaphil",
+    "cleanser",
+    ["glycerin", "panthenol", "niacinamide"],
+)
+_CATALOGUE_MOISTURISER = _catalogue_product(
+    "Toleriane Double Repair Moisturiser",
+    "La Roche-Posay",
+    "moisturiser",
+    ["ceramides", "niacinamide"],
+)
+_CATALOGUE_SPF = _catalogue_product(
+    "Hydrating Mineral Sunscreen SPF 30",
+    "CeraVe",
+    "SPF",
+    ["zinc oxide", "titanium dioxide", "ceramides"],
+)
+
+
+def _pick_product(products: list[RetrievedProduct], *needles: str) -> RetrievedProduct | None:
+    for product in products:
+        blob = f"{product.category} {product.name} {product.content}".lower()
+        if any(needle in blob for needle in needles):
+            return product
+    return None
+
+
+def _supportive_routine(products: list[RetrievedProduct]) -> tuple[list[RoutineStep], list[RoutineStep]]:
+    """
+    Conservative cleanser / moisturiser / SPF steps from the catalogue.
+    Used when severe triage fires — DeepSeek is still not called.
+    If RAG returns no matching row, use the named catalogue trio.
+    """
+    cleanser = _pick_product(products, "cleanser", "cleansing", "wash") or _CATALOGUE_CLEANSER
+    moisturiser = _pick_product(products, "moisturis", "moisturiz", "cream", "lotion") or _CATALOGUE_MOISTURISER
+    spf = _pick_product(products, "spf", "sunscreen", "sun screen") or _CATALOGUE_SPF
+    if not products:
+        print("[routine_generator] RAG empty — using named catalogue baseline")
+
+    def step(number: int, role: str, product: RetrievedProduct | None, reason: str) -> RoutineStep:
+        if product is None:
+            return RoutineStep(
+                step=number,
+                role=role,
+                product=f"A gentle {role}",
+                key_ingredients=[],
+                reason=reason,
+            )
+        return RoutineStep(
+            step=number,
+            role=role,
+            product=_product_label(product),
+            key_ingredients=_product_ingredients(product),
+            reason=reason,
+        )
+
+    morning = [
+        step(1, "cleanser", cleanser, "Wash your face."),
+        step(2, "moisturiser", moisturiser, "Apply this cream."),
+        step(3, "SPF", spf, "Put this on last before you go out."),
+    ]
+    evening = [
+        step(1, "cleanser", cleanser, "Wash your face."),
+        step(2, "moisturiser", moisturiser, "Apply this cream before bed."),
+    ]
+    return morning, evening
+
+
 def referral_response(
     skin_result: SkinAnalysisResult,
     severe_concerns: list[str],
     moderate_concerns: list[str],
+    products: list[RetrievedProduct] | None = None,
 ) -> RoutineOutput:
     """
     Build a safe referral response when severe concerns are detected.
     DeepSeek is never called when this is returned.
+    A supportive OTC baseline is still included so the user is not left without steps.
     """
     referrals = []
     for concern_name in severe_concerns:
@@ -127,6 +229,8 @@ def referral_response(
             )
         )
 
+    morning, evening = _supportive_routine(products or [])
+
     return RoutineOutput(
         skin_profile={
             "skin_type": skin_result.skin_type,
@@ -140,8 +244,8 @@ def referral_response(
                 for c in skin_result.concerns[:5]
             ],
         },
-        morning_routine=[],
-        evening_routine=[],
+        morning_routine=morning,
+        evening_routine=evening,
         avoid_ingredient=None,
         referral_concerns=referrals,
         moderate_nudge_concerns=moderate_concerns,
@@ -178,7 +282,7 @@ Schema:
       "role": "cleanser",
       "product": "exact product name from context",
       "key_ingredients": ["ingredient1", "ingredient2"],
-      "reason": "one sentence explaining why this suits the detected skin profile"
+      "reason": "one short how-to, like Wash your face."
     }
   ],
   "evening_routine": [
@@ -187,7 +291,7 @@ Schema:
       "role": "cleanser",
       "product": "exact product name from context",
       "key_ingredients": ["ingredient1", "ingredient2"],
-      "reason": "one sentence explaining why this suits the detected skin profile"
+      "reason": "one short how-to, like Wash your face."
     }
   ],
   "avoid_ingredient": {
@@ -201,45 +305,45 @@ RULES:
 - evening_routine: 3-4 steps. Always include cleanser, moisturiser. Add treatment or eye cream if relevant. No SPF at night.
 - Use only products from the PRODUCT CONTEXT below.
 - avoid_ingredient: one ingredient to avoid based on the skin profile. Keep it simple and specific.
-- reason fields: one sentence, plain language, reference the detected concern by name.
+- reason fields: one short how-to in everyday English. Say what to do, not why the formula is clever. No "barrier", "actives", "detected concern", "severity", or diagnosis language. Examples: "Wash your face." "Apply this cream." "Put this on last before you go out."
 
 FEW-SHOT EXAMPLES:
 
 EXAMPLE 1 — Dry skin, dark spots, enlarged pores:
 {
   "morning_routine": [
-    {"step": 1, "role": "cleanser", "product": "CeraVe Hydrating Cleanser", "key_ingredients": ["ceramides", "hyaluronic acid"], "reason": "Gentle non-stripping formula preserves the moisture barrier — critical for the detected dryness concern."},
-    {"step": 2, "role": "serum", "product": "TruSkin Vitamin C Serum", "key_ingredients": ["vitamin C", "vitamin E", "ferulic acid"], "reason": "Directly targets the detected age spot concern — vitamin C brightens over 4-6 weeks."},
-    {"step": 3, "role": "moisturiser", "product": "CeraVe Moisturising Cream", "key_ingredients": ["ceramides", "niacinamide"], "reason": "Repairs the moisture barrier; niacinamide also helps with the detected pore concern."},
-    {"step": 4, "role": "SPF", "product": "La Roche-Posay Anthelios Melt-in Milk SPF 100", "key_ingredients": ["avobenzone", "homosalate"], "reason": "Essential to prevent dark spots from worsening with sun exposure."}
+    {"step": 1, "role": "cleanser", "product": "CeraVe Hydrating Cleanser", "key_ingredients": ["ceramides", "hyaluronic acid"], "reason": "Wash your face."},
+    {"step": 2, "role": "serum", "product": "TruSkin Vitamin C Serum", "key_ingredients": ["vitamin C", "vitamin E", "ferulic acid"], "reason": "Apply a few drops after washing."},
+    {"step": 3, "role": "moisturiser", "product": "CeraVe Moisturising Cream", "key_ingredients": ["ceramides", "niacinamide"], "reason": "Apply this cream."},
+    {"step": 4, "role": "SPF", "product": "La Roche-Posay Anthelios Melt-in Milk SPF 100", "key_ingredients": ["avobenzone", "homosalate"], "reason": "Put this on last before you go out."}
   ],
   "evening_routine": [
-    {"step": 1, "role": "cleanser", "product": "CeraVe Hydrating Cleanser", "key_ingredients": ["ceramides", "hyaluronic acid"], "reason": "Removes the day without stripping — suits the detected dryness concern."},
-    {"step": 2, "role": "treatment", "product": "The Ordinary Retinol 0.5% in Squalane", "key_ingredients": ["retinol", "squalane"], "reason": "Addresses the detected texture concern and supports skin renewal overnight."},
-    {"step": 3, "role": "moisturiser", "product": "CeraVe Moisturising Cream", "key_ingredients": ["ceramides", "hyaluronic acid"], "reason": "Locks in moisture overnight — suits the detected dryness concern."}
+    {"step": 1, "role": "cleanser", "product": "CeraVe Hydrating Cleanser", "key_ingredients": ["ceramides", "hyaluronic acid"], "reason": "Wash your face."},
+    {"step": 2, "role": "treatment", "product": "The Ordinary Retinol 0.5% in Squalane", "key_ingredients": ["retinol", "squalane"], "reason": "Apply a thin layer after washing."},
+    {"step": 3, "role": "moisturiser", "product": "CeraVe Moisturising Cream", "key_ingredients": ["ceramides", "hyaluronic acid"], "reason": "Apply this cream before bed."}
   ],
   "avoid_ingredient": {
     "ingredient": "alcohol denat.",
-    "reason": "Drying — would worsen the detected moisture concern."
+    "reason": "Can leave skin feeling tight and dry."
   }
 }
 
 EXAMPLE 2 — Oily skin, acne (moderate, score 0.62), enlarged pores:
 {
   "morning_routine": [
-    {"step": 1, "role": "cleanser", "product": "La Roche-Posay Effaclar Purifying Foaming Gel", "key_ingredients": ["zinc", "niacinamide", "LHA"], "reason": "Controls the detected oiliness concern without over-drying."},
-    {"step": 2, "role": "serum", "product": "The Ordinary Niacinamide 10% + Zinc 1%", "key_ingredients": ["niacinamide", "zinc PCA"], "reason": "Targets the detected pore and acne concerns — niacinamide reduces excess oil."},
-    {"step": 3, "role": "moisturiser", "product": "Neutrogena Hydro Boost Water Gel", "key_ingredients": ["hyaluronic acid", "dimethicone"], "reason": "Lightweight hydration that won't block pores — suits the detected oiliness concern."},
-    {"step": 4, "role": "SPF", "product": "EltaMD UV Clear Broad-Spectrum SPF 46", "key_ingredients": ["niacinamide", "zinc oxide"], "reason": "Non-comedogenic formula — safe to use alongside the detected acne concern."}
+    {"step": 1, "role": "cleanser", "product": "La Roche-Posay Effaclar Purifying Foaming Gel", "key_ingredients": ["zinc", "niacinamide", "LHA"], "reason": "Wash your face."},
+    {"step": 2, "role": "serum", "product": "The Ordinary Niacinamide 10% + Zinc 1%", "key_ingredients": ["niacinamide", "zinc PCA"], "reason": "Apply a few drops after washing."},
+    {"step": 3, "role": "moisturiser", "product": "Neutrogena Hydro Boost Water Gel", "key_ingredients": ["hyaluronic acid", "dimethicone"], "reason": "Apply this cream."},
+    {"step": 4, "role": "SPF", "product": "EltaMD UV Clear Broad-Spectrum SPF 46", "key_ingredients": ["niacinamide", "zinc oxide"], "reason": "Put this on last before you go out."}
   ],
   "evening_routine": [
-    {"step": 1, "role": "cleanser", "product": "CeraVe Foaming Facial Cleanser", "key_ingredients": ["niacinamide", "ceramides"], "reason": "Removes excess oil from the day without disrupting the skin barrier."},
-    {"step": 2, "role": "treatment", "product": "Differin Adapalene Gel 0.1%", "key_ingredients": ["adapalene"], "reason": "OTC retinoid that addresses the detected acne and texture concerns over time."},
-    {"step": 3, "role": "moisturiser", "product": "COSRX Oil-Free Ultra Moisturising Lotion", "key_ingredients": ["birch sap", "betaine"], "reason": "Lightweight, non-comedogenic — suits the detected oiliness concern."}
+    {"step": 1, "role": "cleanser", "product": "CeraVe Foaming Facial Cleanser", "key_ingredients": ["niacinamide", "ceramides"], "reason": "Wash your face."},
+    {"step": 2, "role": "treatment", "product": "Differin Adapalene Gel 0.1%", "key_ingredients": ["adapalene"], "reason": "Apply a thin layer after washing."},
+    {"step": 3, "role": "moisturiser", "product": "COSRX Oil-Free Ultra Moisturising Lotion", "key_ingredients": ["birch sap", "betaine"], "reason": "Apply this cream before bed."}
   ],
   "avoid_ingredient": {
     "ingredient": "coconut oil",
-    "reason": "Highly comedogenic — would worsen the detected acne and pore concerns."
+    "reason": "Can clog pores on oily or breakout-prone skin."
   }
 }"""
 
@@ -268,7 +372,7 @@ def _build_user_message(
     nudge_section = ""
     if moderate_concerns:
         concern_list = ", ".join(c.replace("_", " ") for c in moderate_concerns)
-        nudge_section = f"\nMODERATE CONCERNS requiring nudge: {concern_list}\nFor these concerns, add this note in the reason field: 'If this persists after 8 weeks of consistent use, consider speaking to a dermatologist.'\n"
+        nudge_section = f"\nMODERATE CONCERNS for the 8-week watch list: {concern_list}\nDo not put clinician language in the reason fields. Keep reasons as short how-tos only.\n"
 
     return f"""SKIN ANALYSIS RESULT:
 Skin type: {skin_result.skin_type}
@@ -314,7 +418,7 @@ def generate_routine(
     moderate = get_moderate_concerns(skin_result.concerns)
 
     if severe:
-        return referral_response(skin_result, severe, moderate)
+        return referral_response(skin_result, severe, moderate, products)
 
     # Step 2 — build prompt
     client = OpenAI(
@@ -355,17 +459,31 @@ def generate_routine(
                 raise ValueError(f"DeepSeek returned invalid JSON after retry: {raw_content}")
 
     # Step 4 — build RoutineOutput
-    def _steps(raw_steps: list[dict]) -> list[RoutineStep]:
-        return [
-            RoutineStep(
-                step=s.get("step", i + 1),
-                role=s.get("role", ""),
-                product=s.get("product", ""),
-                key_ingredients=s.get("key_ingredients", []),
-                reason=s.get("reason", ""),
+    def _steps(raw_steps: object) -> list[RoutineStep]:
+        if not isinstance(raw_steps, list):
+            return []
+        built: list[RoutineStep] = []
+        for i, item in enumerate(raw_steps):
+            if not isinstance(item, dict):
+                continue
+            ingredients = item.get("key_ingredients", [])
+            if not isinstance(ingredients, list):
+                ingredients = []
+            raw_step = item.get("step", i + 1)
+            try:
+                number = int(raw_step)
+            except (TypeError, ValueError):
+                number = i + 1
+            built.append(
+                RoutineStep(
+                    step=number,
+                    role=str(item.get("role", "")),
+                    product=str(item.get("product", "")),
+                    key_ingredients=[str(part) for part in ingredients],
+                    reason=str(item.get("reason", "")),
+                )
             )
-            for i, s in enumerate(raw_steps)
-        ]
+        return built
 
     avoid_raw = parsed.get("avoid_ingredient")
     avoid = (
@@ -376,6 +494,11 @@ def generate_routine(
         if avoid_raw
         else None
     )
+
+    morning = _steps(parsed.get("morning_routine") or parsed.get("morning") or [])
+    evening = _steps(parsed.get("evening_routine") or parsed.get("evening") or [])
+    if not morning and not evening:
+        morning, evening = _supportive_routine(products)
 
     return RoutineOutput(
         skin_profile={
@@ -390,8 +513,8 @@ def generate_routine(
                 for c in skin_result.concerns[:5]
             ],
         },
-        morning_routine=_steps(parsed.get("morning_routine", [])),
-        evening_routine=_steps(parsed.get("evening_routine", [])),
+        morning_routine=morning,
+        evening_routine=evening,
         avoid_ingredient=avoid,
         referral_concerns=[],
         moderate_nudge_concerns=moderate,
