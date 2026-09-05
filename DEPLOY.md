@@ -23,7 +23,7 @@ That purpose did not change. The work below was to keep the result page honest w
 |---|---|---|---|
 | Product catalogue | **Supabase** | `cogujrijzatooedxghre.supabase.co` | `skincare_products` + `match_skincare_products` |
 | API | **Cloud Run** | GCP project **`sightline-2026`** (number `59597652459`), service **`confidence-api`** | FastAPI: analyse → retrieve → triage → routine |
-| Website | **Vercel** | `https://confidence-two.vercel.app` | Static `frontend/index.html` |
+| Website | **Vercel** | `https://confidence-two.vercel.app` | Static `frontend/index.html`. `vercel.json` publishes that folder (no Vite build). |
 
 GCP project **`confidence-497418`** (number `769278956638`, org `rkchellah-org`) is a **different** Google project. Its Cloud Run list is empty. Do not deploy there.
 
