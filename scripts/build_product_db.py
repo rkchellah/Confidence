@@ -111,10 +111,10 @@ def main() -> None:
             }
             db.table("skincare_products").insert(row).execute()
             inserted += 1
-            print(f"  [{i}/100] ✓ {product['name']}")
+            print(f"  [{i}/{len(products)}] ✓ {product['name']}")
             time.sleep(8)
         except Exception as e:
-            print(f"  [{i}/100] ✗ {product['name']}: {e}")
+            print(f"  [{i}/{len(products)}] ✗ {product['name']}: {e}")
             errors += 1
 
     print(f"\nDone. Inserted: {inserted} | Errors: {errors}")

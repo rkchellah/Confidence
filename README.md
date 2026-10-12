@@ -1,11 +1,9 @@
 # Confidence
 
-A RAG-powered skincare intelligence system - selfie to personalised routine in under 60 seconds.
+A RAG-powered skincare intelligence system - selfie to personalised routine.
 
 
-**Live:** https://confidence-two.vercel.app | **API:** https://confidence-api-59597652459.us-central1.run.app/health
-
-Hosts: website = Vercel. API = Cloud Run project **`sightline-2026`** (service `confidence-api`). Catalogue = Supabase. Not the GCP project `confidence-497418`. Ops log: `DEPLOY.md`.
+Live demo: currently offline (backend hosting paused). Demo video: [add link].
 
 ---
 
@@ -13,7 +11,7 @@ Hosts: website = Vercel. API = Cloud Run project **`sightline-2026`** (service `
 
 Without RAG, a language model generates skincare recommendations from its training data - generic, unverifiable, hallucinated product names and ingredients.
 
-Confidence uses **Retrieval-Augmented Generation**. The LLM never invents products. Every recommendation traces back to a real row in a vetted product database.
+Confidence uses **Retrieval-Augmented Generation**. The model is instructed to use only retrieved products, and the output is checked against them. Every recommendation traces back to a real row in a vetted product database.
 
 ---
 
@@ -22,7 +20,7 @@ Confidence uses **Retrieval-Augmented Generation**. The LLM never invents produc
 ```mermaid
 flowchart LR
     subgraph INDEX ["INDEX PHASE - run once"]
-        A[100 skincare products] -->|embed| B[Voyage AI\nvoyage-4-lite]
+        A[98 skincare products] -->|embed| B[Voyage AI\nvoyage-4-lite]
         B -->|store 1024-dim vector| C[(Supabase\npgvector)]
     end
 
@@ -35,7 +33,7 @@ flowchart LR
 
     subgraph GENERATE ["GENERATE - grounded only"]
         H -->|inject as context| I[DeepSeek\ndeepseek-chat]
-        I --> J[Personalised routine\nno hallucination]
+        I --> J[Personalised routine\nchecked against catalogue]
     end
 
     C -.->|same vector space| G
@@ -78,12 +76,12 @@ flowchart TD
 
 | Detail | Value |
 |---|---|
-| Products indexed | 100 |
+| Products indexed | 98 (re-seed Supabase after catalogue changes) |
 | Embedding model | Voyage AI `voyage-4-lite` |
 | Vector dimensions | 1024 |
 | Database | Supabase pgvector |
 | Similarity metric | Cosine |
-| Top-k retrieved | 3 per query |
+| Top-k retrieved | 6 per query |
 | Query source | Skin concern scores → natural language |
 
 ---
@@ -97,8 +95,6 @@ The triage runs in Python **before** the LLM is called. Severe concerns are neve
 | Mild | 0 – 0.40 | Full OTC recommendation |
 | Moderate | 0.40 – 0.85 | Recommendation + 8-week derm nudge |
 | Severe | 0.85+ | Referral card + supportive cleanser / moisturiser / SPF. LLM skipped. |
-
-Decision change (2026-09-05): severe used to hide morning and evening (referral only). Those cards are back. DeepSeek is still not called. Steps are daily care only — they must not treat the high-severity finding.
 
 LLM system prompt hard limits: no diagnoses, no prescriptions, only reference retrieved products.
 
@@ -123,7 +119,7 @@ LLM system prompt hard limits: no diagnoses, no prescriptions, only reference re
 git clone https://github.com/rkchellah/Confidence.git
 cd Confidence
 pip install -r requirements.txt
-cp env.example .env.local
+cp .env.example .env.local
 # Fill in all values
 
 # Seed the RAG knowledge base - run once
@@ -150,7 +146,7 @@ confidence/
     index.html           - Landing page + upload/results
   scripts/
     build_product_db.py  - RAG knowledge base seeding (run once)
-    sample_products.json - 100 product knowledge base
+    sample_products.json - 98 product knowledge base
   Dockerfile
   requirements.txt
 ```

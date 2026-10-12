@@ -458,7 +458,7 @@
         .copy { font-size: 14px; color: rgba(36, 36, 38, 0.75); }
         .cols {
             display: grid;
-            grid-template-columns: repeat(4, minmax(110px, 1fr));
+            grid-template-columns: repeat(2, minmax(110px, 1fr));
             gap: 32px;
         }
         .cols h6 {
@@ -771,7 +771,7 @@
                     </span>
                     <span class="text-[14px] pr-1">Get started</span>
                 </button>
-                <p class="mt-16 text-xs text-brand-charcoal">Selfie in. Routine out. Under 60 seconds.</p>
+                <p class="mt-16 text-xs text-brand-charcoal">Selfie in. Routine out.</p>
             </div>
 
             <div class="hero-frame">
@@ -789,13 +789,13 @@
             <article class="bg-white rounded-[24px] p-9 min-h-[311px] flex flex-col">
                 <span class="card-ico"><i data-lucide="sparkles"></i></span>
                 <h5 class="mt-7 text-[22px] font-medium tracking-tight">Product match</h5>
-                <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">Every recommendation is pulled from a vetted catalogue. The model does not invent product names.</p>
+                <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">Recommendations are checked against a fixed product catalogue.</p>
                 <a class="chip mt-auto" href="#upload-anchor"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>See how it works</a>
             </article>
             <article class="bg-white rounded-[24px] p-9 min-h-[311px] flex flex-col">
                 <span class="card-ico"><i data-lucide="shield-check"></i></span>
                 <h5 class="mt-7 text-[22px] font-medium tracking-tight">Safety first</h5>
-                <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">Severe concerns skip product advice and show a specialist referral before any routine is generated.</p>
+                <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">Severe concerns show a specialist referral instead of tailored product advice. You still get a basic cleanser, moisturiser and SPF routine.</p>
                 <a class="chip mt-auto" href="#safety"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>Read safety notes</a>
             </article>
         </section>
@@ -810,7 +810,7 @@
                 <div>
                     <h2 class="text-[36px] md:text-[64px] leading-[45px] md:leading-[80px] tracking-[-1.08px] md:tracking-[-2.56px] font-normal text-brand-charcoal">Analyse your skin</h2>
                     <p class="mt-5 text-[18px] leading-[27px] text-brand-slate max-w-[540px]">Upload a selfie from your library, or capture one now. Use a clear, front-facing photo in natural light.</p>
-                    <p class="mt-16 text-xs text-brand-charcoal">Selfie in. Routine out. Under 60 seconds.</p>
+                    <p class="mt-16 text-xs text-brand-charcoal">Selfie in. Routine out.</p>
                 </div>
 
                 <aside class="analyse-card">
@@ -821,8 +821,8 @@
                     <div class="analyse-form">
                         <p class="hidden text-[14px] text-brand-slate mb-5" id="error-toast"><span id="error-msg"></span></p>
 
-                        <input accept="image/*" class="sr-only" id="file-input" type="file"/>
-                        <input accept="image/*" capture="user" class="sr-only" id="camera-input" type="file"/>
+                        <input accept="image/jpeg,image/png" class="sr-only" id="file-input" type="file"/>
+                        <input accept="image/jpeg,image/png" capture="user" class="sr-only" id="camera-input" type="file"/>
 
                         <div class="source-actions" id="upload-zone">
                             <button class="source-btn" id="upload-btn" type="button">
@@ -958,6 +958,11 @@
 
                 <div id="nudge-wrap"></div>
 
+                <div class="result-card mb-4 hidden" id="fallback-note">
+                    <h5>Generic starter routine, not personalised</h5>
+                    <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">The service did not return a routine for this photo, so these are general cleanser, moisturiser and SPF picks.</p>
+                </div>
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
                     <article class="result-card hidden" id="morning-card">
                         <div class="flex items-center justify-between gap-4">
@@ -987,6 +992,7 @@
             <div id="privacy">
                 <h5>Privacy</h5>
                 <p>Your selfie is used for this session only. Educational suggestions - you choose what to try.</p>
+                <p>Your photo is sent to Perfect Corp for skin analysis. Your skin profile (concern scores, not your photo) is sent to AI services to generate recommendations.</p>
             </div>
         </section>
     </main>
@@ -1007,7 +1013,7 @@
 
     <section class="cta">
         <h2>Your skin, finally understood.</h2>
-        <p>Upload a selfie or capture one now. Get a morning and evening routine in under 60 seconds.</p>
+        <p>Selfie in. Routine out.</p>
         <button class="cta-btn" data-upload-cta type="button">
             <span class="arrow">
                 <i data-lucide="arrow-right"></i>
@@ -1028,22 +1034,7 @@
                 </div>
                 <div>
                     <h6>Company</h6>
-                    <a href="index.html">About us</a>
-                    <a href="#upload-anchor">Analyse</a>
                     <a href="contact.html">Contact</a>
-                </div>
-                <div>
-                    <h6>Social</h6>
-                    <a href="#">X / Twitter</a>
-                    <a href="#">Facebook</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">Discord</a>
-                </div>
-                <div>
-                    <h6>Legal</h6>
-                    <a href="#privacy">Terms of Use</a>
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#privacy">Cookie policy</a>
                 </div>
             </div>
         </div>
@@ -1053,6 +1044,18 @@
     <!-- Core Interactive Logic Script -->
     <script>
       const API_URL = 'https://confidence-api-59597652459.us-central1.run.app/analyse';
+      const SERVICE_UNAVAILABLE = 'The analysis service is temporarily unavailable. Please try again later.';
+      const TIMEOUT_MESSAGE = 'The analysis is taking too long. Please try again later.';
+      const REQUEST_TIMEOUT_MS = 90000;
+
+      function escapeHtml(value) {
+        return String(value ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
 
       const fileInput = document.getElementById('file-input');
       const cameraInput = document.getElementById('camera-input');
@@ -1149,8 +1152,12 @@
       }
 
       function handleFile(file) {
-        if (!file || !file.type.startsWith('image/')) {
-          showErr('Please choose a JPG, PNG, or WebP image.');
+        if (!file || !['image/jpeg', 'image/png'].includes(file.type)) {
+          showErr('Please upload a JPG or PNG photo.');
+          return;
+        }
+        if (file.size > 10 * 1024 * 1024) {
+          showErr('Your photo is too large — please use an image under 10MB.');
           return;
         }
 
@@ -1266,22 +1273,29 @@
           setTimeout(() => setStep(4), 16000)
         ];
 
+        const controller = new AbortController();
+        const abortTimer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
         try {
-          const response = await fetch(API_URL, { method: 'POST', body: fd });
-          timers.forEach(clearTimeout);
+          const response = await fetch(API_URL, { method: 'POST', body: fd, signal: controller.signal });
           if (!response.ok) {
+            // The API returns a fixed user_message. Hosting errors (e.g. Cloud Run 503
+            // HTML pages) have none, so they get the generic message.
             const err = await response.json().catch(() => ({}));
             show('screen-upload');
-            showErr(err?.detail?.user_message || 'Something went wrong. Please try again.');
+            showErr(err?.detail?.user_message || SERVICE_UNAVAILABLE);
             return;
           }
+          const data = await response.json();
           setStep(4);
-          renderResults(await response.json());
+          renderResults(data, av);
           show('screen-results');
-        } catch {
-          timers.forEach(clearTimeout);
+        } catch (error) {
           show('screen-upload');
-          showErr('Cannot connect to server. Make sure it is running.');
+          showErr(error?.name === 'AbortError' ? TIMEOUT_MESSAGE : SERVICE_UNAVAILABLE);
+        } finally {
+          clearTimeout(abortTimer);
+          timers.forEach(clearTimeout);
         }
       });
 
@@ -1293,7 +1307,7 @@
       });
 
       function chip(name, score) {
-        return `<span class="inline-flex items-center h-9 px-4 rounded-full bg-[#EBEFF5] text-[13px] capitalize">${name.replace(/_/g, ' ')} ${Math.round(score * 100)}%</span>`;
+        return `<span class="inline-flex items-center h-9 px-4 rounded-full bg-[#EBEFF5] text-[13px] capitalize">${escapeHtml(String(name).replace(/_/g, ' '))} ${Math.round(Number(score) * 100) || 0}%</span>`;
       }
 
       const STEP_ICONS = {
@@ -1350,12 +1364,12 @@
       }
 
       function stepHTML(step, slot) {
-        const ingredients = (step.key_ingredients || []).join(' · ');
+        const ingredients = (Array.isArray(step.key_ingredients) ? step.key_ingredients : []).join(' · ');
         return `
           <div class="result-step">
-            <p class="role">${step.role || ''}</p>
-            <p class="product">${step.product || ''}</p>
-            ${ingredients ? `<p class="meta">${ingredients}</p>` : ''}
+            <p class="role">${escapeHtml(step.role)}</p>
+            <p class="product">${escapeHtml(step.product)}</p>
+            ${ingredients ? `<p class="meta">${escapeHtml(ingredients)}</p>` : ''}
             <p class="meta">${everydayReason(step.role, slot)}</p>
           </div>
         `;
@@ -1365,42 +1379,39 @@
       // Routine cards are back. Use catalogue steps only when the API
       // withholds a routine (old Cloud Run still returns []). Daily care
       // only — no actives aimed at a high-severity finding.
-      function fallbackRoutine(profile) {
+      // Products matching the user's avoid list are skipped; a role with no
+      // safe option is left out rather than filled.
+      function fallbackRoutine(profile, avoidText) {
         const type = String(profile.skin_type || '').toLowerCase();
         const concerns = Array.isArray(profile.concerns) ? profile.concerns : [];
         const highRedness = concerns.some((item) => String(item.name || '').toLowerCase().includes('redness') && Number(item.score) >= 0.85);
-        const oily = type.includes('oily') && !highRedness;
-        const combination = type.includes('combination') && !highRedness;
-
-        const cleanser = (oily || combination)
-          ? { role: 'cleanser', product: 'CeraVe Foaming Facial Cleanser', key_ingredients: ['niacinamide', 'ceramides', 'hyaluronic acid'], reason: 'Wash your face.' }
-          : { role: 'cleanser', product: 'Cetaphil Gentle Skin Cleanser', key_ingredients: ['glycerin', 'panthenol', 'niacinamide'], reason: 'Wash your face.' };
-
-        const moisturiser = (oily || combination)
-          ? { role: 'moisturiser', product: 'Neutrogena Hydro Boost Water Gel', key_ingredients: ['hyaluronic acid', 'dimethicone', 'glycerin'], reason: 'Apply this cream.' }
-          : { role: 'moisturiser', product: 'La Roche-Posay Toleriane Double Repair Moisturiser', key_ingredients: ['ceramides', 'niacinamide'], reason: 'Apply this cream.' };
-
-        const spf = {
-          role: 'SPF',
-          product: 'CeraVe Hydrating Mineral Sunscreen SPF 30',
-          key_ingredients: ['zinc oxide', 'titanium dioxide', 'ceramides'],
-          reason: 'Put this on last before you go out.'
+        const oilyOrCombo = (type.includes('oily') || type.includes('combination')) && !highRedness;
+        const avoid = String(avoidText || '').split(',').map((term) => term.trim().toLowerCase()).filter(Boolean);
+        const isAvoided = (item) => {
+          const blob = [item.product, ...item.key_ingredients].join(' ').toLowerCase();
+          return avoid.some((term) => blob.includes(term));
         };
 
+        const CERAVE_FOAMING = { role: 'cleanser', product: 'CeraVe Foaming Facial Cleanser', key_ingredients: ['niacinamide', 'ceramides', 'hyaluronic acid'] };
+        const CETAPHIL_GENTLE = { role: 'cleanser', product: 'Cetaphil Gentle Skin Cleanser', key_ingredients: ['glycerin', 'panthenol', 'niacinamide'] };
+        const HYDRO_BOOST = { role: 'moisturiser', product: 'Neutrogena Hydro Boost Water Gel', key_ingredients: ['hyaluronic acid', 'dimethicone', 'glycerin'] };
+        const TOLERIANE = { role: 'moisturiser', product: 'La Roche-Posay Toleriane Double Repair Moisturiser', key_ingredients: ['ceramides', 'niacinamide'] };
+        const CERAVE_SPF = { role: 'SPF', product: 'CeraVe Hydrating Mineral Sunscreen SPF 30', key_ingredients: ['zinc oxide', 'titanium dioxide', 'ceramides'] };
+
+        // Preferred option first, the other as backup.
+        const pick = (options) => options.find((item) => !isAvoided(item)) || null;
+        const cleanser = pick(oilyOrCombo ? [CERAVE_FOAMING, CETAPHIL_GENTLE] : [CETAPHIL_GENTLE, CERAVE_FOAMING]);
+        const moisturiser = pick(oilyOrCombo ? [HYDRO_BOOST, TOLERIANE] : [TOLERIANE, HYDRO_BOOST]);
+        const spf = pick([CERAVE_SPF]);
+
+        const build = (items) => items.filter(Boolean).map((item, index) => ({ step: index + 1, ...item }));
         return {
-          morning: [
-            { step: 1, ...cleanser },
-            { step: 2, ...moisturiser },
-            { step: 3, ...spf }
-          ],
-          evening: [
-            { step: 1, ...cleanser },
-            { step: 2, ...moisturiser }
-          ]
+          morning: build([cleanser, moisturiser, spf]),
+          evening: build([cleanser, moisturiser])
         };
       }
 
-      function renderResults(data) {
+      function renderResults(data, avoidText) {
         const profile = data.skin_profile || {};
         document.getElementById('r-skin-type').textContent = profile.skin_type || '-';
         const score = Math.round((profile.skin_score || 0) * 100);
@@ -1429,8 +1440,8 @@
               <div class="refer-body">
                 ${referrals.map((referral) => `
                   <div>
-                    <p class="text-[14px] text-brand-slate capitalize">${(referral.name || '').replace(/_/g, ' ')}</p>
-                    <p class="mt-2 text-[15px] leading-[23px] text-brand-charcoal">${referral.message || 'High severity. Speak with a clinician.'}</p>
+                    <p class="text-[14px] text-brand-slate capitalize">${escapeHtml(String(referral.name || '').replace(/_/g, ' '))}</p>
+                    <p class="mt-2 text-[15px] leading-[23px] text-brand-charcoal">${escapeHtml(referral.message || 'High severity. Speak with a clinician.')}</p>
                   </div>
                 `).join('')}
               </div>
@@ -1443,18 +1454,20 @@
               <h5>Watch over 8 weeks</h5>
               <p class="mt-2.5 text-[15px] leading-[23px] text-brand-slate">If these persist after consistent use, consider a clinician.</p>
               <div class="flex flex-wrap gap-2 mt-6">
-                ${nudges.map((concern) => `<span class="inline-flex items-center h-9 px-4 rounded-full bg-[#EBEFF5] text-[13px] capitalize">${String(concern).replace(/_/g, ' ')}</span>`).join('')}
+                ${nudges.map((concern) => `<span class="inline-flex items-center h-9 px-4 rounded-full bg-[#EBEFF5] text-[13px] capitalize">${escapeHtml(String(concern).replace(/_/g, ' '))}</span>`).join('')}
               </div>
             </div>`
           : '';
 
         let morning = Array.isArray(data.morning_routine) ? data.morning_routine : [];
         let evening = Array.isArray(data.evening_routine) ? data.evening_routine : [];
-        if (!morning.length && !evening.length) {
-          const fallback = fallbackRoutine(profile);
+        const usedFallback = !morning.length && !evening.length;
+        if (usedFallback) {
+          const fallback = fallbackRoutine(profile, avoidText);
           morning = fallback.morning;
           evening = fallback.evening;
         }
+        document.getElementById('fallback-note').classList.toggle('hidden', !usedFallback);
         document.getElementById('morning-card').classList.remove('hidden');
         document.getElementById('evening-card').classList.remove('hidden');
         document.getElementById('morning-count').textContent = morning.length ? morning.length + ' steps' : '';
@@ -1471,8 +1484,8 @@
                 </div>
                 <div>
                   <p class="text-xs font-bold text-orange-600 uppercase tracking-wider">Ingredient to avoid</p>
-                  <p class="text-sm font-bold text-brand-charcoal mt-1">${avoid.ingredient}</p>
-                  <p class="text-xs text-brand-slate mt-1">${avoid.reason || ''}</p>
+                  <p class="text-sm font-bold text-brand-charcoal mt-1">${escapeHtml(avoid.ingredient)}</p>
+                  <p class="text-xs text-brand-slate mt-1">${escapeHtml(avoid.reason)}</p>
                 </div>
               </div>
             </div>`

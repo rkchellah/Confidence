@@ -52,9 +52,12 @@ def _headers(api_key: str) -> dict[str, str]:
         "Content-Type": "application/json",
     }
 
-def _register_file(image_bytes: bytes, api_key: str) -> tuple[str, str, dict]:
+_FILE_NAMES = {"image/jpeg": "selfie.jpg", "image/png": "selfie.png"}
+
+def _register_file(image_bytes: bytes, api_key: str, content_type: str) -> tuple[str, str, dict]:
     url = f"{BASE_URL}/s2s/v2.1/file/skin-analysis"
-    payload = {"files": [{"content_type": "image/jpg", "file_name": "selfie.jpg", "file_size": len(image_bytes)}]}
+    file_name = _FILE_NAMES.get(content_type, "selfie.jpg")
+    payload = {"files": [{"content_type": content_type, "file_name": file_name, "file_size": len(image_bytes)}]}
     with httpx.Client() as client:
         response = client.post(url, headers=_headers(api_key), json=payload, timeout=30.0)
     if response.status_code != 200:
@@ -70,8 +73,8 @@ def _upload_to_s3(image_bytes: bytes, upload_url: str, upload_headers: dict) -> 
     if response.status_code not in (200, 204):
         raise PerfectCorpError(f"S3 upload failed: {response.status_code} — {response.text}")
 
-def upload_image(image_bytes: bytes, api_key: str) -> str:
-    file_id, upload_url, upload_headers = _register_file(image_bytes, api_key)
+def upload_image(image_bytes: bytes, api_key: str, content_type: str = "image/jpeg") -> str:
+    file_id, upload_url, upload_headers = _register_file(image_bytes, api_key, content_type)
     _upload_to_s3(image_bytes, upload_url, upload_headers)
     return file_id
 
@@ -139,12 +142,17 @@ def parse_result(raw: dict) -> SkinAnalysisResult:
     concerns.sort(key=lambda c: c.score, reverse=True)
     return SkinAnalysisResult(skin_type=skin_type, skin_score=overall_score, concerns=concerns)
 
-def analyse(image_bytes: bytes, api_key: str, timeout: int = DEFAULT_TIMEOUT_SECONDS) -> SkinAnalysisResult:
+def analyse(
+    image_bytes: bytes,
+    api_key: str,
+    timeout: int = DEFAULT_TIMEOUT_SECONDS,
+    content_type: str = "image/jpeg",
+) -> SkinAnalysisResult:
     if len(image_bytes) > MAX_FILE_SIZE_BYTES:
         raise ImageTooLargeError(
             f"Image is {len(image_bytes)} bytes — exceeds the {MAX_FILE_SIZE_BYTES} byte (10MB) limit."
         )
-    file_id = upload_image(image_bytes, api_key)
+    file_id = upload_image(image_bytes, api_key, content_type)
     task_id = run_analysis(file_id, api_key)
     raw = poll_until_complete(task_id, api_key, timeout=timeout)
     return parse_result(raw)

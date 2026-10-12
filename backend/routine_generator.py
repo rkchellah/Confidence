@@ -40,6 +40,7 @@ load_dotenv(Path(__file__).parent.parent / ".env.local")
 
 # ── Safety thresholds ─────────────────────────────────────────────────────────
 
+# NOTE: score direction per concern not yet verified against Perfect Corp definitions.
 HIGH_SEVERITY_THRESHOLD = 0.85
 MODERATE_THRESHOLD = 0.40
 
@@ -152,53 +153,165 @@ _CATALOGUE_SPF = _catalogue_product(
 )
 
 
-def _pick_product(products: list[RetrievedProduct], *needles: str) -> RetrievedProduct | None:
+def _is_avoided(product: RetrievedProduct, avoid: list[str] | None) -> bool:
+    """True if the product's name, brand, content or ingredients contain an avoided term."""
+    if not avoid:
+        return False
+    raw = product.metadata.get("ingredients", [])
+    ingredients = " ".join(str(item) for item in raw) if isinstance(raw, list) else str(raw)
+    blob = f"{product.brand} {product.name} {product.content} {ingredients}".lower()
+    return any(term.strip().lower() in blob for term in avoid if term.strip())
+
+
+_ROLE_NEEDLES = {
+    "cleanser": ("cleanser", "cleansing", "wash"),
+    "moisturiser": ("moisturis", "moisturiz", "cream", "lotion"),
+    "SPF": ("spf", "sunscreen", "sun screen"),
+}
+_ROLE_CATALOGUE = {
+    "cleanser": _CATALOGUE_CLEANSER,
+    "moisturiser": _CATALOGUE_MOISTURISER,
+    "SPF": _CATALOGUE_SPF,
+}
+
+
+def _pick_product(
+    products: list[RetrievedProduct],
+    *needles: str,
+    avoid: list[str] | None = None,
+) -> RetrievedProduct | None:
     for product in products:
+        if _is_avoided(product, avoid):
+            continue
         blob = f"{product.category} {product.name} {product.content}".lower()
         if any(needle in blob for needle in needles):
             return product
     return None
 
 
-def _supportive_routine(products: list[RetrievedProduct]) -> tuple[list[RoutineStep], list[RoutineStep]]:
+def _baseline_product(
+    role: str,
+    products: list[RetrievedProduct],
+    avoid: list[str] | None,
+) -> RetrievedProduct | None:
+    """Retrieved product for a baseline role, else the named catalogue one, unless avoided."""
+    picked = _pick_product(products, *_ROLE_NEEDLES[role], avoid=avoid)
+    if picked is not None:
+        return picked
+    fallback = _ROLE_CATALOGUE[role]
+    if _is_avoided(fallback, avoid):
+        print(f"[routine_generator] No safe {role} after avoid list — step omitted")
+        return None
+    return fallback
+
+
+def _baseline_step(role: str, product: RetrievedProduct, reason: str) -> RoutineStep:
+    return RoutineStep(
+        step=0,
+        role=role,
+        product=_product_label(product),
+        key_ingredients=_product_ingredients(product),
+        reason=reason,
+    )
+
+
+def _renumber(steps: list[RoutineStep]) -> list[RoutineStep]:
+    for number, item in enumerate(steps, start=1):
+        item.step = number
+    return steps
+
+
+def _supportive_routine(
+    products: list[RetrievedProduct],
+    avoid: list[str] | None = None,
+) -> tuple[list[RoutineStep], list[RoutineStep]]:
     """
     Conservative cleanser / moisturiser / SPF steps from the catalogue.
     Used when severe triage fires — DeepSeek is still not called.
     If RAG returns no matching row, use the named catalogue trio.
+    A role with no product clear of the avoid list is omitted.
     """
-    cleanser = _pick_product(products, "cleanser", "cleansing", "wash") or _CATALOGUE_CLEANSER
-    moisturiser = _pick_product(products, "moisturis", "moisturiz", "cream", "lotion") or _CATALOGUE_MOISTURISER
-    spf = _pick_product(products, "spf", "sunscreen", "sun screen") or _CATALOGUE_SPF
     if not products:
         print("[routine_generator] RAG empty — using named catalogue baseline")
+    picks = {role: _baseline_product(role, products, avoid) for role in _ROLE_NEEDLES}
 
-    def step(number: int, role: str, product: RetrievedProduct | None, reason: str) -> RoutineStep:
-        if product is None:
-            return RoutineStep(
-                step=number,
-                role=role,
-                product=f"A gentle {role}",
-                key_ingredients=[],
-                reason=reason,
-            )
-        return RoutineStep(
-            step=number,
-            role=role,
-            product=_product_label(product),
-            key_ingredients=_product_ingredients(product),
-            reason=reason,
-        )
+    def steps(plan: list[tuple[str, str]]) -> list[RoutineStep]:
+        return _renumber([
+            _baseline_step(role, picks[role], reason)
+            for role, reason in plan
+            if picks[role] is not None
+        ])
 
-    morning = [
-        step(1, "cleanser", cleanser, "Wash your face."),
-        step(2, "moisturiser", moisturiser, "Apply this cream."),
-        step(3, "SPF", spf, "Put this on last before you go out."),
-    ]
-    evening = [
-        step(1, "cleanser", cleanser, "Wash your face."),
-        step(2, "moisturiser", moisturiser, "Apply this cream before bed."),
-    ]
+    morning = steps([
+        ("cleanser", "Wash your face."),
+        ("moisturiser", "Apply this cream."),
+        ("SPF", "Put this on last before you go out."),
+    ])
+    evening = steps([
+        ("cleanser", "Wash your face."),
+        ("moisturiser", "Apply this cream before bed."),
+    ])
     return morning, evening
+
+
+def _baseline_for_role(
+    role: str,
+    products: list[RetrievedProduct],
+    avoid: list[str] | None = None,
+) -> RoutineStep | None:
+    """Catalogue cleanser / moisturiser / SPF for a role, or None for other roles or no safe product."""
+    kind = role.lower()
+    if "clean" in kind or "wash" in kind:
+        base_role = "cleanser"
+    elif "moistur" in kind or "cream" in kind or "lotion" in kind:
+        base_role = "moisturiser"
+    elif "spf" in kind or "sun" in kind:
+        base_role = "SPF"
+    else:
+        return None
+    product = _baseline_product(base_role, products, avoid)
+    if product is None:
+        return None
+    return _baseline_step(role, product, "")
+
+
+def _enforce_catalogue(
+    steps: list[RoutineStep],
+    products: list[RetrievedProduct],
+    avoid: list[str] | None = None,
+) -> list[RoutineStep]:
+    """
+    Post-check model output against the retrieved products.
+    A step naming a product outside the retrieved set (or one matching the avoid
+    list) is swapped for the catalogue baseline for its role (cleanser /
+    moisturiser / SPF). Other roles, or roles with no safe baseline, are dropped.
+    Steps are renumbered afterwards.
+    """
+    allowed: set[str] = set()
+    for p in products:
+        if _is_avoided(p, avoid):
+            continue
+        allowed.add(_product_label(p).lower())
+        if p.name:
+            allowed.add(p.name.strip().lower())
+
+    checked: list[RoutineStep] = []
+    for item in steps:
+        if item.product.strip().lower() in allowed:
+            checked.append(item)
+            continue
+        baseline = _baseline_for_role(item.role, products, avoid)
+        if baseline is None:
+            print(f"[routine_generator] WARNING unverified product dropped: {item.product!r} (role {item.role!r})")
+            continue
+        print(
+            f"[routine_generator] WARNING unverified product replaced: {item.product!r} "
+            f"-> {baseline.product!r} (role {item.role!r})"
+        )
+        baseline.reason = item.reason
+        checked.append(baseline)
+
+    return _renumber(checked)
 
 
 def referral_response(
@@ -206,6 +319,7 @@ def referral_response(
     severe_concerns: list[str],
     moderate_concerns: list[str],
     products: list[RetrievedProduct] | None = None,
+    ingredients_to_avoid: list[str] | None = None,
 ) -> RoutineOutput:
     """
     Build a safe referral response when severe concerns are detected.
@@ -229,7 +343,7 @@ def referral_response(
             )
         )
 
-    morning, evening = _supportive_routine(products or [])
+    morning, evening = _supportive_routine(products or [], ingredients_to_avoid)
 
     return RoutineOutput(
         skin_profile={
@@ -338,7 +452,7 @@ EXAMPLE 2 — Oily skin, acne (moderate, score 0.62), enlarged pores:
   ],
   "evening_routine": [
     {"step": 1, "role": "cleanser", "product": "CeraVe Foaming Facial Cleanser", "key_ingredients": ["niacinamide", "ceramides"], "reason": "Wash your face."},
-    {"step": 2, "role": "treatment", "product": "Differin Adapalene Gel 0.1%", "key_ingredients": ["adapalene"], "reason": "Apply a thin layer after washing."},
+    {"step": 2, "role": "treatment", "product": "Paula's Choice Clear Regular Strength Daily Skin Clearing Treatment", "key_ingredients": ["benzoyl peroxide 2.5%", "green tea extract"], "reason": "Apply a thin layer after washing."},
     {"step": 3, "role": "moisturiser", "product": "COSRX Oil-Free Ultra Moisturising Lotion", "key_ingredients": ["birch sap", "betaine"], "reason": "Apply this cream before bed."}
   ],
   "avoid_ingredient": {
@@ -399,6 +513,20 @@ def _parse_llm_response(content: str) -> dict:
     return json.loads(content)
 
 
+def _parse_avoid_ingredient(raw: object) -> AvoidIngredient | None:
+    """Accept {"ingredient", "reason"} or a bare string. Anything else, or empty, is None."""
+    if isinstance(raw, dict):
+        ingredient = raw.get("ingredient")
+        reason = raw.get("reason")
+        ingredient = ingredient.strip() if isinstance(ingredient, str) else ""
+        reason = reason.strip() if isinstance(reason, str) else ""
+    elif isinstance(raw, str):
+        ingredient, reason = raw.strip(), ""
+    else:
+        return None
+    return AvoidIngredient(ingredient=ingredient, reason=reason) if ingredient else None
+
+
 def generate_routine(
     skin_result: SkinAnalysisResult,
     products: list[RetrievedProduct],
@@ -418,7 +546,7 @@ def generate_routine(
     moderate = get_moderate_concerns(skin_result.concerns)
 
     if severe:
-        return referral_response(skin_result, severe, moderate, products)
+        return referral_response(skin_result, severe, moderate, products, ingredients_to_avoid)
 
     # Step 2 — build prompt
     client = OpenAI(
@@ -485,20 +613,21 @@ def generate_routine(
             )
         return built
 
-    avoid_raw = parsed.get("avoid_ingredient")
-    avoid = (
-        AvoidIngredient(
-            ingredient=avoid_raw.get("ingredient", ""),
-            reason=avoid_raw.get("reason", ""),
-        )
-        if avoid_raw
-        else None
-    )
+    if not isinstance(parsed, dict):
+        parsed = {}
+    avoid = _parse_avoid_ingredient(parsed.get("avoid_ingredient"))
 
     morning = _steps(parsed.get("morning_routine") or parsed.get("morning") or [])
     evening = _steps(parsed.get("evening_routine") or parsed.get("evening") or [])
+    if not products:
+        # Nothing to check against — every model product would be unverified.
+        print("[routine_generator] No retrieved products — using catalogue baseline instead of model steps")
+        morning, evening = _supportive_routine(products, ingredients_to_avoid)
+    else:
+        morning = _enforce_catalogue(morning, products, ingredients_to_avoid)
+        evening = _enforce_catalogue(evening, products, ingredients_to_avoid)
     if not morning and not evening:
-        morning, evening = _supportive_routine(products)
+        morning, evening = _supportive_routine(products, ingredients_to_avoid)
 
     return RoutineOutput(
         skin_profile={
