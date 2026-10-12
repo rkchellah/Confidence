@@ -554,7 +554,7 @@
 
         .cols {
             display: grid;
-            grid-template-columns: repeat(4, minmax(110px, 1fr));
+            grid-template-columns: repeat(2, minmax(110px, 1fr));
             gap: 32px;
         }
 
@@ -642,14 +642,14 @@
         <section class="hero">
             <div>
                 <h1>Questions about your routine?</h1>
-                <p class="hero-copy">Send a note if analysis failed, a product looks wrong, or you want to talk through a result. We usually reply within a day.</p>
-                <p class="trusted">Selfie in. Routine out. Under 60 seconds.</p>
+                <p class="hero-copy">Send a note if analysis failed, a product looks wrong, or you want to talk through a result.</p>
+                <p class="trusted">Selfie in. Routine out.</p>
             </div>
 
             <aside class="card">
                 <div class="card-head">
                     <h3>Contact us</h3>
-                    <p>Fill the form, or email <a href="mailto:hello@confidence.ai">hello@confidence.ai</a></p>
+                    <p>The form opens your email app, or email <a href="mailto:hello@confidence.ai">hello@confidence.ai</a> directly.</p>
                 </div>
                 <form id="form">
                     <div class="row">
@@ -674,9 +674,9 @@
                         <span class="arrow">
                             <i data-lucide="arrow-right"></i>
                         </span>
-                        <span class="label">Send message</span>
+                        <span class="label">Open in email app</span>
                     </button>
-                    <p class="ok" id="ok">Thanks. We’ll get back to you shortly.</p>
+                    <p class="ok" id="ok">Your email app should open with this message. Send it from there. If nothing opened, email hello@confidence.ai directly.</p>
                 </form>
             </aside>
         </section>
@@ -686,25 +686,26 @@
                 <span class="card-ico"><i data-lucide="scan-face"></i></span>
                 <h5>Photo analysis</h5>
                 <p>Use a clear, front-facing selfie in natural light. Avoid heavy makeup and cropped faces.</p>
+                <p>Your photo is sent to Perfect Corp for skin analysis. Your skin profile (concern scores, not your photo) is sent to AI services to generate recommendations.</p>
                 <a class="chip" href="index.html#upload-anchor"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>Start analysis</a>
             </article>
             <article class="help-card">
                 <span class="card-ico"><i data-lucide="sparkles"></i></span>
                 <h5>Product match</h5>
-                <p>Recommendations come from a vetted catalogue. The model does not invent product names.</p>
+                <p>Recommendations are checked against a fixed product catalogue.</p>
                 <a class="chip" href="index.html#upload-anchor"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>See how it works</a>
             </article>
             <article class="help-card">
                 <span class="card-ico"><i data-lucide="shield-check"></i></span>
                 <h5>Safety first</h5>
-                <p>Severe concerns skip product advice and show a specialist referral before any routine is generated.</p>
+                <p>Severe concerns show a specialist referral instead of tailored product advice. You still get a basic cleanser, moisturiser and SPF routine.</p>
                 <a class="chip" href="index.html#safety"><span class="chip-ico"><i data-lucide="arrow-right"></i></span>Read safety notes</a>
             </article>
         </section>
 
         <section class="cta" id="cta">
             <h1>Your skin, finally understood.</h1>
-            <p>Upload a selfie or capture one now. Get a morning and evening routine in under 60 seconds.</p>
+            <p>Selfie in. Routine out.</p>
             <a class="cta-btn" href="index.html#upload-anchor">
                 <span class="arrow">
                     <i data-lucide="arrow-right"></i>
@@ -725,22 +726,7 @@
                     </div>
                     <div>
                         <h6>Company</h6>
-                        <a href="index.html">About us</a>
-                        <a href="index.html#upload-anchor">Analyse</a>
-                    <a href="contact.html">Contact</a>
-                    </div>
-                    <div>
-                        <h6>Social</h6>
-                        <a href="#">X / Twitter</a>
-                        <a href="#">Facebook</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">Discord</a>
-                    </div>
-                    <div>
-                        <h6>Legal</h6>
-                        <a href="index.html#privacy">Terms of Use</a>
-                        <a href="index.html#privacy">Privacy Policy</a>
-                        <a href="index.html#privacy">Cookie policy</a>
+                        <a href="contact.html">Contact</a>
                     </div>
                 </div>
             </div>
@@ -758,6 +744,15 @@
 
         document.getElementById("form").addEventListener("submit", (event) => {
             event.preventDefault();
+            // No backend for this form: hand the message to the user's email app.
+            const form = event.target;
+            const name = `${form.first.value.trim()} ${form.last.value.trim()}`.trim();
+            const body = `${form.help.value.trim()}
+
+${name}
+${form.email.value.trim()}`;
+            const subject = `Confidence question from ${name}`;
+            window.location.href = `mailto:hello@confidence.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             document.getElementById("ok").classList.add("show");
         });
     </script>
